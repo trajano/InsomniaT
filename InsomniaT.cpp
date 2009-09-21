@@ -1,4 +1,5 @@
 #include <IOKit/IOLib.h>
+#include <sys/systm.h>
 #include "InsomniaT.h"
 
 #define super IOService
