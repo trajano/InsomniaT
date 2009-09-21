@@ -26,9 +26,15 @@
 	<dict>
 		<key>InsomniaT</key>
 		<dict>
+			<key>IOResourceMatch</key>
+			<string>IOKit</string>
 			<key>CFBundleIdentifier</key>
 			<string>net.trajano.driver.InsomniaT</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
 			<key>IOClass</key>
+			<string>net_trajano_driver_InsomniaT</string>
+			<key>IOMatchCategory</key>
 			<string>net_trajano_driver_InsomniaT</string>
 			<key>IOProviderClass</key>
 			<string>IOResources</string>
