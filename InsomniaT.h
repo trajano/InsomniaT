@@ -3,6 +3,8 @@
 class net_trajano_driver_InsomniaT : public IOService
 {
 	OSDeclareDefaultStructors(net_trajano_driver_InsomniaT)
+private:
+	IOOptionBits defaultSleepSupportedFlags;
 public:
     virtual bool init(OSDictionary *dictionary = 0);
     virtual void free(void);

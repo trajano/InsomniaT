@@ -1,5 +1,5 @@
 #include <IOKit/IOLib.h>
-#include <sys/systm.h>
+#include <IOKit/pwr_mgt/RootDomain.h>
 #include "InsomniaT.h"
 
 #define super IOService
@@ -10,6 +10,8 @@ bool net_trajano_driver_InsomniaT::init(OSDictionary *dict)
 {
     bool res = super::init(dict);
     IOLog("Initializing\n");
+    IOPMrootDomain *root = getPMRootDomain();
+	defaultSleepSupportedFlags = root->getSleepSupported();
     return res;
 }
 
@@ -31,11 +33,15 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
     bool res = super::start(provider);
     IOLog("Starting\n");
+    IOPMrootDomain *root = getPMRootDomain();
+	root->setSleepSupported(defaultSleepSupportedFlags | kPCICantSleep);
     return res;
 }
 
 void net_trajano_driver_InsomniaT::stop(IOService *provider)
 {
     IOLog("Stopping\n");
+    IOPMrootDomain *root = getPMRootDomain();
+	root->setSleepSupported(defaultSleepSupportedFlags);
     super::stop(provider);
 }
