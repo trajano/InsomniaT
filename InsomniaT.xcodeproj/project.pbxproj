@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1A8D351067826B0054AFEB /* InsomniaT.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C1A8D341067826B0054AFEB /* InsomniaT.h */; };
 		32A4FEBC0562C75700D090E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
-		32A4FEBE0562C75700D090E7 /* InsomniaT.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3CFF42312311CA2CB7 /* InsomniaT.c */; settings = {ATTRIBUTES = (); }; };
+		32A4FEBE0562C75700D090E7 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3CFF42312311CA2CB7 /* InsomniaT.cpp */; settings = {ATTRIBUTES = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1A224C3CFF42312311CA2CB7 /* InsomniaT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = InsomniaT.c; sourceTree = "<group>"; };
+		1A224C3CFF42312311CA2CB7 /* InsomniaT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InsomniaT.cpp; sourceTree = "<group>"; };
+		2C1A8D341067826B0054AFEB /* InsomniaT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsomniaT.h; sourceTree = "<group>"; };
 		32A4FEC30562C75700D090E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A4FEC40562C75800D090E7 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27513B306A6225300ADB3A4 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -61,7 +63,8 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				1A224C3CFF42312311CA2CB7 /* InsomniaT.c */,
+				1A224C3CFF42312311CA2CB7 /* InsomniaT.cpp */,
+				2C1A8D341067826B0054AFEB /* InsomniaT.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -73,6 +76,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1A8D351067826B0054AFEB /* InsomniaT.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32A4FEBE0562C75700D090E7 /* InsomniaT.c in Sources */,
+				32A4FEBE0562C75700D090E7 /* InsomniaT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
