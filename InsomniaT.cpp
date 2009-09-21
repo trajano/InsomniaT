@@ -1,19 +1,40 @@
-#include <ioKit/pwr_mgt/IOPM.h>
-#include <ioKit/pwr_mgt/RootDomain.h>
-#include <sys/systm.h>
-#include <mach/mach_types.h>
+#include <IOKit/IOLib.h>
+#include "InsomniaT.h"
 
-extern "C" {
-	kern_return_t InsomniaT_start (kmod_info_t * ki, void * d) {
-		IOPMrootDomain *root = NULL;
-		printf("KEXT has loaded!\n");
-		return KERN_SUCCESS;
-	}
-	
-	
-	kern_return_t InsomniaT_stop (kmod_info_t * ki, void * d) {
-		
-		printf("KEXT will be unloaded\n");
-		return KERN_SUCCESS;
-	}
+#define super IOService
+
+OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
+
+bool net_trajano_driver_InsomniaT::init(OSDictionary *dict)
+{
+    bool res = super::init(dict);
+    IOLog("Initializing\n");
+    return res;
+}
+
+void net_trajano_driver_InsomniaT::free(void)
+{
+    IOLog("Freeing\n");
+    super::free();
+}
+
+IOService *net_trajano_driver_InsomniaT::probe(IOService *provider, SInt32
+											   *score)
+{
+    IOService *res = super::probe(provider, score);
+    IOLog("Probing\n");
+    return res;
+}
+
+bool net_trajano_driver_InsomniaT::start(IOService *provider)
+{
+    bool res = super::start(provider);
+    IOLog("Starting\n");
+    return res;
+}
+
+void net_trajano_driver_InsomniaT::stop(IOService *provider)
+{
+    IOLog("Stopping\n");
+    super::stop(provider);
 }
