@@ -7,10 +7,9 @@ class net_trajano_driver_InsomniaT : public IOService
 															UInt32 messageType, IOService * provider,
 															void * messageArgument, vm_size_t argSize );
 private:
-	IOOptionBits fDefaultSleepSupportedFlags;
-	IONotifier* notifier;
-		//	IOWorkloop *fWorkLoop;
-	
+	OSObject* fAppleClamshellCausesSleep;
+	IONotifier* fNotifier;
+
 	virtual bool isSleepEnabled();
 	virtual void disableSleep();
 	virtual void enableSleep();

@@ -30,8 +30,6 @@
 			<string>IOKit</string>
 			<key>CFBundleIdentifier</key>
 			<string>net.trajano.driver.InsomniaT</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
 			<key>IOClass</key>
 			<string>net_trajano_driver_InsomniaT</string>
 			<key>IOMatchCategory</key>
