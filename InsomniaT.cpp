@@ -9,13 +9,31 @@
 static const char *kLogFormat = "[net.trajano.driver.InsomniaT] %s\n";
 OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
 
-static const int kMyNumberOfStates = 1;
-static IOPMPowerState myPowerStates[kMyNumberOfStates] = {
-	{1, kIOPMPreventIdleSleep, kIOPMPowerOn, kIOPMPowerOn, 0, 0, 0, 0, 0, 0, 0, 0}
-};
 
 const OSSymbol *sleepdisabled_string =
 OSSymbol::withCString("SleepDisabled");
+
+
+extern "C" {
+	
+	IOReturn mySleepHandler( void * target, void * refCon,
+							UInt32 messageType, IOService * provider,
+							void * messageArgument, vm_size_t argSize )
+	{
+		net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT*)target;
+		if (messageType == kIOPMMessageClamshellStateChange) {
+			IOLog(kLogFormat,"kIOPMMessageClamshellStateChange received");
+			if (	obj->isSleepEnabled()){
+				IOLog(kLogFormat,"sleep was enabled. disabling sleep");
+				obj->disableSleep();
+			} else {
+				IOLog(kLogFormat,"sleep was disabled doing nothing");
+				
+			}}
+		return 0;
+	}
+}
+
 
 bool net_trajano_driver_InsomniaT::init(OSDictionary *dict)
 {
@@ -51,11 +69,12 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 	 fWorkloop->addEventSource(fGate);
 	 }
 	 */
+	
 	PMinit();
-	provider->joinPMtree(this);
+		// provider->joinPMtree(this);
 	
 	
-	registerPowerDriver (this, myPowerStates, kMyNumberOfStates);
+		// registerPowerDriver (this, myPowerStates, kMyNumberOfStates);
 	
 	IOPMrootDomain *root = getPMRootDomain();
 	
@@ -63,20 +82,13 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 	disableSleep();
 	return res;
 }
-IOReturn net_trajano_driver_InsomniaT::message( UInt32 type, IOService * provider,
-											   void * argument  ) {
-	if (type == kIOPMMessageClamshellStateChange) {
-		IOLog(kLogFormat,"kIOPMMessageClamshellStateChange received");
-		if (isSleepEnabled()) {
-			IOLog(kLogFormat,"sleep was enabled. disabling sleep");
-			disableSleep();
-		} else {
-			IOLog(kLogFormat,"sleep was disabled doing nothing");
-			
-		}}
-	return super::message(type,provider,argument);
-}
 void net_trajano_driver_InsomniaT::disableSleep() {
+	IOLog(kLogFormat, "Disabling sleep");
+	
+	notifier = registerSleepWakeInterest(
+										 &mySleepHandler, this, NULL);
+	
+	
 	IOPMrootDomain *root = getPMRootDomain();
 	root->setSleepSupported(fDefaultSleepSupportedFlags | kPCICantSleep);
 	
@@ -93,6 +105,9 @@ bool net_trajano_driver_InsomniaT::isSleepEnabled() {
 	return 	root->getProperty(sleepdisabled_string) != kOSBooleanTrue;
 }
 void net_trajano_driver_InsomniaT::enableSleep() {
+	IOLog(kLogFormat, "Enabling sleep");
+	notifier->remove();
+	
 	IOPMrootDomain *root = getPMRootDomain();
 		// This may be all that is needed. Should store the original value during init.
 	root->setProperty(sleepdisabled_string,kOSBooleanFalse);
@@ -100,7 +115,6 @@ void net_trajano_driver_InsomniaT::enableSleep() {
 	root->setSleepSupported(fDefaultSleepSupportedFlags);
 		// Calling this method will set the ignoringClamShell to false for the PM root domain.
 	root->receivePowerNotification(kIOPMEnableClamshell);
-	
 }
 void net_trajano_driver_InsomniaT::stop(IOService *provider)
 {
