@@ -13,7 +13,6 @@ bool net_trajano_driver_InsomniaT::init(OSDictionary *dict)
     IOPMrootDomain *root = getPMRootDomain();
 	defaultSleepSupportedFlags = root->getSleepSupported();
 
-    root->receivePowerNotification(kIOPMDisableClamshell);
 
     return res;
 }
@@ -36,10 +35,15 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
     bool res = super::start(provider);
     IOLog("Starting\n");
-    IOPMrootDomain *root = getPMRootDomain();
+   PMinit();
+
+	IOPMrootDomain *root = getPMRootDomain();
 	root->setSleepSupported(defaultSleepSupportedFlags | kPCICantSleep);
-	PMinit();
-    return res;
+	
+	// Calling this method will set the ignoringClamShell to true for the PM root domain.
+    root->receivePowerNotification(kIOPMDisableClamshell);
+
+	return res;
 }
 
 void net_trajano_driver_InsomniaT::stop(IOService *provider)
@@ -47,6 +51,9 @@ void net_trajano_driver_InsomniaT::stop(IOService *provider)
     IOLog("Stopping\n");
     IOPMrootDomain *root = getPMRootDomain();
 	root->setSleepSupported(defaultSleepSupportedFlags);
+	// Calling this method will set the ignoringClamShell to false for the PM root domain.
     root->receivePowerNotification(kIOPMEnableClamshell);
+
+	PMstop();
     super::stop(provider);
 }

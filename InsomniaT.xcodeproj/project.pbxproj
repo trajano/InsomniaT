@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C1F2C1E1068086900D5C7AE /* Development Notes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */; };
 		32D94FC60562CBF700B6AF17 /* InsomniaT.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A224C3EFF42367911CA2CB7 /* InsomniaT.h */; };
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		32D94FCA0562CBF700B6AF17 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3FFF42367911CA2CB7 /* InsomniaT.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -129,7 +128,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */,
-				2C1F2C1E1068086900D5C7AE /* Development Notes.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
