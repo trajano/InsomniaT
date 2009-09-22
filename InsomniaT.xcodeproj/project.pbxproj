@@ -182,6 +182,7 @@
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
 				MODULE_NAME = net.trajano.driver.InsomniaT;
 				MODULE_VERSION = 1.0.0d1;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = InsomniaT;
 				WRAPPER_EXTENSION = kext;
 			};
