@@ -6,32 +6,34 @@
 
 #define super IOService
 
-static const char *kLogFormat = "[net.trajano.driver.InsomniaT] %s\n";
 OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
 
+static const char *kLogFormat = "[net.trajano.driver.InsomniaT] %s\n";
 
-const OSSymbol *sleepdisabled_string =
-OSSymbol::withCString("SleepDisabled");
-
-
-extern "C" {
-	
-	IOReturn mySleepHandler( void * target, void * refCon,
-							UInt32 messageType, IOService * provider,
-							void * messageArgument, vm_size_t argSize )
-	{
-		net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT*)target;
-		if (messageType == kIOPMMessageClamshellStateChange) {
-			IOLog(kLogFormat,"kIOPMMessageClamshellStateChange received");
-			if (	obj->isSleepEnabled()){
-				IOLog(kLogFormat,"sleep was enabled. disabling sleep");
-				obj->disableSleep();
-			} else {
-				IOLog(kLogFormat,"sleep was disabled doing nothing");
-				
-			}}
-		return 0;
+IOReturn net_trajano_driver_InsomniaT::message( UInt32 type, IOService * provider,
+											   void * argument) {
+	IOLog(kLogFormat,"msg received");
+	if (type == kIOPMMessageClamshellStateChange) {
+		IOLog(kLogFormat,"kIOPMMessageClamshellStateChange received");
 	}
+	return 0;
+}
+
+IOReturn handleSleepWakeInterest( void * target, void * refCon,
+								 UInt32 messageType, IOService * provider,
+								 void * messageArgument, vm_size_t argSize )
+{
+	net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT*)target;
+	if (messageType == kIOPMMessageClamshellStateChange) {
+		IOLog(kLogFormat,"kIOPMMessageClamshellStateChange received");
+		if (	obj->isSleepEnabled()){
+			IOLog(kLogFormat,"sleep was enabled. disabling sleep");
+			obj->disableSleep();
+		} else {
+			IOLog(kLogFormat,"sleep was disabled doing nothing");
+			
+		}}
+	return 0;
 }
 
 
@@ -62,35 +64,23 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
     bool res = super::start(provider);
 	IOLog(kLogFormat, "Starting");
 	/*
-	 fWorkloop = IOWorkLoop::workLoop();
-	 fGate = IOCommandGate::commandGate(this);
-	 
-	 if (fGate && fWorkloop) {
-	 fWorkloop->addEventSource(fGate);
-	 }
-	 */
-	
-	PMinit();
-		// provider->joinPMtree(this);
-	
-	
-		// registerPowerDriver (this, myPowerStates, kMyNumberOfStates);
-	
 	IOPMrootDomain *root = getPMRootDomain();
 	
 	fDefaultSleepSupportedFlags = root->getSleepSupported();
+	*/
+	notifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
+		//	IOServiceAddInterestNotification();
+		//	root->registerInterest(gIOGeneralInterest, handleSleepWakeInterest, this);
+		//	root->registerInterestedDriver(this);
 	disableSleep();
 	return res;
 }
 void net_trajano_driver_InsomniaT::disableSleep() {
 	IOLog(kLogFormat, "Disabling sleep");
 	
-	notifier = registerSleepWakeInterest(
-										 &mySleepHandler, this, NULL);
-	
 	
 	IOPMrootDomain *root = getPMRootDomain();
-	root->setSleepSupported(fDefaultSleepSupportedFlags | kPCICantSleep);
+		//root->setSleepSupported(fDefaultSleepSupportedFlags | kPCICantSleep);
 	
 	root->setProperty(kAppleClamshellCausesSleepKey,kOSBooleanFalse);
 		// Calling this method will set the ignoringClamShell to true for the PM root domain.
@@ -106,20 +96,23 @@ bool net_trajano_driver_InsomniaT::isSleepEnabled() {
 }
 void net_trajano_driver_InsomniaT::enableSleep() {
 	IOLog(kLogFormat, "Enabling sleep");
-	notifier->remove();
+		//notifier->remove();
 	
 	IOPMrootDomain *root = getPMRootDomain();
 		// This may be all that is needed. Should store the original value during init.
 	root->setProperty(kAppleClamshellCausesSleepKey,kOSBooleanTrue);
 	
-	root->setSleepSupported(fDefaultSleepSupportedFlags);
+		// root->setSleepSupported(fDefaultSleepSupportedFlags);
 		// Calling this method will set the ignoringClamShell to false for the PM root domain.
-	root->receivePowerNotification(kIOPMEnableClamshell);
+		//	root->receivePowerNotification(kIOPMEnableClamshell);
 }
 void net_trajano_driver_InsomniaT::stop(IOService *provider)
 {
 	IOLog(kLogFormat, "Stopping");
+	notifier->remove();
 	enableSleep();
-	PMstop();
+		//	IOPMrootDomain *root = getPMRootDomain();
+		//	root->deRegisterInterestedDriver(this);
+		//	PMstop();
 	super::stop(provider);
 }
