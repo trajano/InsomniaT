@@ -92,7 +92,7 @@ void net_trajano_driver_InsomniaT::disableSleep() {
 	IOPMrootDomain *root = getPMRootDomain();
 	root->setSleepSupported(fDefaultSleepSupportedFlags | kPCICantSleep);
 	
-	root->setProperty(sleepdisabled_string,kOSBooleanTrue);
+	root->setProperty(kAppleClamshellCausesSleepKey,kOSBooleanFalse);
 		// Calling this method will set the ignoringClamShell to true for the PM root domain.
 	root->receivePowerNotification(kIOPMDisableClamshell);
 	
@@ -102,7 +102,7 @@ void net_trajano_driver_InsomniaT::disableSleep() {
  */
 bool net_trajano_driver_InsomniaT::isSleepEnabled() {
 	IOPMrootDomain *root = getPMRootDomain();
-	return 	root->getProperty(sleepdisabled_string) != kOSBooleanTrue;
+	return 	root->getProperty(kAppleClamshellCausesSleepKey) == kOSBooleanTrue;
 }
 void net_trajano_driver_InsomniaT::enableSleep() {
 	IOLog(kLogFormat, "Enabling sleep");
@@ -110,7 +110,7 @@ void net_trajano_driver_InsomniaT::enableSleep() {
 	
 	IOPMrootDomain *root = getPMRootDomain();
 		// This may be all that is needed. Should store the original value during init.
-	root->setProperty(sleepdisabled_string,kOSBooleanFalse);
+	root->setProperty(kAppleClamshellCausesSleepKey,kOSBooleanTrue);
 	
 	root->setSleepSupported(fDefaultSleepSupportedFlags);
 		// Calling this method will set the ignoringClamShell to false for the PM root domain.
