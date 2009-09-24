@@ -17,7 +17,7 @@
 		1A224C3EFF42367911CA2CB7 /* InsomniaT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsomniaT.h; sourceTree = "<group>"; };
 		1A224C3FFF42367911CA2CB7 /* InsomniaT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InsomniaT.cpp; sourceTree = "<group>"; };
 		2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Development Notes.rtf"; sourceTree = "<group>"; };
-		32D94FCF0562CBF700B6AF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32D94FCF0562CBF700B6AF17 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Info.plist; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -47,7 +47,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				32D94FCF0562CBF700B6AF17 /* Info.plist */,
+				2C7F4325106B38D600AEC829 /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 			);
 			name = Resources;
@@ -163,6 +163,14 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		2C7F4325106B38D600AEC829 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32D94FCF0562CBF700B6AF17 /* English */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -176,7 +184,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = English.lproj/Info.plist;
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
 				MODULE_NAME = net.trajano.driver.InsomniaT;
 				MODULE_VERSION = 1.0.0d1;
@@ -193,7 +201,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = English.lproj/Info.plist;
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
 				MODULE_NAME = net.trajano.driver.InsomniaT;
 				MODULE_VERSION = 1.0.0d1;

@@ -14,7 +14,7 @@ IOReturn handleSleepWakeInterest( void * target, void * refCon,
 {
 	net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT*)target;
 	if (messageType == kIOPMMessageClamshellStateChange) {
-		if (	obj->isSleepEnabled()){
+		if (obj->isSleepEnabledBySystem()){
 			obj->disableSleep();
 		} 
 	}
@@ -39,13 +39,15 @@ IOService *net_trajano_driver_InsomniaT::probe(IOService *provider, SInt32
     IOService *res = super::probe(provider, score);
     return res;
 }
-
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
     bool res = super::start(provider);
 	IOPMrootDomain *root = getPMRootDomain();
 	
-	fAppleClamshellCausesSleep =	 root->getProperty(kAppleClamshellCausesSleepKey);
+	setProperty("Active", true);
+	
+	
+	fAppleClamshellCausesSleep = root->getProperty(kAppleClamshellCausesSleepKey);
 	fNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
 	disableSleep();
 	return res;
@@ -57,21 +59,24 @@ void net_trajano_driver_InsomniaT::disableSleep() {
 	root->receivePowerNotification(kIOPMDisableClamshell);
 	
 }
-/**
- * Used the positive form to prevent negatives in the method name for clarity.  This method was created to prevent resending the disable message to the root PM context when it is not needed.
- */
+
+const OSString* net_trajano_driver_InsomniaT::gKeySleepEnabled = OSString::withCStringNoCopy("SleepEnabled");
+
 bool net_trajano_driver_InsomniaT::isSleepEnabled() {
+	return ((OSBoolean*)getProperty("Active"))->getValue();
+}
+bool net_trajano_driver_InsomniaT::isSleepEnabledBySystem() {
 	IOPMrootDomain *root = getPMRootDomain();
 	return 	root->getProperty(kAppleClamshellCausesSleepKey) == kOSBooleanTrue;
 }
 void net_trajano_driver_InsomniaT::enableSleep() {
 	IOPMrootDomain *root = getPMRootDomain();
-
+	
 	root->setProperty(kAppleClamshellCausesSleepKey,fAppleClamshellCausesSleep);
 		// Calling this method will set the ignoringClamShell to false for the PM root domain.
 	root->receivePowerNotification(kIOPMEnableClamshell);
 	
-	}
+}
 
 /**
  * This is called when the kext is being unloaded.  It will remove the notifier handler

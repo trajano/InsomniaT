@@ -10,7 +10,15 @@ private:
 	OSObject* fAppleClamshellCausesSleep;
 	IONotifier* fNotifier;
 
+	/**
+	 * Checks the IORegistry value "SleepEnabled" to see if sleep is enabled.
+	 */
 	virtual bool isSleepEnabled();
+	/**
+	 * Checks if the system itself allows for sleep.
+	 * Used the positive form to prevent negatives in the method name for clarity.  This method was created to prevent resending the disable message to the root PM context when it is not needed.
+	 */
+	virtual bool isSleepEnabledBySystem();
 	virtual void disableSleep();
 	virtual void enableSleep();
 	
@@ -20,4 +28,6 @@ public:
 	virtual IOService *probe(IOService *provider, SInt32 *score);
     virtual bool start(IOService *provider);
     virtual void stop(IOService *provider);
+	
+	static const OSString* gKeySleepEnabled;
 };
