@@ -46,6 +46,7 @@
 		2C244291106BDB4F0088C89C /* InsomniaTTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InsomniaTTest-Info.plist"; sourceTree = "<group>"; };
 		2C244299106BDB9A0088C89C /* InsomniaTTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsomniaTTest.h; sourceTree = "<group>"; };
 		2C24429A106BDB9A0088C89C /* InsomniaTTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsomniaTTest.m; sourceTree = "<group>"; };
+		2C24479B106C30C50088C89C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		2C7F45C7106B612700AEC829 /* TestClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestClient; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7F45CC106B615200AEC829 /* TestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClient.h; sourceTree = "<group>"; };
 		2C7F45CD106B615200AEC829 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClient.m; sourceTree = "<group>"; };
@@ -85,6 +86,8 @@
 		089C166AFE841209C02AAC07 /* InsomniaT */ = {
 			isa = PBXGroup;
 			children = (
+				2C24479B106C30C50088C89C /* Makefile */,
+				2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */,
 				247142CAFF3F8F9811CA285C /* Source */,
 				2C2442E9106BE6400088C89C /* Test Client Source */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
@@ -111,7 +114,6 @@
 				1A224C3FFF42367911CA2CB7 /* InsomniaT.cpp */,
 				2C7F4325106B38D600AEC829 /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
-				2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */,
 				2C1C2A44106BAD4900863FED /* InsomniaTUserClient.h */,
 				2C1C2A45106BAD4900863FED /* InsomniaTUserClient.cpp */,
 			);
