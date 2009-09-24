@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C7F45CE106B615200AEC829 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F45CD106B615200AEC829 /* TestClient.m */; };
+		2C7F46D5106B670000AEC829 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7F46D4106B670000AEC829 /* IOKit.framework */; };
 		32D94FC60562CBF700B6AF17 /* InsomniaT.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A224C3EFF42367911CA2CB7 /* InsomniaT.h */; };
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		32D94FCA0562CBF700B6AF17 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3FFF42367911CA2CB7 /* InsomniaT.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -21,6 +22,7 @@
 		2C7F45C7106B612700AEC829 /* TestClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TestClient; path = build/Release/TestClient; sourceTree = "<group>"; };
 		2C7F45CC106B615200AEC829 /* TestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClient.h; sourceTree = "<group>"; };
 		2C7F45CD106B615200AEC829 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClient.m; sourceTree = "<group>"; };
+		2C7F46D4106B670000AEC829 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		32D94FCF0562CBF700B6AF17 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Info.plist; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7F46D5106B670000AEC829 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +54,7 @@
 				8DA8362C06AD9B9200E5AC22 /* Kernel.framework */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
+				2C7F46D4106B670000AEC829 /* IOKit.framework */,
 			);
 			name = InsomniaT;
 			sourceTree = "<group>";
