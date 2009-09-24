@@ -44,7 +44,7 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
     bool res = super::start(provider);
 	IOPMrootDomain *root = getPMRootDomain();
 	
-	setProperty("Active", true);
+	setProperty(gKeySleepEnabled, true);
 	
 	
 	fAppleClamshellCausesSleep = root->getProperty(kAppleClamshellCausesSleepKey);
@@ -63,7 +63,7 @@ void net_trajano_driver_InsomniaT::disableSleep() {
 const OSString* net_trajano_driver_InsomniaT::gKeySleepEnabled = OSString::withCStringNoCopy("SleepEnabled");
 
 bool net_trajano_driver_InsomniaT::isSleepEnabled() {
-	return ((OSBoolean*)getProperty("Active"))->getValue();
+	return ((OSBoolean*)getProperty(gKeySleepEnabled))->getValue();
 }
 bool net_trajano_driver_InsomniaT::isSleepEnabledBySystem() {
 	IOPMrootDomain *root = getPMRootDomain();
