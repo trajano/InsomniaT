@@ -29,5 +29,5 @@ public:
     virtual bool start(IOService *provider);
     virtual void stop(IOService *provider);
 	
-	static const OSString* gKeySleepEnabled;
+	static const char* gKeySleepEnabled;
 };

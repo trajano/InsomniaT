@@ -60,7 +60,7 @@ void net_trajano_driver_InsomniaT::disableSleep() {
 	
 }
 
-const OSString* net_trajano_driver_InsomniaT::gKeySleepEnabled = OSString::withCStringNoCopy("SleepEnabled");
+const char* net_trajano_driver_InsomniaT::gKeySleepEnabled = "SleepEnabled";
 
 bool net_trajano_driver_InsomniaT::isSleepEnabled() {
 	return ((OSBoolean*)getProperty(gKeySleepEnabled))->getValue();
