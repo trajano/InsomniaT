@@ -1,6 +1,6 @@
-#include <IOKit/IOUserClient.h>
+#include <IOKit/IOService.h>
 
-class net_trajano_driver_InsomniaT : public IOUserClient
+class net_trajano_driver_InsomniaT : public IOService
 {
 	OSDeclareDefaultStructors(net_trajano_driver_InsomniaT)
 	friend IOReturn handleSleepWakeInterest( void * target, void * refCon,
@@ -19,19 +19,11 @@ private:
 	virtual void enableSleep();
 	
 public:
-    virtual bool init(OSDictionary *dictionary = NULL);
-    virtual void free(void);
-	virtual IOService *probe(IOService *provider, SInt32 *score);
+		// virtual bool init(OSDictionary *dictionary = NULL);
+		//virtual void free(void);
+		//virtual IOService *probe(IOService *provider, SInt32 *score);
     virtual bool start(IOService *provider);
     virtual void stop(IOService *provider);
-	
-	virtual IOReturn  newUserClient(task_t owningTask,
-									void * securityID,
-									UInt32 type,
-									OSDictionary * properties,
-									IOUserClient ** handler);
-	virtual IOReturn externalMethod( uint32_t selector, IOExternalMethodArguments * arguments,
-									IOExternalMethodDispatch * dispatch = 0, OSObject * target = 0, void * reference = 0 );
 	
 	/**
 	 * Checks the IORegistry value "SleepEnabled" to see if sleep is enabled.

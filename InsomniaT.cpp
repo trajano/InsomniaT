@@ -1,12 +1,11 @@
-#include <string.h>
 #include <IOKit/IOLib.h>
 #include <IOKit/pwr_mgt/IOPM.h>
 #include <IOKit/pwr_mgt/RootDomain.h>
 #include "InsomniaT.h"
 
-#define super IOUserClient
+#define super IOService
 
-OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOUserClient)
+OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
 
 IOReturn handleSleepWakeInterest( void * target, void * refCon,
 								 UInt32 messageType, IOService * provider,
@@ -21,7 +20,7 @@ IOReturn handleSleepWakeInterest( void * target, void * refCon,
 	return 0;
 }
 
-
+/*
 bool net_trajano_driver_InsomniaT::init(OSDictionary *dict)
 {
     bool res = super::init(dict);	
@@ -39,12 +38,10 @@ IOService *net_trajano_driver_InsomniaT::probe(IOService *provider, SInt32
     IOService *res = super::probe(provider, score);
     return res;
 }
+ */
+
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
-    bool res = super::start(provider);
-	if (!res) {
-		return false;
-	}
 	IOPMrootDomain *root = getPMRootDomain();
 	
 	setSleepEnabled(true);
@@ -57,8 +54,11 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 	fAppleClamshellCausesSleep = root->getProperty(kAppleClamshellCausesSleepKey);
 	fNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
 	disableSleep();
-	registerService();
 
+    bool res = super::start(provider);
+	if (res) {
+		registerService();
+	}
 	return res;
 }
 void net_trajano_driver_InsomniaT::disableSleep() {
@@ -74,6 +74,7 @@ const char* net_trajano_driver_InsomniaT::gKeySleepEnabled = "SleepEnabled";
 bool net_trajano_driver_InsomniaT::isSleepEnabled() {
 	return ((OSBoolean*)getProperty(gKeySleepEnabled))->getValue();
 }
+
 bool net_trajano_driver_InsomniaT::isSleepEnabledBySystem() {
 	IOPMrootDomain *root = getPMRootDomain();
 	return 	root->getProperty(kAppleClamshellCausesSleepKey) == kOSBooleanTrue;
@@ -86,28 +87,10 @@ void net_trajano_driver_InsomniaT::enableSleep() {
 	root->receivePowerNotification(kIOPMEnableClamshell);
 }
 
-IOReturn  net_trajano_driver_InsomniaT::newUserClient(task_t owningTask,
-													  void * securityID, UInt32 type, OSDictionary * properties, IOUserClient ** handler)
-{
-	IOLog("newUserClient...\n");
-    *handler = new net_trajano_driver_InsomniaT;	
-    return kIOReturnSuccess;
-	
-}	
 IOReturn net_trajano_driver_InsomniaT::setSleepEnabled(bool sleepEnabled) {
 	setProperty(gKeySleepEnabled, sleepEnabled);
 	return true;
 }
-
-IOReturn net_trajano_driver_InsomniaT::externalMethod( uint32_t selector, IOExternalMethodArguments * arguments,
-													  IOExternalMethodDispatch * dispatch , OSObject * target , void * reference ) {
-	IOLog("Selector %ud\n", selector);
-	if (arguments != NULL) {
-		IOLog("Scalar arguments %uk\n", arguments->scalarInputCount);
-	}
-	return super::externalMethod(selector,arguments,dispatch,target,reference);
-}
-
 
 /**
  * This is called when the kext is being unloaded.  It will remove the notifier handler

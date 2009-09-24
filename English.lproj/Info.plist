@@ -39,7 +39,7 @@
 			<key>IOProviderClass</key>
 			<string>IOResources</string>
 			<key>IOUserClientClass</key>
-			<string>net_trajano_driver_InsomniaT</string>
+			<string>net_trajano_driver_InsomniaTUserClient</string>
 		</dict>
 	</dict>
 	<key>OSBundleLibraries</key>
