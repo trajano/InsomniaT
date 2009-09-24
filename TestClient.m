@@ -37,9 +37,7 @@ int main( int argc, const char *argv[] ) {
 		
 		IOServiceClose(connect);
 	} else {
-		
 		printf( "open failed\n");
-		
 	}
 	
     return 0;
