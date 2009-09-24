@@ -27,7 +27,7 @@
 		<key>InsomniaT</key>
 		<dict>
 			<key>SleepEnabled</key>
-			<false/>
+			<true/>
 			<key>IOResourceMatch</key>
 			<string>IOKit</string>
 			<key>CFBundleIdentifier</key>

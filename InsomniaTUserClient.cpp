@@ -37,9 +37,15 @@ bool net_trajano_driver_InsomniaTUserClient::start(IOService* provider)
 
 IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod( uint32_t selector, IOExternalMethodArguments * arguments,
 													  IOExternalMethodDispatch * dispatch , OSObject * target , void * reference ) {
-	IOLog("Selector %ud\n", selector);
-	if (arguments != NULL) {
-		IOLog("Scalar arguments %uk\n", arguments->scalarInputCount);
-	}
-	return super::externalMethod(selector,arguments,dispatch,target,reference);
+	if (selector == 1 && arguments->scalarInputCount ==	1) {
+		fProvider->setSleepEnabled(arguments->scalarInput[0] != 0);
+		return kIOReturnSuccess;
+	} 
+	
+	if (selector == 2) {
+		fProvider->isSleepEnabled();
+		return kIOReturnSuccess;
+	} 
+		return super::externalMethod(selector,arguments,dispatch,target,reference);
+	
 }

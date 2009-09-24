@@ -44,7 +44,7 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
 	IOPMrootDomain *root = getPMRootDomain();
 	
-	setSleepEnabled(true);
+	setSleepEnabled(false);
 	
 	IOWorkLoop *workloop = getWorkLoop();
 	if (!workloop) {
