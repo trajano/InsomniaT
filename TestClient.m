@@ -27,9 +27,20 @@ int main( int argc, const char *argv[] ) {
 	printf( "service found\n");
 	
 	io_connect_t connect;
-	IOServiceOpen(service, mach_task_self(), 0, &connect);
-	printf( "open\n");
-	IOServiceClose(connect);
-
+	kern_return_t kernResult = IOServiceOpen(service, mach_task_self(), 0, &connect);
+	if (kernResult == KERN_SUCCESS) {
+		printf( "open\n");
+		
+		const uint64_t input[] = { 1 };
+		IOConnectCallScalarMethod(connect, 1, input, 1, NULL, 0);
+		printf( "called\n");
+		
+		IOServiceClose(connect);
+	} else {
+		
+		printf( "open failed\n");
+		
+	}
+	
     return 0;
 }

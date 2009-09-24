@@ -20,8 +20,6 @@ bool net_trajano_driver_InsomniaTUserClient::start(IOService* provider)
 {
     bool    success;
     
-    IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, provider);
-    
 		// Verify that this user client is being started with a provider that it knows
 		// how to communicate with.
     fProvider = OSDynamicCast(net_trajano_driver_InsomniaT, provider);
