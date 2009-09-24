@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C7F45CE106B615200AEC829 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F45CD106B615200AEC829 /* TestClient.m */; };
 		32D94FC60562CBF700B6AF17 /* InsomniaT.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A224C3EFF42367911CA2CB7 /* InsomniaT.h */; };
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		32D94FCA0562CBF700B6AF17 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3FFF42367911CA2CB7 /* InsomniaT.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -17,12 +18,22 @@
 		1A224C3EFF42367911CA2CB7 /* InsomniaT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsomniaT.h; sourceTree = "<group>"; };
 		1A224C3FFF42367911CA2CB7 /* InsomniaT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InsomniaT.cpp; sourceTree = "<group>"; };
 		2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Development Notes.rtf"; sourceTree = "<group>"; };
+		2C7F45C7106B612700AEC829 /* TestClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TestClient; path = build/Release/TestClient; sourceTree = "<group>"; };
+		2C7F45CC106B615200AEC829 /* TestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClient.h; sourceTree = "<group>"; };
+		2C7F45CD106B615200AEC829 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClient.m; sourceTree = "<group>"; };
 		32D94FCF0562CBF700B6AF17 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Info.plist; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C7F45C5106B612700AEC829 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32D94FCB0562CBF700B6AF17 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				32D94FD00562CBF700B6AF17 /* InsomniaT.kext */,
+				2C7F45C7106B612700AEC829 /* TestClient */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +79,8 @@
 				1A224C3EFF42367911CA2CB7 /* InsomniaT.h */,
 				1A224C3FFF42367911CA2CB7 /* InsomniaT.cpp */,
 				2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */,
+				2C7F45CC106B615200AEC829 /* TestClient.h */,
+				2C7F45CD106B615200AEC829 /* TestClient.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -85,6 +99,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		2C7F45C6106B612700AEC829 /* TestClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7F45CB106B613900AEC829 /* Build configuration list for PBXNativeTarget "TestClient" */;
+			buildPhases = (
+				2C7F45C4106B612700AEC829 /* Sources */,
+				2C7F45C5106B612700AEC829 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestClient;
+			productName = TestClient;
+			productReference = 2C7F45C7106B612700AEC829 /* TestClient */;
+			productType = "com.apple.product-type.tool";
+		};
 		32D94FC30562CBF700B6AF17 /* InsomniaT */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "InsomniaT" */;
@@ -110,6 +140,9 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = trajano.net;
+			};
 			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "InsomniaT" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
@@ -118,6 +151,7 @@
 			projectRoot = "";
 			targets = (
 				32D94FC30562CBF700B6AF17 /* InsomniaT */,
+				2C7F45C6106B612700AEC829 /* TestClient */,
 			);
 		};
 /* End PBXProject section */
@@ -144,6 +178,14 @@
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C7F45C4106B612700AEC829 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7F45CE106B615200AEC829 /* TestClient.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32D94FC90562CBF700B6AF17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -236,6 +278,52 @@
 			};
 			name = Release;
 		};
+		2C7F45C9106B612800AEC829 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TestClient;
+			};
+			name = Debug;
+		};
+		2C7F45CA106B612800AEC829 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TestClient;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -253,6 +341,15 @@
 			buildConfigurations = (
 				1DEB91DE08733DB10010E9CD /* Debug */,
 				1DEB91DF08733DB10010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C7F45CB106B613900AEC829 /* Build configuration list for PBXNativeTarget "TestClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7F45C9106B612800AEC829 /* Debug */,
+				2C7F45CA106B612800AEC829 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

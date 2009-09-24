@@ -4,9 +4,9 @@
 #include <IOKit/pwr_mgt/RootDomain.h>
 #include "InsomniaT.h"
 
-#define super IOService
+#define super IOUserClient
 
-OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
+OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOUserClient)
 
 IOReturn handleSleepWakeInterest( void * target, void * refCon,
 								 UInt32 messageType, IOService * provider,
@@ -44,8 +44,12 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
     bool res = super::start(provider);
 	IOPMrootDomain *root = getPMRootDomain();
 	
-	setProperty(gKeySleepEnabled, true);
+	setSleepEnabled(true);
 	
+	IOWorkLoop *workloop = getWorkLoop();
+	if (!workloop) {
+		return false;
+	}
 	
 	fAppleClamshellCausesSleep = root->getProperty(kAppleClamshellCausesSleepKey);
 	fNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
@@ -75,8 +79,30 @@ void net_trajano_driver_InsomniaT::enableSleep() {
 	root->setProperty(kAppleClamshellCausesSleepKey,fAppleClamshellCausesSleep);
 		// Calling this method will set the ignoringClamShell to false for the PM root domain.
 	root->receivePowerNotification(kIOPMEnableClamshell);
-	
 }
+
+IOReturn  net_trajano_driver_InsomniaT::newUserClient(task_t owningTask,
+													  void * securityID, UInt32 type, OSDictionary * properties, IOUserClient ** handler)
+{
+	IOLog("newUserClient...\n");
+    *handler = new net_trajano_driver_InsomniaT;	
+    return kIOReturnSuccess;
+	
+}	
+IOReturn net_trajano_driver_InsomniaT::setSleepEnabled(bool sleepEnabled) {
+	setProperty(gKeySleepEnabled, sleepEnabled);
+	return true;
+}
+
+IOReturn net_trajano_driver_InsomniaT::externalMethod( uint32_t selector, IOExternalMethodArguments * arguments,
+													  IOExternalMethodDispatch * dispatch , OSObject * target , void * reference ) {
+	IOLog("Selector %ud\n", selector);
+	if (arguments != NULL) {
+		IOLog("Scalar arguments %uk\n", arguments->scalarInputCount);
+	}
+	return super::externalMethod(selector,arguments,dispatch,target,reference);
+}
+
 
 /**
  * This is called when the kext is being unloaded.  It will remove the notifier handler
