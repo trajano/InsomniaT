@@ -42,6 +42,9 @@ IOService *net_trajano_driver_InsomniaT::probe(IOService *provider, SInt32
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
     bool res = super::start(provider);
+	if (!res) {
+		return false;
+	}
 	IOPMrootDomain *root = getPMRootDomain();
 	
 	setSleepEnabled(true);
@@ -54,6 +57,8 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 	fAppleClamshellCausesSleep = root->getProperty(kAppleClamshellCausesSleepKey);
 	fNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
 	disableSleep();
+	registerService();
+
 	return res;
 }
 void net_trajano_driver_InsomniaT::disableSleep() {

@@ -38,6 +38,8 @@
 			<string>net_trajano_driver_InsomniaT</string>
 			<key>IOProviderClass</key>
 			<string>IOResources</string>
+			<key>IOUserClientClass</key>
+			<string>net_trajano_driver_InsomniaT</string>
 		</dict>
 	</dict>
 	<key>OSBundleLibraries</key>

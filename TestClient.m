@@ -24,26 +24,14 @@ int main( int argc, const char *argv[] ) {
     io_iterator_t     iterator;
     bool            driverFound = false;
 
-	kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceNameMatching("net_trajano_driver_InsomniaT"), &iterator);
-    
-    printf( "kernresult %d\n", kernResult );
-
-	if (kernResult != KERN_SUCCESS) {
-        fprintf(stderr, "IOServiceGetMatchingServices returned 0x%08x\n\n", kernResult);
+		//	kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching("IOBluetoothSerialManager"), &iterator);
+    service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
+	if (service == IO_OBJECT_NULL) {
+        fprintf(stderr, "null\n");
         return -1;
     }
-	printf( "scanning %d\n", kernResult );
+	printf( "scanning %d\n", 0 );
 
-	while ((service = IOIteratorNext(iterator)) != IO_OBJECT_NULL) {
-        driverFound = true;
-     
-		printf("Found a device of class net_trajano_driver_InsomniaT.\n\n");
-			//TestUserClient(service);
-    }
-    
-		// Release the io_iterator_t now that we're done with it.
-    IOObjectRelease(iterator);
-	
 	
     return 0;
 }
