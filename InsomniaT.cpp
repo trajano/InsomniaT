@@ -74,7 +74,11 @@ void net_trajano_driver_InsomniaT::enableSleep() {
 
 IOReturn net_trajano_driver_InsomniaT::setSleepEnabled(bool sleepEnabled) {
 	setProperty(gKeySleepEnabled, sleepEnabled);
-	updateSystemSleep();
+	if (sleepEnabled) {
+		enableSleep();
+	} else {
+		disableSleep();
+	}
 	return true;
 }
 
