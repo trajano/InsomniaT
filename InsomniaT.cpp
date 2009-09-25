@@ -13,33 +13,18 @@ IOReturn handleSleepWakeInterest( void * target, void * refCon,
 {
 	net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT*)target;
 	if (messageType == kIOPMMessageClamshellStateChange) {
-		if (obj->isSleepEnabledBySystem()){
-			obj->disableSleep();
-		} 
+		obj->updateSystemSleep();
 	}
 	return 0;
 }
 
-/*
-bool net_trajano_driver_InsomniaT::init(OSDictionary *dict)
-{
-    bool res = super::init(dict);	
-    return res;
+void net_trajano_driver_InsomniaT::updateSystemSleep() {
+	if (isSleepEnabled() && !isSleepEnabledBySystem()) {
+		enableSleep();
+	} else if (!isSleepEnabled() && isSleepEnabledBySystem()) {
+		disableSleep();
+	}
 }
-
-void net_trajano_driver_InsomniaT::free(void)
-{
-    super::free();
-}
-
-IOService *net_trajano_driver_InsomniaT::probe(IOService *provider, SInt32
-											   *score)
-{
-    IOService *res = super::probe(provider, score);
-    return res;
-}
- */
-
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
 	IOPMrootDomain *root = getPMRootDomain();
@@ -89,6 +74,7 @@ void net_trajano_driver_InsomniaT::enableSleep() {
 
 IOReturn net_trajano_driver_InsomniaT::setSleepEnabled(bool sleepEnabled) {
 	setProperty(gKeySleepEnabled, sleepEnabled);
+	updateSystemSleep();
 	return true;
 }
 

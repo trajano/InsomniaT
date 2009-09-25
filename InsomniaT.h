@@ -18,6 +18,11 @@ private:
 	virtual void disableSleep();
 	virtual void enableSleep();
 	
+	/**
+	 * This updates the system to force sleep enable or disable based on the registry value.
+	 */
+	virtual void updateSystemSleep();
+	
 public:
 		// virtual bool init(OSDictionary *dictionary = NULL);
 		//virtual void free(void);
