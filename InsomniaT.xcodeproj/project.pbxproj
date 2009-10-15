@@ -13,10 +13,10 @@
 			buildPhases = (
 			);
 			dependencies = (
-				2C2004211086F84B002447D1 /* PBXTargetDependency */,
-				2C20041F1086F84B002447D1 /* PBXTargetDependency */,
-				2C20041D1086F84B002447D1 /* PBXTargetDependency */,
+				2C200D631086FF4B002447D1 /* PBXTargetDependency */,
+				2C2012C210871447002447D1 /* PBXTargetDependency */,
 				2C20041B1086F84B002447D1 /* PBXTargetDependency */,
+				2C2012B110871321002447D1 /* PBXTargetDependency */,
 			);
 			name = all;
 			productName = all;
@@ -24,30 +24,17 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		2C2003301086EF73002447D1 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C20032E1086EF73002447D1 /* InsomniaT.cpp */; };
-		2C2003311086EF73002447D1 /* InsomniaT.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C20032F1086EF73002447D1 /* InsomniaT.h */; };
-		2C2003561086F158002447D1 /* InsomniaT.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C20032F1086EF73002447D1 /* InsomniaT.h */; };
-		2C2003581086F158002447D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
-		2C20035B1086F158002447D1 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C20032E1086EF73002447D1 /* InsomniaT.cpp */; };
-		2C2004051086F7E5002447D1 /* InsomniaTUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C2004031086F7E5002447D1 /* InsomniaTUserClient.cpp */; };
-		2C2004061086F7E5002447D1 /* InsomniaTUserClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C2004041086F7E5002447D1 /* InsomniaTUserClient.h */; };
-		2C2004071086F7E5002447D1 /* InsomniaTUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C2004031086F7E5002447D1 /* InsomniaTUserClient.cpp */; };
-		2C2004081086F7E5002447D1 /* InsomniaTUserClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C2004041086F7E5002447D1 /* InsomniaTUserClient.h */; };
-		2C24429B106BDB9A0088C89C /* InsomniaTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C24429A106BDB9A0088C89C /* InsomniaTTest.m */; };
-		2C244756106BE6E60088C89C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7F46D4106B670000AEC829 /* IOKit.framework */; };
-		2C7F45CE106B615200AEC829 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F45CD106B615200AEC829 /* TestClient.m */; };
-		2C7F46D5106B670000AEC829 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7F46D4106B670000AEC829 /* IOKit.framework */; };
-		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
+		2C200D6A10870039002447D1 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C200D1F1086FDE5002447D1 /* InsomniaT.cpp */; };
+		2C200D6B10870044002447D1 /* InsomniaTUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C200D211086FDE5002447D1 /* InsomniaTUserClient.cpp */; };
+		2C200E24108703B9002447D1 /* InsomniaTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C200E21108703B9002447D1 /* InsomniaTTest.m */; };
+		2C2012341087074A002447D1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C200E2F108704F8002447D1 /* IOKit.framework */; };
+		2C2012B61087137A002447D1 /* InsomniaTUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C200D211086FDE5002447D1 /* InsomniaTUserClient.cpp */; };
+		2C2012B71087137A002447D1 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C200D1F1086FDE5002447D1 /* InsomniaT.cpp */; };
+		2C2012F21087171C002447D1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C200E2F108704F8002447D1 /* IOKit.framework */; };
+		2C20170F108719E0002447D1 /* insomniat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C20170E108719E0002447D1 /* insomniat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C20038C1086F37C002447D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C2003531086F158002447D1 /* InsomniaT */;
-			remoteInfo = InsomniaT;
-		};
 		2C20041A1086F84B002447D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -55,56 +42,60 @@
 			remoteGlobalIDString = 2C24428F106BDB4F0088C89C /* InsomniaTTest */;
 			remoteInfo = InsomniaTTest;
 		};
-		2C20041C1086F84B002447D1 /* PBXContainerItemProxy */ = {
+		2C200D621086FF4B002447D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C200D3A1086FE7A002447D1 /* InsomniaT */;
+			remoteInfo = InsomniaT;
+		};
+		2C2012B010871321002447D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2C7F45C6106B612700AEC829 /* insomniat */;
 			remoteInfo = insomniat;
 		};
-		2C20041E1086F84B002447D1 /* PBXContainerItemProxy */ = {
+		2C2012C110871447002447D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 32D94FC30562CBF700B6AF17 /* InsomniaT_10.5 */;
-			remoteInfo = InsomniaT_10.5;
-		};
-		2C2004201086F84B002447D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C2003531086F158002447D1 /* InsomniaT */;
-			remoteInfo = InsomniaT;
+			remoteGlobalIDString = 2C2012B41087137A002447D1 /* InsomniaT 10.5 */;
+			remoteInfo = "InsomniaT 10.5";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Development Notes.rtf"; sourceTree = "<group>"; };
-		2C20032E1086EF73002447D1 /* InsomniaT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InsomniaT.cpp; path = src/kext/InsomniaT.cpp; sourceTree = "<group>"; };
-		2C20032F1086EF73002447D1 /* InsomniaT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsomniaT.h; path = src/kext/InsomniaT.h; sourceTree = "<group>"; };
-		2C2003611086F158002447D1 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C2003621086F158002447D1 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info copy.plist"; path = "English.lproj/Info copy.plist"; sourceTree = "<group>"; };
-		2C2003EB1086F659002447D1 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		2C2003EC1086F659002447D1 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
-		2C2004031086F7E5002447D1 /* InsomniaTUserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InsomniaTUserClient.cpp; path = src/kext/InsomniaTUserClient.cpp; sourceTree = "<group>"; };
-		2C2004041086F7E5002447D1 /* InsomniaTUserClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsomniaTUserClient.h; path = src/kext/InsomniaTUserClient.h; sourceTree = "<group>"; };
-		2C244290106BDB4F0088C89C /* InsomniaTTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaTTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C244291106BDB4F0088C89C /* InsomniaTTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InsomniaTTest-Info.plist"; sourceTree = "<group>"; };
-		2C244299106BDB9A0088C89C /* InsomniaTTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsomniaTTest.h; sourceTree = "<group>"; };
-		2C24429A106BDB9A0088C89C /* InsomniaTTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsomniaTTest.m; sourceTree = "<group>"; };
+		2C200D1D1086FDE5002447D1 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		2C200D1E1086FDE5002447D1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/kext/Info.plist; sourceTree = "<group>"; };
+		2C200D1F1086FDE5002447D1 /* InsomniaT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InsomniaT.cpp; path = src/kext/InsomniaT.cpp; sourceTree = "<group>"; };
+		2C200D201086FDE5002447D1 /* InsomniaT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsomniaT.h; path = src/kext/InsomniaT.h; sourceTree = "<group>"; };
+		2C200D211086FDE5002447D1 /* InsomniaTUserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InsomniaTUserClient.cpp; path = src/kext/InsomniaTUserClient.cpp; sourceTree = "<group>"; };
+		2C200D221086FDE5002447D1 /* InsomniaTUserClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsomniaTUserClient.h; path = src/kext/InsomniaTUserClient.h; sourceTree = "<group>"; };
+		2C200E21108703B9002447D1 /* InsomniaTTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsomniaTTest.m; path = src/test/InsomniaTTest.m; sourceTree = "<group>"; };
+		2C200E22108703B9002447D1 /* InsomniaTTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsomniaTTest.h; path = src/test/InsomniaTTest.h; sourceTree = "<group>"; };
+		2C200E23108703B9002447D1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/test/Info.plist; sourceTree = "<group>"; };
+		2C200E2F108704F8002447D1 /* IOKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		2C201231108706F0002447D1 /* InsomniaTTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = InsomniaTTest.octest; path = /Users/trajano/Projects/InsomniaT/build/Release/InsomniaTTest.octest; sourceTree = "<absolute>"; };
+		2C2012E710871669002447D1 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C2012E810871685002447D1 /* InsomniaT (10.5).kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "InsomniaT (10.5).kext"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C2012F31087171C002447D1 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
+		2C2016EB10871751002447D1 /* insomniat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = insomniat; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C20170D108719E0002447D1 /* insomniat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = insomniat.h; path = src/cli/insomniat.h; sourceTree = "<group>"; };
+		2C20170E108719E0002447D1 /* insomniat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = insomniat.m; path = src/cli/insomniat.m; sourceTree = "<group>"; };
 		2C24479B106C30C50088C89C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		2C7F45C7106B612700AEC829 /* TestClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestClient; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C7F45CC106B615200AEC829 /* TestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClient.h; sourceTree = "<group>"; };
-		2C7F45CD106B615200AEC829 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClient.m; sourceTree = "<group>"; };
-		2C7F46D4106B670000AEC829 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		32D94FCF0562CBF700B6AF17 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Info.plist; sourceTree = "<group>"; };
-		32D94FD00562CBF700B6AF17 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2C20035C1086F158002447D1 /* Frameworks */ = {
+		2C200D391086FE7A002447D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C2012B81087137A002447D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C244756106BE6E60088C89C /* IOKit.framework in Frameworks */,
+				2C2012341087074A002447D1 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,14 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C7F46D5106B670000AEC829 /* IOKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32D94FCB0562CBF700B6AF17 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				2C2012F21087171C002447D1 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,36 +124,22 @@
 		089C166AFE841209C02AAC07 /* InsomniaT */ = {
 			isa = PBXGroup;
 			children = (
+				247142CAFF3F8F9811CA285C /* Source */,
+				2C2442EA106BE6550088C89C /* Unit Test Source */,
 				2C24479B106C30C50088C89C /* Makefile */,
 				2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */,
-				247142CAFF3F8F9811CA285C /* Source */,
-				2C2442E9106BE6400088C89C /* Test Client Source */,
-				19C28FB6FE9D52B211CA2CBB /* Products */,
-				8DA8362C06AD9B9200E5AC22 /* Kernel.framework */,
-				2C7F46D4106B670000AEC829 /* IOKit.framework */,
-				2C2003EB1086F659002447D1 /* IOKit.framework */,
-				2C2003EC1086F659002447D1 /* Kernel.framework */,
+				2C2004581086FD32002447D1 /* Frameworks */,
+				2C200D3C1086FE7A002447D1 /* Products */,
+				2C2012F31087171C002447D1 /* Kernel.framework */,
 			);
 			name = InsomniaT;
-			sourceTree = "<group>";
-		};
-		19C28FB6FE9D52B211CA2CBB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				32D94FD00562CBF700B6AF17 /* InsomniaT.kext */,
-				2C7F45C7106B612700AEC829 /* TestClient */,
-				2C244290106BDB4F0088C89C /* InsomniaTTest.octest */,
-				2C2003611086F158002447D1 /* InsomniaT.kext */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				2C20032D1086EF34002447D1 /* Kernel Extension */,
-				2C7F4325106B38D600AEC829 /* Info.plist */,
-				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+				2C2442E9106BE6400088C89C /* CLI Client Source */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -177,76 +147,99 @@
 		2C20032D1086EF34002447D1 /* Kernel Extension */ = {
 			isa = PBXGroup;
 			children = (
-				2C2004031086F7E5002447D1 /* InsomniaTUserClient.cpp */,
-				2C2004041086F7E5002447D1 /* InsomniaTUserClient.h */,
-				2C20032E1086EF73002447D1 /* InsomniaT.cpp */,
-				2C20032F1086EF73002447D1 /* InsomniaT.h */,
+				2C200D1B1086FDE5002447D1 /* en.lproj */,
+				2C200D1E1086FDE5002447D1 /* Info.plist */,
+				2C200D1F1086FDE5002447D1 /* InsomniaT.cpp */,
+				2C200D201086FDE5002447D1 /* InsomniaT.h */,
+				2C200D211086FDE5002447D1 /* InsomniaTUserClient.cpp */,
+				2C200D221086FDE5002447D1 /* InsomniaTUserClient.h */,
 			);
 			name = "Kernel Extension";
 			sourceTree = "<group>";
 		};
-		2C2442E9106BE6400088C89C /* Test Client Source */ = {
+		2C2004581086FD32002447D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C7F45CC106B615200AEC829 /* TestClient.h */,
-				2C7F45CD106B615200AEC829 /* TestClient.m */,
-				2C2442EA106BE6550088C89C /* Unit Test Source */,
+				2C200E2F108704F8002447D1 /* IOKit.framework */,
 			);
-			name = "Test Client Source";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C200D1B1086FDE5002447D1 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				2C200D1C1086FDE5002447D1 /* InfoPlist.strings */,
+			);
+			name = en.lproj;
+			path = src/kext/en.lproj;
+			sourceTree = "<group>";
+		};
+		2C200D3C1086FE7A002447D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C2012E710871669002447D1 /* InsomniaT.kext */,
+				2C2012E810871685002447D1 /* InsomniaT (10.5).kext */,
+				2C2016EB10871751002447D1 /* insomniat */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C2442E9106BE6400088C89C /* CLI Client Source */ = {
+			isa = PBXGroup;
+			children = (
+				2C20170D108719E0002447D1 /* insomniat.h */,
+				2C20170E108719E0002447D1 /* insomniat.m */,
+			);
+			name = "CLI Client Source";
 			sourceTree = "<group>";
 		};
 		2C2442EA106BE6550088C89C /* Unit Test Source */ = {
 			isa = PBXGroup;
 			children = (
-				2C244291106BDB4F0088C89C /* InsomniaTTest-Info.plist */,
-				2C244299106BDB9A0088C89C /* InsomniaTTest.h */,
-				2C24429A106BDB9A0088C89C /* InsomniaTTest.m */,
+				2C200E21108703B9002447D1 /* InsomniaTTest.m */,
+				2C200E22108703B9002447D1 /* InsomniaTTest.h */,
+				2C200E23108703B9002447D1 /* Info.plist */,
 			);
 			name = "Unit Test Source";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		2C2003541086F158002447D1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C2003561086F158002447D1 /* InsomniaT.h in Headers */,
-				2C2004081086F7E5002447D1 /* InsomniaTUserClient.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32D94FC50562CBF700B6AF17 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C2003311086EF73002447D1 /* InsomniaT.h in Headers */,
-				2C2004061086F7E5002447D1 /* InsomniaTUserClient.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		2C2003531086F158002447D1 /* InsomniaT */ = {
+		2C200D3A1086FE7A002447D1 /* InsomniaT */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C20035E1086F158002447D1 /* Build configuration list for PBXNativeTarget "InsomniaT" */;
+			buildConfigurationList = 2C200D401086FE7B002447D1 /* Build configuration list for PBXNativeTarget "InsomniaT" */;
 			buildPhases = (
-				2C2003541086F158002447D1 /* Headers */,
-				2C2003571086F158002447D1 /* Resources */,
-				2C2003591086F158002447D1 /* Sources */,
-				2C20035C1086F158002447D1 /* Frameworks */,
-				2C20035D1086F158002447D1 /* Rez */,
+				2C200D371086FE7A002447D1 /* Sources */,
+				2C200D391086FE7A002447D1 /* Frameworks */,
+				2C20129710871181002447D1 /* Resources */,
 			);
 			buildRules = (
 			);
+			comments = "This is the main kernel extension.  It needs to be compiled against 10.6 to be able to execute in 10.6 as a 32-bt/64-bit binary";
 			dependencies = (
 			);
 			name = InsomniaT;
-			productInstallPath = "$(SYSTEM_LIBRARY_DIR)/Extensions";
 			productName = InsomniaT;
-			productReference = 2C2003611086F158002447D1 /* InsomniaT.kext */;
+			productReference = 2C2012E710871669002447D1 /* InsomniaT.kext */;
+			productType = "com.apple.product-type.kernel-extension.iokit";
+		};
+		2C2012B41087137A002447D1 /* InsomniaT 10.5 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C2012BA1087137A002447D1 /* Build configuration list for PBXNativeTarget "InsomniaT 10.5" */;
+			buildPhases = (
+				2C2012B51087137A002447D1 /* Sources */,
+				2C2012B81087137A002447D1 /* Frameworks */,
+				2C2012B91087137A002447D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			comments = "This is the main kernel extension.  It needs to be compiled against 10.5 to be able to execute in 10.5 as a 32-bit only";
+			dependencies = (
+			);
+			name = "InsomniaT 10.5";
+			productName = InsomniaT;
+			productReference = 2C2012E810871685002447D1 /* InsomniaT (10.5).kext */;
 			productType = "com.apple.product-type.kernel-extension.iokit";
 		};
 		2C24428F106BDB4F0088C89C /* InsomniaTTest */ = {
@@ -261,11 +254,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				2C20038D1086F37C002447D1 /* PBXTargetDependency */,
 			);
 			name = InsomniaTTest;
 			productName = InsomniaTTest;
-			productReference = 2C244290106BDB4F0088C89C /* InsomniaTTest.octest */;
+			productReference = 2C201231108706F0002447D1 /* InsomniaTTest.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		2C7F45C6106B612700AEC829 /* insomniat */ = {
@@ -281,28 +273,8 @@
 			);
 			name = insomniat;
 			productName = TestClient;
-			productReference = 2C7F45C7106B612700AEC829 /* TestClient */;
+			productReference = 2C2016EB10871751002447D1 /* insomniat */;
 			productType = "com.apple.product-type.tool";
-		};
-		32D94FC30562CBF700B6AF17 /* InsomniaT_10.5 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "InsomniaT_10.5" */;
-			buildPhases = (
-				32D94FC50562CBF700B6AF17 /* Headers */,
-				32D94FC70562CBF700B6AF17 /* Resources */,
-				32D94FC90562CBF700B6AF17 /* Sources */,
-				32D94FCB0562CBF700B6AF17 /* Frameworks */,
-				32D94FCC0562CBF700B6AF17 /* Rez */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = InsomniaT_10.5;
-			productInstallPath = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-			productName = InsomniaT;
-			productReference = 32D94FD00562CBF700B6AF17 /* InsomniaT.kext */;
-			productType = "com.apple.product-type.kernel-extension.iokit";
 		};
 /* End PBXNativeTarget section */
 
@@ -315,25 +287,39 @@
 			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "InsomniaT" */;
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
 			mainGroup = 089C166AFE841209C02AAC07 /* InsomniaT */;
+			productRefGroup = 2C200D3C1086FE7A002447D1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C2003531086F158002447D1 /* InsomniaT */,
-				32D94FC30562CBF700B6AF17 /* InsomniaT_10.5 */,
-				2C7F45C6106B612700AEC829 /* insomniat */,
-				2C24428F106BDB4F0088C89C /* InsomniaTTest */,
 				2C2004131086F82E002447D1 /* all */,
+				2C7F45C6106B612700AEC829 /* insomniat */,
+				2C200D3A1086FE7A002447D1 /* InsomniaT */,
+				2C2012B41087137A002447D1 /* InsomniaT 10.5 */,
+				2C24428F106BDB4F0088C89C /* InsomniaTTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2C2003571086F158002447D1 /* Resources */ = {
+		2C20129710871181002447D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C2003581086F158002447D1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C2012B91087137A002447D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,32 +330,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32D94FC70562CBF700B6AF17 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXRezBuildPhase section */
-		2C20035D1086F158002447D1 /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32D94FCC0562CBF700B6AF17 /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXRezBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		2C24428E106BDB4F0088C89C /* ShellScript */ = {
@@ -388,12 +349,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2C2003591086F158002447D1 /* Sources */ = {
+		2C200D371086FE7A002447D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C20035B1086F158002447D1 /* InsomniaT.cpp in Sources */,
-				2C2004071086F7E5002447D1 /* InsomniaTUserClient.cpp in Sources */,
+				2C200D6B10870044002447D1 /* InsomniaTUserClient.cpp in Sources */,
+				2C200D6A10870039002447D1 /* InsomniaT.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C2012B51087137A002447D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C2012B61087137A002447D1 /* InsomniaTUserClient.cpp in Sources */,
+				2C2012B71087137A002447D1 /* InsomniaT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C24429B106BDB9A0088C89C /* InsomniaTTest.m in Sources */,
+				2C200E24108703B9002447D1 /* InsomniaTTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,123 +379,59 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C7F45CE106B615200AEC829 /* TestClient.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32D94FC90562CBF700B6AF17 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C2003301086EF73002447D1 /* InsomniaT.cpp in Sources */,
-				2C2004051086F7E5002447D1 /* InsomniaTUserClient.cpp in Sources */,
+				2C20170F108719E0002447D1 /* insomniat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2C20038D1086F37C002447D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C2003531086F158002447D1 /* InsomniaT */;
-			targetProxy = 2C20038C1086F37C002447D1 /* PBXContainerItemProxy */;
-		};
 		2C20041B1086F84B002447D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2C24428F106BDB4F0088C89C /* InsomniaTTest */;
 			targetProxy = 2C20041A1086F84B002447D1 /* PBXContainerItemProxy */;
 		};
-		2C20041D1086F84B002447D1 /* PBXTargetDependency */ = {
+		2C200D631086FF4B002447D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C200D3A1086FE7A002447D1 /* InsomniaT */;
+			targetProxy = 2C200D621086FF4B002447D1 /* PBXContainerItemProxy */;
+		};
+		2C2012B110871321002447D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2C7F45C6106B612700AEC829 /* insomniat */;
-			targetProxy = 2C20041C1086F84B002447D1 /* PBXContainerItemProxy */;
+			targetProxy = 2C2012B010871321002447D1 /* PBXContainerItemProxy */;
 		};
-		2C20041F1086F84B002447D1 /* PBXTargetDependency */ = {
+		2C2012C210871447002447D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 32D94FC30562CBF700B6AF17 /* InsomniaT_10.5 */;
-			targetProxy = 2C20041E1086F84B002447D1 /* PBXContainerItemProxy */;
-		};
-		2C2004211086F84B002447D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C2003531086F158002447D1 /* InsomniaT */;
-			targetProxy = 2C2004201086F84B002447D1 /* PBXContainerItemProxy */;
+			target = 2C2012B41087137A002447D1 /* InsomniaT 10.5 */;
+			targetProxy = 2C2012C110871447002447D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
+		2C200D1C1086FDE5002447D1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				089C167EFE841241C02AAC07 /* English */,
+				2C200D1D1086FDE5002447D1 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		2C7F4325106B38D600AEC829 /* Info.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				32D94FCF0562CBF700B6AF17 /* English */,
-				2C2003621086F158002447D1 /* Info copy.plist */,
-			);
-			name = Info.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1DEB91DA08733DB10010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.0.0d1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = English.lproj/Info.plist;
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = net.trajano.driver.InsomniaT;
-				MODULE_VERSION = 1.0.0d1;
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx10.5;
-				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970";
-				WRAPPER_EXTENSION = kext;
-			};
-			name = Debug;
-		};
-		1DEB91DB08733DB10010E9CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CURRENT_PROJECT_VERSION = 1.0.0d1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				INFOPLIST_FILE = English.lproj/Info.plist;
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = net.trajano.driver.InsomniaT;
-				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx10.5;
-				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970";
-				WRAPPER_EXTENSION = kext;
-			};
-			name = Release;
-		};
 		1DEB91DE08733DB10010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CURRENT_PROJECT_VERSION = 2.0.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
@@ -533,54 +439,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CURRENT_PROJECT_VERSION = 2.0.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
-			};
-			name = Release;
-		};
-		2C20035F1086F158002447D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.0.0d1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = "English.lproj/Info copy.plist";
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = net.trajano.driver.InsomniaT;
-				MODULE_VERSION = 1.0.0d1;
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx10.6;
-				VALID_ARCHS = "x86_64 i386 ppc ppc64 ppc7400 ppc970";
-				WRAPPER_EXTENSION = kext;
-			};
-			name = Debug;
-		};
-		2C2003601086F158002447D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 1.0.0d1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				INFOPLIST_FILE = "English.lproj/Info copy.plist";
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = net.trajano.driver.InsomniaT;
-				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx10.6;
-				VALID_ARCHS = "x86_64 i386 ppc ppc64 ppc7400 ppc970";
-				WRAPPER_EXTENSION = kext;
+				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};
@@ -605,11 +470,120 @@
 			};
 			name = Release;
 		};
+		2C200D3E1086FE7B002447D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = src/kext/Info.plist;
+				INSTALL_GROUP = wheel;
+				INSTALL_OWNER = root;
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				MACH_O_TYPE = mh_execute;
+				MODULE_NAME = net.trajano.driver.InsomniaT;
+				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = InsomniaT;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 x86_64";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		2C200D3F1086FE7B002447D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INFOPLIST_FILE = src/kext/Info.plist;
+				INSTALL_GROUP = wheel;
+				INSTALL_OWNER = root;
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				MACH_O_TYPE = mh_execute;
+				MODULE_NAME = net.trajano.driver.InsomniaT;
+				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = InsomniaT;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 x86_64";
+				WRAPPER_EXTENSION = kext;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		2C2012BB1087137A002447D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = src/kext/Info.plist;
+				INSTALL_GROUP = wheel;
+				INSTALL_OWNER = root;
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				MACH_O_TYPE = mh_execute;
+				MODULE_NAME = net.trajano.driver.InsomniaT;
+				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "InsomniaT (10.5)";
+				SDKROOT = macosx10.5;
+				VALID_ARCHS = "ppc970 ppc7400 ppc64 ppc i386";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		2C2012BC1087137A002447D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INFOPLIST_FILE = src/kext/Info.plist;
+				INSTALL_GROUP = wheel;
+				INSTALL_OWNER = root;
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				MACH_O_TYPE = mh_execute;
+				MODULE_NAME = net.trajano.driver.InsomniaT;
+				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "InsomniaT (10.5)";
+				SDKROOT = macosx10.5;
+				VALID_ARCHS = "ppc970 ppc7400 ppc64 ppc i386";
+				WRAPPER_EXTENSION = kext;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		2C244293106BDB500088C89C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -618,7 +592,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "InsomniaTTest-Info.plist";
+				INFOPLIST_FILE = src/test/Info.plist;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -644,7 +618,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "InsomniaTTest-Info.plist";
+				INFOPLIST_FILE = src/test/Info.plist;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -679,7 +653,7 @@
 					AppKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = TestClient;
+				PRODUCT_NAME = insomniat;
 			};
 			name = Debug;
 		};
@@ -702,7 +676,7 @@
 					AppKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = TestClient;
+				PRODUCT_NAME = insomniat;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -710,15 +684,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "InsomniaT_10.5" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DEB91DA08733DB10010E9CD /* Debug */,
-				1DEB91DB08733DB10010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "InsomniaT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -728,20 +693,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C20035E1086F158002447D1 /* Build configuration list for PBXNativeTarget "InsomniaT" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C20035F1086F158002447D1 /* Debug */,
-				2C2003601086F158002447D1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2C20042C1086F888002447D1 /* Build configuration list for PBXAggregateTarget "all" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C2004141086F82E002447D1 /* Debug */,
 				2C2004151086F82E002447D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C200D401086FE7B002447D1 /* Build configuration list for PBXNativeTarget "InsomniaT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C200D3E1086FE7B002447D1 /* Debug */,
+				2C200D3F1086FE7B002447D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C2012BA1087137A002447D1 /* Build configuration list for PBXNativeTarget "InsomniaT 10.5" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C2012BB1087137A002447D1 /* Debug */,
+				2C2012BC1087137A002447D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

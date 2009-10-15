@@ -6,7 +6,7 @@
 	//  Copyright 2009 trajano.net. All rights reserved.
 	//
 
-#import "TestClient.h"
+#import "insomniat.h"
 #import <stdio.h>
 #import <IOKit/IOKitLib.h>
 #import <getopt.h>
