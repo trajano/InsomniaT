@@ -83,16 +83,13 @@
 		2C2016EB10871751002447D1 /* insomniat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = insomniat; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C20170D108719E0002447D1 /* insomniat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = insomniat.h; path = src/cli/insomniat.h; sourceTree = "<group>"; };
 		2C20170E108719E0002447D1 /* insomniat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = insomniat.m; path = src/cli/insomniat.m; sourceTree = "<group>"; };
-		2C201B2E10871D59002447D1 /* 01insomniat-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "01insomniat-contents.xml"; sourceTree = "<group>"; };
-		2C201B2F10871D59002447D1 /* 01insomniat.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 01insomniat.xml; sourceTree = "<group>"; };
-		2C201B3010871D59002447D1 /* 02destroot-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "02destroot-contents.xml"; sourceTree = "<group>"; };
-		2C201B3110871D59002447D1 /* 02destroot.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 02destroot.xml; sourceTree = "<group>"; };
-		2C201B3210871D59002447D1 /* index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index.xml; sourceTree = "<group>"; };
-		2C201B3410871D59002447D1 /* 01insomniat-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "01insomniat-contents.xml"; sourceTree = "<group>"; };
-		2C201B3510871D59002447D1 /* 01insomniat.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 01insomniat.xml; sourceTree = "<group>"; };
-		2C201B3610871D59002447D1 /* 02destroot-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "02destroot-contents.xml"; sourceTree = "<group>"; };
-		2C201B3710871D59002447D1 /* 02destroot.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 02destroot.xml; sourceTree = "<group>"; };
-		2C201B3810871D59002447D1 /* index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index.xml; sourceTree = "<group>"; };
+		2C201B4110872C41002447D1 /* 01insomniat-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "01insomniat-contents.xml"; sourceTree = "<group>"; };
+		2C201B4210872C41002447D1 /* 01insomniat.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 01insomniat.xml; sourceTree = "<group>"; };
+		2C201B4310872C41002447D1 /* 02insomniat-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "02insomniat-contents.xml"; sourceTree = "<group>"; };
+		2C201B4410872C41002447D1 /* 02insomniat.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 02insomniat.xml; sourceTree = "<group>"; };
+		2C201B4510872C41002447D1 /* 03insomniat-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "03insomniat-contents.xml"; sourceTree = "<group>"; };
+		2C201B4610872C41002447D1 /* 03insomniat.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 03insomniat.xml; sourceTree = "<group>"; };
+		2C201B4710872C41002447D1 /* index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index.xml; sourceTree = "<group>"; };
 		2C24479B106C30C50088C89C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,36 +193,24 @@
 		2C201B2110871BF3002447D1 /* Installer */ = {
 			isa = PBXGroup;
 			children = (
-				2C201B2D10871D59002447D1 /* InsomniaT Snow Leopard.pmdoc */,
-				2C201B3310871D59002447D1 /* InsomniaT Leopard.pmdoc */,
+				2C201B4010872C41002447D1 /* InsomniaT.pmdoc */,
 			);
 			name = Installer;
 			sourceTree = "<group>";
 		};
-		2C201B2D10871D59002447D1 /* InsomniaT Snow Leopard.pmdoc */ = {
+		2C201B4010872C41002447D1 /* InsomniaT.pmdoc */ = {
 			isa = PBXGroup;
 			children = (
-				2C201B2E10871D59002447D1 /* 01insomniat-contents.xml */,
-				2C201B2F10871D59002447D1 /* 01insomniat.xml */,
-				2C201B3010871D59002447D1 /* 02destroot-contents.xml */,
-				2C201B3110871D59002447D1 /* 02destroot.xml */,
-				2C201B3210871D59002447D1 /* index.xml */,
+				2C201B4110872C41002447D1 /* 01insomniat-contents.xml */,
+				2C201B4210872C41002447D1 /* 01insomniat.xml */,
+				2C201B4310872C41002447D1 /* 02insomniat-contents.xml */,
+				2C201B4410872C41002447D1 /* 02insomniat.xml */,
+				2C201B4510872C41002447D1 /* 03insomniat-contents.xml */,
+				2C201B4610872C41002447D1 /* 03insomniat.xml */,
+				2C201B4710872C41002447D1 /* index.xml */,
 			);
-			name = "InsomniaT Snow Leopard.pmdoc";
-			path = "src/installer/InsomniaT Snow Leopard.pmdoc";
-			sourceTree = "<group>";
-		};
-		2C201B3310871D59002447D1 /* InsomniaT Leopard.pmdoc */ = {
-			isa = PBXGroup;
-			children = (
-				2C201B3410871D59002447D1 /* 01insomniat-contents.xml */,
-				2C201B3510871D59002447D1 /* 01insomniat.xml */,
-				2C201B3610871D59002447D1 /* 02destroot-contents.xml */,
-				2C201B3710871D59002447D1 /* 02destroot.xml */,
-				2C201B3810871D59002447D1 /* index.xml */,
-			);
-			name = "InsomniaT Leopard.pmdoc";
-			path = "src/installer/InsomniaT Leopard.pmdoc";
+			name = InsomniaT.pmdoc;
+			path = src/installer/InsomniaT.pmdoc;
 			sourceTree = "<group>";
 		};
 		2C2442E9106BE6400088C89C /* CLI Client Source */ = {
