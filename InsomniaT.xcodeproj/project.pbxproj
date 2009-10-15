@@ -80,10 +80,14 @@
 		2C201231108706F0002447D1 /* InsomniaTTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = InsomniaTTest.octest; path = /Users/trajano/Projects/InsomniaT/build/Release/InsomniaTTest.octest; sourceTree = "<absolute>"; };
 		2C2012E710871669002447D1 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2012E810871685002447D1 /* InsomniaT (10.5).kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "InsomniaT (10.5).kext"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C2012F31087171C002447D1 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 		2C2016EB10871751002447D1 /* insomniat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = insomniat; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C20170D108719E0002447D1 /* insomniat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = insomniat.h; path = src/cli/insomniat.h; sourceTree = "<group>"; };
 		2C20170E108719E0002447D1 /* insomniat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = insomniat.m; path = src/cli/insomniat.m; sourceTree = "<group>"; };
+		2C201B2810871C5C002447D1 /* 01insomniat-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "01insomniat-contents.xml"; sourceTree = "<group>"; };
+		2C201B2910871C5C002447D1 /* 01insomniat.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 01insomniat.xml; sourceTree = "<group>"; };
+		2C201B2A10871C5C002447D1 /* 02destroot-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "02destroot-contents.xml"; sourceTree = "<group>"; };
+		2C201B2B10871C5C002447D1 /* 02destroot.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 02destroot.xml; sourceTree = "<group>"; };
+		2C201B2C10871C5C002447D1 /* index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index.xml; sourceTree = "<group>"; };
 		2C24479B106C30C50088C89C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +134,6 @@
 				2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */,
 				2C2004581086FD32002447D1 /* Frameworks */,
 				2C200D3C1086FE7A002447D1 /* Products */,
-				2C2012F31087171C002447D1 /* Kernel.framework */,
 			);
 			name = InsomniaT;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			children = (
 				2C20032D1086EF34002447D1 /* Kernel Extension */,
 				2C2442E9106BE6400088C89C /* CLI Client Source */,
+				2C201B2110871BF3002447D1 /* Installer */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -182,6 +186,27 @@
 				2C2016EB10871751002447D1 /* insomniat */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2C201B2110871BF3002447D1 /* Installer */ = {
+			isa = PBXGroup;
+			children = (
+				2C201B2710871C5C002447D1 /* InsomniaT.pmdoc */,
+			);
+			name = Installer;
+			sourceTree = "<group>";
+		};
+		2C201B2710871C5C002447D1 /* InsomniaT.pmdoc */ = {
+			isa = PBXGroup;
+			children = (
+				2C201B2810871C5C002447D1 /* 01insomniat-contents.xml */,
+				2C201B2910871C5C002447D1 /* 01insomniat.xml */,
+				2C201B2A10871C5C002447D1 /* 02destroot-contents.xml */,
+				2C201B2B10871C5C002447D1 /* 02destroot.xml */,
+				2C201B2C10871C5C002447D1 /* index.xml */,
+			);
+			name = InsomniaT.pmdoc;
+			path = src/installer/InsomniaT.pmdoc;
 			sourceTree = "<group>";
 		};
 		2C2442E9106BE6400088C89C /* CLI Client Source */ = {

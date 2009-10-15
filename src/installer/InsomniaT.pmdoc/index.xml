@@ -1,0 +1,56 @@
+<pkmkdoc spec="1.12"><properties><title>InsomniaT</title><build>/Users/trajano/Desktop/InsomniaT.pkg</build><organization>trajano.net</organization><userSees ui="both"/><min-target os="3"/><domain system="true"/></properties><distribution><versions min-spec="1.000000"/><scripts></scripts></distribution><description>This will install the KExt</description><contents><choice title="insomniat command line client" id="choice1" starts_selected="true" starts_enabled="true" starts_hidden="false"><pkgref id="trajano.net.insomniat.insomniat.pkg"/></choice><choice title="kernel extension" id="choice2" starts_selected="true" starts_enabled="true" starts_hidden="false"><pkgref id="trajano.net.insomniat.destroot.pkg"/></choice></contents><resources bg-scale="none" bg-align="topleft"><locale lang="en"><resource mime-type="text/rtf" kind="embedded" type="license"><![CDATA[{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf110
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs26 \cf0 GPLv2}]]></resource><resource mime-type="text/rtf" kind="embedded" type="readme"><![CDATA[{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf110
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs26 \cf0 The name of the client is insomniat under /usr/local/bin\
+\
+You need to manually load the kext after install or reboot to use.\
+\
+To manually load type in\
+\
+sudo kextload /System/Library/Extensions/InsomniaT.kext\
+\
+To disable sleep\
+\
+insomniat --disable\
+\
+To enable sleep\
+\
+insomniat --enable\
+\
+To uninstall \
+\
+sudo kextunload /System/Library/Extensions/InsomniaT.kext\
+sudo rm -rf /System/Library/Extensions/InsomniaT.kext\
+sudo rm /usr/local/bin/insomniat}]]></resource><resource mime-type="text/rtf" kind="embedded" type="conclusion"><![CDATA[{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf110
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs26 \cf0 The name of the client is insomniat under /usr/local/bin\
+\
+You need to manually load the kext after install or reboot to use.\
+\
+To manually load type in\
+\
+sudo kextload /System/Library/Extensions/InsomniaT.kext\
+\
+To disable sleep\
+\
+insomniat --disable\
+\
+To enable sleep\
+\
+insomniat --enable\
+\
+To uninstall \
+\
+sudo kextunload /System/Library/Extensions/InsomniaT.kext\
+sudo rm -rf /System/Library/Extensions/InsomniaT.kext\
+sudo rm /usr/local/bin/insomniat}]]></resource></locale></resources><requirements><requirement id="tosv" operator="ge" value="'10.6.0'"><message>This Version of the installer requires Mac OS 10.6 or higher</message></requirement></requirements><flags/><item type="file">01insomniat.xml</item><item type="file">02destroot.xml</item><mod>properties.title</mod><mod>description</mod><mod>properties.anywhereDomain</mod><mod>properties.systemDomain</mod></pkmkdoc>
