@@ -20,12 +20,12 @@ int main( int argc, char * const argv[] ) {
 	
 	extern char *optarg;
 	extern int optind;
-
+	
 	static struct option longopts[] = {
 		{ "enable",      no_argument,            0,             'y' },
 		{ "disable",   no_argument,      0,              'n' },
 		{ "status",  no_argument,            0, 'c'},
-		{ NULL,         0,                      NULL,           0 }
+		{ NULL, 0, NULL,           0 }
 	};
 	
 	int ch;
@@ -47,9 +47,9 @@ int main( int argc, char * const argv[] ) {
 				exit(-2);
 		}
 	}
-	argc -= optind;
-	argv += optind;
-
+		//argc -= optind;
+		//argv += optind;
+	
     service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
         fprintf(stderr, "service was not found\n");
@@ -59,11 +59,11 @@ int main( int argc, char * const argv[] ) {
 	io_connect_t connect;
 	kern_return_t kernResult = IOServiceOpen(service, mach_task_self(), 0, &connect);
 	if (kernResult == KERN_SUCCESS) {
-
+		
 		uint64_t output[1];
 		uint32_t count = 1;
 		IOConnectCallScalarMethod(connect, action, NULL, 0, output, &count);
-
+		
 		if (action == 3) {
 			if (output[0] == 1) {
 				printf("sleep is enabled\n");
