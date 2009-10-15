@@ -90,6 +90,7 @@
 		2C201B4510872C41002447D1 /* 03insomniat-contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "03insomniat-contents.xml"; sourceTree = "<group>"; };
 		2C201B4610872C41002447D1 /* 03insomniat.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 03insomniat.xml; sourceTree = "<group>"; };
 		2C201B4710872C41002447D1 /* index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index.xml; sourceTree = "<group>"; };
+		2C201B5610872E29002447D1 /* ChangeLog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ChangeLog.rtf; sourceTree = "<group>"; };
 		2C24479B106C30C50088C89C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +137,7 @@
 				2C1F2C1D1068086900D5C7AE /* Development Notes.rtf */,
 				2C2004581086FD32002447D1 /* Frameworks */,
 				2C200D3C1086FE7A002447D1 /* Products */,
+				2C201B5610872E29002447D1 /* ChangeLog.rtf */,
 			);
 			name = InsomniaT;
 			sourceTree = "<group>";
@@ -233,6 +235,22 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		2C201B66108733DC002447D1 /* Installer */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 2C201B69108733FB002447D1 /* Build configuration list for PBXLegacyTarget "Installer" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = Installer;
+			passBuildSettingsInEnvironment = 1;
+			productName = Untitled;
+		};
+/* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
 		2C200D3A1086FE7A002447D1 /* InsomniaT */ = {
@@ -333,6 +351,7 @@
 				2C200D3A1086FE7A002447D1 /* InsomniaT */,
 				2C2012B41087137A002447D1 /* InsomniaT 10.5 */,
 				2C24428F106BDB4F0088C89C /* InsomniaTTest */,
+				2C201B66108733DC002447D1 /* Installer */,
 			);
 		};
 /* End PBXProject section */
@@ -503,6 +522,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/${SDKROOT}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -530,6 +551,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/${SDKROOT}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -557,6 +580,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/${SDKROOT}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -585,6 +610,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/${SDKROOT}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -603,6 +630,28 @@
 				SDKROOT = macosx10.5;
 				VALID_ARCHS = "ppc970 ppc7400 ppc64 ppc i386";
 				WRAPPER_EXTENSION = kext;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		2C201B67108733DD002447D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Untitled;
+			};
+			name = Debug;
+		};
+		2C201B68108733DD002447D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PRODUCT_VERSION = 2.0.1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = InsomniaT;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -745,6 +794,15 @@
 			buildConfigurations = (
 				2C2012BB1087137A002447D1 /* Debug */,
 				2C2012BC1087137A002447D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C201B69108733FB002447D1 /* Build configuration list for PBXLegacyTarget "Installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C201B67108733DD002447D1 /* Debug */,
+				2C201B68108733DD002447D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

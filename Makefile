@@ -1,3 +1,6 @@
+installer:
+	cd src/installer && /Developer/usr/bin/packageMaker --doc ${PRODUCT_NAME}.pmdoc --out ../../build/${PRODUCT_NAME}-${CURRENT_PRODUCT_VERSION}.pkg
+
 install:
 	sudo kextunload -v /tmp/InsomniaT.kext || true
 	sudo cp -R build/Release/InsomniaT.kext /tmp
@@ -13,4 +16,7 @@ uninstall:
 
 dist:
 	cd build && zip -9r InsomniaT.zip Release
+
+clean:
+	true
 
