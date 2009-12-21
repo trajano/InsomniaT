@@ -55,6 +55,27 @@ IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod( uint32_t select
 		}
 		return kIOReturnSuccess;
 	} 
+	
+	
+	if (selector == 4 ) {
+		fProvider->setLoggingEnabled(true);
+		return kIOReturnSuccess;
+	} 
+	
+	if (selector == 5 ) {
+		fProvider->setLoggingEnabled(false);
+		return kIOReturnSuccess;
+	} 
+	
+	if (selector == 6 && arguments->scalarOutputCount == 1 && arguments->scalarOutput != NULL) {
+		if (fProvider->isLoggingEnabled()) {
+			arguments->scalarOutput[0] = 1;
+		} else {
+			arguments->scalarOutput[0] = 0;
+		}
+		return kIOReturnSuccess;
+	} 
+	
 	return super::externalMethod(selector,arguments,dispatch,target,reference);
 	
 }
