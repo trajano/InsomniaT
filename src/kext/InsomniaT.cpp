@@ -13,9 +13,12 @@ IOReturn handleSleepWakeInterest( void * target, void * refCon,
 {
 	net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT*)target;
 	if (obj->isLoggingEnabled()) {
-		IOLog("InsomniaT: handleSleepWakeInterest invoked.\n");
+		IOLog("InsomniaT: handleSleepWakeInterest invoked with message type %x.\n", (unsigned int)messageType);
 	} 
 	if (messageType == kIOPMMessageClamshellStateChange) {
+		if (obj->isLoggingEnabled()) {
+			IOLog("InsomniaT: message type is kIOPMMessageClamshellStateChange.\n");
+		} 
 		obj->updateSystemSleep();
 	}
 	return 0;
