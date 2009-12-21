@@ -40,9 +40,11 @@ int main( int argc, char * const argv[] ) {
 				} else if (strcmp("log", longopts[longIndex].name) == 0) {
 					long logLevel = strtol(optarg, NULL, 0);
 					if (logLevel > 0) {
-						action = 5;
-					} else if (logLevel == 0) {
+						printf("logging enabled\n");
 						action = 4;
+					} else if (logLevel == 0) {
+						printf("logging disabled\n");
+						action = 5;
 					} else {
 						fprintf(stderr, "LEVEL must be a number that is 0 or higher\n");
 					}
@@ -67,7 +69,7 @@ int main( int argc, char * const argv[] ) {
 						"Logging options:\n"
 						"      --log=LEVEL Sets the log level, should be 0 or higher.\n"
 						"                  A value of 0 will disable logging.\n"
-						"                  Logs are put in /var/system/messages prefixed\n"
+						"                  Logs are put in /var/log/system.log prefixed\n"
 					   "                   with 'InsomniaT:'.\n"
 						"\n"
 						"Report bugs to https://bugs.launchpad.net/insomniat/+filebug\n", argv[0]);

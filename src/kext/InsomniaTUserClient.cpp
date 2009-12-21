@@ -37,6 +37,9 @@ bool net_trajano_driver_InsomniaTUserClient::start(IOService* provider)
 
 IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod( uint32_t selector, IOExternalMethodArguments * arguments,
 																IOExternalMethodDispatch * dispatch , OSObject * target , void * reference ) {
+	if (fProvider->isLoggingEnabled()) {
+		IOLog("InsomniaT: external method selector is %d\n", selector);
+	}
 	if (selector == 1 ) {
 		fProvider->setSleepEnabled(true);
 		return kIOReturnSuccess;

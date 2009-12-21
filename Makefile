@@ -7,6 +7,7 @@ installer:
 
 install:
 	sudo kextunload -v /tmp/InsomniaT.kext || true
+	sudo kextunload -v /System/Library/Extensions/InsomniaT.kext || true
 	sudo chown -R root:wheel build/Release/InsomniaT.kext
 	sudo cp -R build/Release/InsomniaT.kext /tmp
 	sudo kextload -v /tmp/InsomniaT.kext
