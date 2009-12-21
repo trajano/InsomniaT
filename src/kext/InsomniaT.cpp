@@ -28,9 +28,7 @@ void net_trajano_driver_InsomniaT::updateSystemSleep() {
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
 	IOPMrootDomain *root = getPMRootDomain();
-	
-		//setSleepEnabled(false);
-	
+
 	IOWorkLoop *workloop = getWorkLoop();
 	if (!workloop) {
 		return false;
@@ -54,11 +52,24 @@ void net_trajano_driver_InsomniaT::disableSleep() {
 	
 }
 
+/**
+ * SleepEnabled key.
+ */
 const char* net_trajano_driver_InsomniaT::gKeySleepEnabled = "SleepEnabled";
+
+/**
+ * LoggingEnabled key.
+ */
+const char* net_trajano_driver_InsomniaT::gKeyLoggingEnabled = "LoggingEnabled";
 
 bool net_trajano_driver_InsomniaT::isSleepEnabled() {
 	return ((OSBoolean*)getProperty(gKeySleepEnabled))->getValue();
 }
+
+bool net_trajano_driver_InsomniaT::isLoggingEnabled() {
+	return ((OSBoolean*)getProperty(gKeyLoggingEnabled))->getValue();
+}
+
 
 bool net_trajano_driver_InsomniaT::isSleepEnabledBySystem() {
 	IOPMrootDomain *root = getPMRootDomain();
@@ -79,6 +90,11 @@ IOReturn net_trajano_driver_InsomniaT::setSleepEnabled(bool sleepEnabled) {
 	} else {
 		disableSleep();
 	}
+	return true;
+}
+
+IOReturn net_trajano_driver_InsomniaT::setLoggingEnabled(bool loggingEnabled) {
+	setProperty(gKeyLoggingEnabled, loggingEnabled);
 	return true;
 }
 

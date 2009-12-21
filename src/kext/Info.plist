@@ -38,6 +38,8 @@
 			<string>net_trajano_driver_InsomniaTUserClient</string>
 			<key>SleepEnabled</key>
 			<true/>
+			<key>LoggingEnabled</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>OSBundleLibraries</key>

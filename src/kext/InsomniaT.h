@@ -24,9 +24,6 @@ private:
 	virtual void updateSystemSleep();
 	
 public:
-		// virtual bool init(OSDictionary *dictionary = NULL);
-		//virtual void free(void);
-		//virtual IOService *probe(IOService *provider, SInt32 *score);
     virtual bool start(IOService *provider);
     virtual void stop(IOService *provider);
 	
@@ -35,6 +32,13 @@ public:
 	 */
 	virtual bool isSleepEnabled();
 	virtual IOReturn setSleepEnabled(bool sleepEnabled);
+
+	/**
+	 * Checks the IORegistry value "LoggingEnabled" to see if sleep is enabled.
+	 */
+	virtual bool isLoggingEnabled();
+	virtual IOReturn setLoggingEnabled(bool loggingEnabled);
 	
 	static const char* gKeySleepEnabled;
+	static const char* gKeyLoggingEnabled;
 };

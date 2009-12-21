@@ -1,4 +1,5 @@
 installer:
+	sudo chown -R root:wheel 
 	cd src/installer && /Developer/usr/bin/packageMaker --doc ${PRODUCT_NAME}.pmdoc --out ../../build/${PRODUCT_NAME}-${CURRENT_PRODUCT_VERSION}.pkg
 
 install:
