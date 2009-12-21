@@ -12,6 +12,9 @@ IOReturn handleSleepWakeInterest( void * target, void * refCon,
 								 void * messageArgument, vm_size_t argSize )
 {
 	net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT*)target;
+	if (obj->isLoggingEnabled()) {
+		IOLog("InsomniaT: handleSleepWakeInterest invoked.\n");
+	} 
 	if (messageType == kIOPMMessageClamshellStateChange) {
 		obj->updateSystemSleep();
 	}
@@ -19,9 +22,31 @@ IOReturn handleSleepWakeInterest( void * target, void * refCon,
 }
 
 void net_trajano_driver_InsomniaT::updateSystemSleep() {
+	if (isLoggingEnabled()) {
+		IOLog("InsomniaT: sleep status is being updated.\n");
+	} 
+	if (isLoggingEnabled() && isSleepEnabled()) {
+		IOLog("InsomniaT: sleep is enabled\n");
+	} 
+	if (isLoggingEnabled() && !isSleepEnabled()) {
+		IOLog("InsomniaT: sleep is disabled\n");
+	} 
+	if (isLoggingEnabled() && isSleepEnabledBySystem()) {
+		IOLog("InsomniaT: sleep is enabled by system\n");
+	} 
+	if (isLoggingEnabled() && !isSleepEnabledBySystem()) {
+		IOLog("InsomniaT: sleep is disabled by system\n");
+	} 
+	
 	if (isSleepEnabled() && !isSleepEnabledBySystem()) {
+		if (isLoggingEnabled()) {
+			IOLog("InsomniaT: enabling sleep.\n");
+		} 
 		enableSleep();
 	} else if (!isSleepEnabled() && isSleepEnabledBySystem()) {
+		if (isLoggingEnabled()) {
+			IOLog("InsomniaT: disabling sleep.\n");
+		}
 		disableSleep();
 	}
 }
@@ -44,12 +69,15 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 	}
 	return res;
 }
+
 void net_trajano_driver_InsomniaT::disableSleep() {
 	IOPMrootDomain *root = getPMRootDomain();
 	root->setProperty(kAppleClamshellCausesSleepKey,kOSBooleanFalse);
 		// Calling this method will set the ignoringClamShell to true for the PM root domain.
 	root->receivePowerNotification(kIOPMDisableClamshell);
-	
+	if (isLoggingEnabled()) {
+		IOLog("InsomniaT: disabling sleep complete\n");
+	}
 }
 
 /**
@@ -81,13 +109,22 @@ void net_trajano_driver_InsomniaT::enableSleep() {
 	root->setProperty(kAppleClamshellCausesSleepKey,fAppleClamshellCausesSleep);
 		// Calling this method will set the ignoringClamShell to false for the PM root domain.
 	root->receivePowerNotification(kIOPMEnableClamshell);
+	if (isLoggingEnabled()) {
+		IOLog("InsomniaT: enabling sleep complete\n");
+	}
 }
 
 IOReturn net_trajano_driver_InsomniaT::setSleepEnabled(bool sleepEnabled) {
 	setProperty(gKeySleepEnabled, sleepEnabled);
 	if (sleepEnabled) {
+		if (isLoggingEnabled()) {
+			IOLog("InsomniaT: sleep enabled requested, enabling sleep.\n");
+		} 
 		enableSleep();
 	} else {
+		if (isLoggingEnabled()) {
+			IOLog("InsomniaT: sleep disabled requested, disabling sleep.\n");
+		} 
 		disableSleep();
 	}
 	return true;
@@ -95,6 +132,11 @@ IOReturn net_trajano_driver_InsomniaT::setSleepEnabled(bool sleepEnabled) {
 
 IOReturn net_trajano_driver_InsomniaT::setLoggingEnabled(bool loggingEnabled) {
 	setProperty(gKeyLoggingEnabled, loggingEnabled);
+	if (isLoggingEnabled()) {
+		IOLog("InsomniaT: logging is enabled\n");
+	} else {
+		IOLog("InsomniaT: logging is disabled\n");
+	}
 	return true;
 }
 
@@ -104,6 +146,9 @@ IOReturn net_trajano_driver_InsomniaT::setLoggingEnabled(bool loggingEnabled) {
  */
 void net_trajano_driver_InsomniaT::stop(IOService *provider)
 {
+	if (isLoggingEnabled()) {
+		IOLog("InsomniaT: service is stopping.\n");
+	} 
 	fNotifier->remove();
 	enableSleep();
 	super::stop(provider);
