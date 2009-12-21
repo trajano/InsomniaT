@@ -67,7 +67,8 @@ int main( int argc, char * const argv[] ) {
 						"Logging options:\n"
 						"      --log=LEVEL Sets the log level, should be 0 or higher.\n"
 						"                  A value of 0 will disable logging.\n"
-						"                  Logs are put in /var/system/messages prefixed with 'InsomniaT:'.\n"
+						"                  Logs are put in /var/system/messages prefixed\n"
+					   "                   with 'InsomniaT:'.\n"
 						"\n"
 						"Report bugs to https://bugs.launchpad.net/insomniat/+filebug\n", argv[0]);
 				exit(0);
