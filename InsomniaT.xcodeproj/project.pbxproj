@@ -183,6 +183,7 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				2CD2F39311BEECE500E216F6 /* Preference Pane */,
 				2C201BA110873F2D002447D1 /* GUI */,
 				2C20032D1086EF34002447D1 /* Kernel Extension */,
 				2C2442E9106BE6400088C89C /* CLI */,
@@ -296,6 +297,13 @@
 				2C200E23108703B9002447D1 /* Info.plist */,
 			);
 			name = "Unit Test Source";
+			sourceTree = "<group>";
+		};
+		2CD2F39311BEECE500E216F6 /* Preference Pane */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Preference Pane";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
