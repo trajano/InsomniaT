@@ -11,7 +11,7 @@
 
 @implementation InsomniaTStatus
 
-- (bool) insomniaTenabled {
+- (bool) insomniaTEnabled {
 		// By design this is replicated because we want to make sure we
 		// always get the currently running driver rather than somethin
 		// that may have been gone from a KExt restart or reinstall.
@@ -50,6 +50,7 @@
 		uint32_t count = 1;
 		IOConnectCallScalarMethod(connect, 1, NULL, 0, output, &count);
 		IOServiceClose(connect);
+			//		[controller updateStatus];
 	} else {
 		return;
 	}
@@ -71,6 +72,14 @@
 		IOServiceClose(connect);
 	} else {
 		return;
+	}
+}
+
+- (void)setNilValueForKey:(NSString *)theKey {
+	if ([theKey isEqualToString:@"hidden"]) {
+        [self setValue:[NSNumber numberWithBool:YES] forKey:@"insomniaTEnabled"];
+    } else {
+        [super setNilValueForKey:theKey];
 	}
 }
 @end

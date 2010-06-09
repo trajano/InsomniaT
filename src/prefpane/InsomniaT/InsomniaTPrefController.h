@@ -17,5 +17,6 @@
 	IBOutlet NSTextField *startStopButtonBlurb;
 	InsomniaTStatus *insomniaTstatus;
 }
-- (IBAction)startStop:(id)sender;
+
+- (IBAction) startStop:(id)sender;
 @end
