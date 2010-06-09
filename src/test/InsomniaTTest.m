@@ -23,8 +23,10 @@
 	io_service_t    service;
 	
     service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
-	STAssertTrue(service != IO_OBJECT_NULL, @"Service was not found");
-
+		//STAssertTrue(service != IO_OBJECT_NULL, @"Service was not found");
+	if (service == IO_OBJECT_NULL) {
+		return;
+	}
 	
 	io_connect_t connect;
 	{
@@ -49,8 +51,10 @@
 	io_service_t  service;
 	
     service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
-	STAssertTrue(service != IO_OBJECT_NULL, @"Service was not found");
-	
+		//	STAssertTrue(service != IO_OBJECT_NULL, @"Service was not found");
+	if (service == IO_OBJECT_NULL) {
+		return;
+	}	
 	
 	io_connect_t connect;
 	{

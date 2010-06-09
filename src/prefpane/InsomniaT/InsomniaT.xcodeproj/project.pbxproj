@@ -30,6 +30,8 @@
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		2C6FBDFE11BFAD51004D0737 /* InsomniaTPrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsomniaTPrefController.h; sourceTree = "<group>"; };
 		2C6FBDFF11BFAD51004D0737 /* InsomniaTPrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsomniaTPrefController.m; sourceTree = "<group>"; };
+		2C6FC47711C032CB004D0737 /* InsomniaTPref.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InsomniaTPref.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6FC47911C032CB004D0737 /* InsomniaTPref-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InsomniaTPref-Info.plist"; sourceTree = "<group>"; };
 		2CD2F3B511BEEDAA00E216F6 /* Coffee Cup.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Coffee Cup.icns"; sourceTree = "<group>"; };
 		2CD2F3FC11BF254200E216F6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2CD2F40D11BF26CA00E216F6 /* InsomniaTStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsomniaTStatus.h; sourceTree = "<group>"; };
@@ -45,6 +47,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C6FC47511C032CB004D0737 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D202CF20486D31800D8A456 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +75,7 @@
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
+				2C6FC47911C032CB004D0737 /* InsomniaTPref-Info.plist */,
 			);
 			name = InsomniaT;
 			sourceTree = "<group>";
@@ -127,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				8D202CF80486D31800D8A456 /* InsomniaT.prefPane */,
+				2C6FC47711C032CB004D0737 /* InsomniaTPref.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +167,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		2C6FC47611C032CB004D0737 /* InsomniaTPref */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C6FC47C11C032CC004D0737 /* Build configuration list for PBXNativeTarget "InsomniaTPref" */;
+			buildPhases = (
+				2C6FC47311C032CB004D0737 /* Resources */,
+				2C6FC47411C032CB004D0737 /* Sources */,
+				2C6FC47511C032CB004D0737 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InsomniaTPref;
+			productName = InsomniaTPref;
+			productReference = 2C6FC47711C032CB004D0737 /* InsomniaTPref.app */;
+			productType = "com.apple.product-type.application";
+		};
 		8D202CE80486D31800D8A456 /* InsomniaT */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "InsomniaT" */;
@@ -189,11 +217,19 @@
 			projectRoot = "";
 			targets = (
 				8D202CE80486D31800D8A456 /* InsomniaT */,
+				2C6FC47611C032CB004D0737 /* InsomniaTPref */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C6FC47311C032CB004D0737 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D202CEC0486D31800D8A456 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +254,13 @@
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C6FC47411C032CB004D0737 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D202CF00486D31800D8A456 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,6 +354,54 @@
 			};
 			name = Release;
 		};
+		2C6FC47A11C032CB004D0737 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "InsomniaTPref-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = InsomniaTPref;
+			};
+			name = Debug;
+		};
+		2C6FC47B11C032CB004D0737 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "InsomniaTPref-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = InsomniaTPref;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -328,6 +419,15 @@
 			buildConfigurations = (
 				1DBD214D08BA80EA00186707 /* Debug */,
 				1DBD214E08BA80EA00186707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C6FC47C11C032CC004D0737 /* Build configuration list for PBXNativeTarget "InsomniaTPref" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C6FC47A11C032CB004D0737 /* Debug */,
+				2C6FC47B11C032CB004D0737 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
