@@ -18,7 +18,7 @@
 	io_service_t    service;
 	service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
-        return;
+        return false;
     }
 	
 	io_connect_t connect;

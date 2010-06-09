@@ -11,4 +11,6 @@
 
 @implementation InsomniaTPrefController
 
+- (IBAction)startStop:(id)sender {
+}
 @end
