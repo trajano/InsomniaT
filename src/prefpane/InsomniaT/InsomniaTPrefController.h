@@ -17,6 +17,14 @@
 	IBOutlet NSTextField *startStopButtonBlurb;
 	InsomniaTStatus *insomniaTstatus;
 }
-
+/*
+ - (id) init;
+- (void) dealloc;
+- (void)observeValueForKeyPath:(NSString *)keyPath
+					  ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context;
+ */
+- (void) updateStatus;
 - (IBAction) startStop:(id)sender;
 @end

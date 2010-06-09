@@ -9,15 +9,16 @@
 #import <Cocoa/Cocoa.h>
 
 @interface InsomniaTStatus : NSObject {
-	// This is empty because there are no actual properties
-	// that are stored.  Instead they are retrieved from IOKit.
+	NSNumber* insomniaTEnabled;
 }
 
 /**
  * Send a message to InsomniaT IOKit driver to determine if it is
- * enabled or not.  True if insomniaT is enabled
+ * enabled or not.  True if insomniaT is enabled (meaning sleep is disabled)
  */
-- (bool) insomniaTEnabled;
+-(uint64_t) getInsomniaTStatusFromDriver;
+
+@property(readwrite, assign) NSNumber* insomniaTEnabled;
 
 /**
  * Send a message to InsomniaT IOKit driver to enable itself.

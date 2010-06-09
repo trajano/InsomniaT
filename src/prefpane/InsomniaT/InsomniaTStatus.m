@@ -1,24 +1,34 @@
-//
-//  InsomniaTStatus.m
-//  InsomniaT
-//
-//  Created by Archimedes Trajano on 2010-06-08.
-//  Copyright 2010 trajano.net. All rights reserved.
-//
+	//
+	//  InsomniaTStatus.m
+	//  InsomniaT
+	//
+	//  Created by Archimedes Trajano on 2010-06-08.
+	//  Copyright 2010 trajano.net. All rights reserved.
+	//
 
 #import "InsomniaTStatus.h"
 
 
 @implementation InsomniaTStatus
 
-- (bool) insomniaTEnabled {
+@synthesize insomniaTEnabled;
+
+- (id) init {
+	if (self = [super init]) {
+		[self setValue: [NSNumber numberWithBool:[self getInsomniaTStatusFromDriver] != 1]
+				forKey: @"insomniaTEnabled"];
+	}
+	return self;
+}
+
+-(uint64_t) getInsomniaTStatusFromDriver{
 		// By design this is replicated because we want to make sure we
 		// always get the currently running driver rather than somethin
 		// that may have been gone from a KExt restart or reinstall.
 	io_service_t    service;
 	service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
-        return false;
+        return -1;
     }
 	
 	io_connect_t connect;
@@ -29,9 +39,9 @@
 		uint32_t count = 1;
 		IOConnectCallScalarMethod(connect, 3, NULL, 0, output, &count);
 		IOServiceClose(connect);
-		return output[0] == 1;
+		return output[0];
 	} else {
-		return false;
+		return -1;
 	}
 }
 
@@ -47,10 +57,11 @@
 	if (kernResult == KERN_SUCCESS) {
 		
 		uint64_t output[1];
-		uint32_t count = 1;
+		uint32_t count = 0;
 		IOConnectCallScalarMethod(connect, 1, NULL, 0, output, &count);
 		IOServiceClose(connect);
-			//		[controller updateStatus];
+		[self setValue: [NSNumber numberWithBool:[self getInsomniaTStatusFromDriver] != 1]
+				forKey: @"insomniaTEnabled"];
 	} else {
 		return;
 	}
@@ -67,17 +78,19 @@
 	if (kernResult == KERN_SUCCESS) {
 		
 		uint64_t output[1];
-		uint32_t count = 1;
+		uint32_t count = 0;
 		IOConnectCallScalarMethod(connect, 2, NULL, 0, output, &count);
 		IOServiceClose(connect);
+		[self setValue: [NSNumber numberWithBool:[self getInsomniaTStatusFromDriver] != 1]
+				forKey: @"insomniaTEnabled"];
 	} else {
 		return;
 	}
 }
 
 - (void)setNilValueForKey:(NSString *)theKey {
-	if ([theKey isEqualToString:@"hidden"]) {
-        [self setValue:[NSNumber numberWithBool:YES] forKey:@"insomniaTEnabled"];
+	if ([theKey isEqualToString:@"insomniaTEnabled"]) {
+        [self setValue:[NSNumber numberWithBool:[self getInsomniaTStatusFromDriver] != 1] forKey:@"insomniaTEnabled"];
     } else {
         [super setNilValueForKey:theKey];
 	}

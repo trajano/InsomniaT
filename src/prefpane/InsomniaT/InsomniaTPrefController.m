@@ -1,10 +1,10 @@
-//
-//  InsomniaTPrefController.m
-//  InsomniaT
-//
-//  Created by Archimedes Trajano on 2010-06-09.
-//  Copyright 2010 trajano.net. All rights reserved.
-//
+	//
+	//  InsomniaTPrefController.m
+	//  InsomniaT
+	//
+	//  Created by Archimedes Trajano on 2010-06-09.
+	//  Copyright 2010 trajano.net. All rights reserved.
+	//
 
 #import "InsomniaTPrefController.h"
 
@@ -21,15 +21,16 @@
  */
 - (id) init {
 	if ( self = [super init] ) {
-		// By design automatic garbage collection is
-		// not used.  Not necessarily for efficiency,
-		// but for learning purposes.
+			// By design automatic garbage collection is
+			// not used.  Not necessarily for efficiency,
+			// but for learning purposes.
 		insomniaTstatus = [[InsomniaTStatus alloc]init];
 		[insomniaTstatus addObserver: self
 						  forKeyPath: @"insomniaTEnabled"
 							 options:(NSKeyValueObservingOptionNew |
 									  NSKeyValueObservingOptionOld)
 							 context:NULL];
+		[self updateStatus];
 	}
 	return self;
 } 
@@ -46,22 +47,49 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-		// By design this is checked again to make sure
-		// we get the latest status of InsomniaT IOKit
-		// driver.
-	if ([insomniaTstatus insomniaTEnabled]) {
-		[statusLevel setIntValue: 1];
-		[startStopButton setTitle: @"Stop"];
-	} else {
-		[statusLevel setIntValue: 0];
-		[startStopButton setTitle: @"Start"];
-	}
+    if ([keyPath isEqual:@"insomniaTEnabled"]) {
+			//	bool insomniaTEnabled = [change objectForKey: NSKeyValueChangeNewKey];
+		[self updateStatus];
+		
+    }
+	
+		// be sure to call the super implementation	
+		// if the superclass implements it
+	
+    [super observeValueForKeyPath:keyPath
+						 ofObject:object
+						   change:change
+						  context:context];
+	
 	
 }
+- (void) updateStatus {
+	if ([[insomniaTstatus insomniaTEnabled] boolValue]) {
+		[statusLevel setIntValue: 1];
+		[statusLevelText setTitleWithMnemonic: @"InsomniaT: On"];
+		[statusLevelBlurb setTitleWithMnemonic: @"The MacBook will not suspend when the lid closed."];
+		[startStopButton setTitle: @"Stop"];
+		[startStopButtonBlurb setTitleWithMnemonic: @"Click Start to turn InsominaT off"];
+		[startStopButton setEnabled: true];
+	} else {
+		[statusLevel setIntValue: 0];
+		[statusLevelText setTitleWithMnemonic: @"InsomniaT: Off"];
+		[statusLevelBlurb setTitleWithMnemonic: @"The MacBook will suspend when the lid closed."];
+		[startStopButton setTitle: @"Start"];
+		[startStopButtonBlurb setTitleWithMnemonic: @"Click Start to turn InsominaT on"];
+		[startStopButton setEnabled: true];
+	}
+}
 - (IBAction)startStop:(id)sender {
-	if ([insomniaTstatus insomniaTEnabled]) {
+	if ([[insomniaTstatus insomniaTEnabled] boolValue]) {
+		[startStopButton setTitle: @"Stopping..."];
+		[startStopButtonBlurb setTitleWithMnemonic: @"Please wait, trying to stop InsomniaT ..."];
+		[startStopButton setEnabled: false];
 		[insomniaTstatus disableInsomniaT];
 	} else {
+		[startStopButton setTitle: @"Starting..."];
+		[startStopButtonBlurb setTitleWithMnemonic: @"Please wait, trying to start InsomniaT ..."];
+		[startStopButton setEnabled: false];
 		[insomniaTstatus enableInsomniaT];
 	}
 }
