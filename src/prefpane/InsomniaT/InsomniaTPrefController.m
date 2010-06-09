@@ -64,12 +64,12 @@
 	
 }
 - (void) updateStatus {
-	if ([[insomniaTstatus insomniaTEnabled] boolValue]) {
+	if ([[insomniaTstatus insomniaTEnabled] unsignedIntValue] == 0) {
 		[statusLevel setIntValue: 1];
 		[statusLevelText setTitleWithMnemonic: @"InsomniaT: On"];
 		[statusLevelBlurb setTitleWithMnemonic: @"The MacBook will not suspend when the lid closed."];
 		[startStopButton setTitle: @"Stop"];
-		[startStopButtonBlurb setTitleWithMnemonic: @"Click Start to turn InsominaT off"];
+		[startStopButtonBlurb setTitleWithMnemonic: @"Click Stop to turn InsominaT off"];
 		[startStopButton setEnabled: true];
 	} else {
 		[statusLevel setIntValue: 0];

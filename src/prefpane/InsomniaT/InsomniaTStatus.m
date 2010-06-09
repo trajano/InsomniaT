@@ -15,7 +15,7 @@
 
 - (id) init {
 	if (self = [super init]) {
-		[self setValue: [NSNumber numberWithBool:[self getInsomniaTStatusFromDriver] != 1]
+		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
 				forKey: @"insomniaTEnabled"];
 	}
 	return self;
@@ -60,7 +60,7 @@
 		uint32_t count = 0;
 		IOConnectCallScalarMethod(connect, 1, NULL, 0, output, &count);
 		IOServiceClose(connect);
-		[self setValue: [NSNumber numberWithBool:[self getInsomniaTStatusFromDriver] != 1]
+		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
 				forKey: @"insomniaTEnabled"];
 	} else {
 		return;
@@ -81,7 +81,7 @@
 		uint32_t count = 0;
 		IOConnectCallScalarMethod(connect, 2, NULL, 0, output, &count);
 		IOServiceClose(connect);
-		[self setValue: [NSNumber numberWithBool:[self getInsomniaTStatusFromDriver] != 1]
+		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
 				forKey: @"insomniaTEnabled"];
 	} else {
 		return;
@@ -90,7 +90,8 @@
 
 - (void)setNilValueForKey:(NSString *)theKey {
 	if ([theKey isEqualToString:@"insomniaTEnabled"]) {
-        [self setValue:[NSNumber numberWithBool:[self getInsomniaTStatusFromDriver] != 1] forKey:@"insomniaTEnabled"];
+		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
+				forKey: @"insomniaTEnabled"];
     } else {
         [super setNilValueForKey:theKey];
 	}
