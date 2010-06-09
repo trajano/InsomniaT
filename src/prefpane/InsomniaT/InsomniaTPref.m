@@ -29,12 +29,21 @@
 		IOConnectCallScalarMethod(connect, 3, NULL, 0, output, &count);
 		IOServiceClose(connect);
 
-		[statusLevel setIntValue: 1];
-		[statusLevelText setStringValue: @"InsomniaT: OnAAAA"];
-		[statusLevelBlurb setTitleWithMnemonic: @"The MacBook willAAA not suspend when the lid closed."];
-		[startStopButton setTitle: @"StopAAAA"];
-		[startStopButtonBlurb setTitleWithMnemonic: @"Click StAAAAop to turn InsominaT off"];
-		[startStopButton setEnabled: true];
+		if (output[0] != 1) {
+			[statusLevel setIntValue: 1];
+			[statusLevelText setTitleWithMnemonic: @"InsomniaT: On"];
+			[statusLevelBlurb setTitleWithMnemonic: @"The MacBook will not suspend when the lid closed."];
+			[startStopButton setTitle: @"Stop"];
+			[startStopButtonBlurb setTitleWithMnemonic: @"Click Stop to turn InsominaT off"];
+			[startStopButton setEnabled: true];
+		} else {
+			[statusLevel setIntValue: 0];
+			[statusLevelText setTitleWithMnemonic: @"InsomniaT: Off"];
+			[statusLevelBlurb setTitleWithMnemonic: @"The MacBook will suspend when the lid closed."];
+			[startStopButton setTitle: @"Start"];
+			[startStopButtonBlurb setTitleWithMnemonic: @"Click Start to turn InsominaT on"];
+			[startStopButton setEnabled: true];
+		}
 		
 	} else {
 		return;
