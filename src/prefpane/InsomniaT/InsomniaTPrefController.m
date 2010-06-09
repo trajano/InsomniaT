@@ -30,7 +30,6 @@
 							 options:(NSKeyValueObservingOptionNew |
 									  NSKeyValueObservingOptionOld)
 							 context:NULL];
-		[self updateStatus];
 	}
 	return self;
 } 
@@ -49,7 +48,7 @@
 {
     if ([keyPath isEqual:@"insomniaTEnabled"]) {
 			//	bool insomniaTEnabled = [change objectForKey: NSKeyValueChangeNewKey];
-		[self updateStatus];
+		[self updateStatus: nil];
 		
     }
 	
@@ -63,7 +62,7 @@
 	
 	
 }
-- (void) updateStatus {
+- (IBAction) updateStatus:(id) sender {
 	if ([[insomniaTstatus insomniaTEnabled] unsignedIntValue] == 0) {
 		[statusLevel setIntValue: 1];
 		[statusLevelText setTitleWithMnemonic: @"InsomniaT: On"];

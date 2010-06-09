@@ -25,6 +25,6 @@
                         change:(NSDictionary *)change
                        context:(void *)context;
  */
-- (void) updateStatus;
+- (IBAction) updateStatus:(id) sender;
 - (IBAction) startStop:(id)sender;
 @end

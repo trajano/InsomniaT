@@ -30,7 +30,7 @@
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="409411428">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSCustomObject" id="294453543">
-				<string key="NSClassName">NSPreferencePane</string>
+				<string key="NSClassName">InsomniaTPref</string>
 			</object>
 			<object class="NSCustomObject" id="308860122">
 				<string key="NSClassName">FirstResponder</string>
@@ -200,17 +200,17 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSLevelIndicator" id="606211832">
+						<object class="NSLevelIndicator" id="1049224390">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 251}, {80, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSLevelIndicatorCell" key="NSCell" id="304452756">
+							<object class="NSLevelIndicatorCell" key="NSCell" id="383169001">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">0</int>
 								<reference key="NSSupport" ref="455528195"/>
-								<reference key="NSControlView" ref="606211832"/>
+								<reference key="NSControlView" ref="1049224390"/>
 								<double key="NSMaxValue">1</double>
 								<int key="NSIndicatorStyle">2</int>
 							</object>
@@ -223,10 +223,7 @@
 				<string key="NSMinSize">{224.664, 32}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
-			<object class="NSCustomObject" id="289190352">
-				<string key="NSClassName">InsomniaTStatus</string>
-			</object>
-			<object class="NSCustomObject" id="1069070708">
+			<object class="NSCustomObject" id="551574211">
 				<string key="NSClassName">InsomniaTPrefController</string>
 			</object>
 		</object>
@@ -244,7 +241,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">startStopButton</string>
-						<reference key="source" ref="1069070708"/>
+						<reference key="source" ref="551574211"/>
 						<reference key="destination" ref="249111731"/>
 					</object>
 					<int key="connectionID">153</int>
@@ -252,7 +249,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">startStopButtonBlurb</string>
-						<reference key="source" ref="1069070708"/>
+						<reference key="source" ref="551574211"/>
 						<reference key="destination" ref="34194654"/>
 					</object>
 					<int key="connectionID">154</int>
@@ -260,15 +257,15 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">statusLevel</string>
-						<reference key="source" ref="1069070708"/>
-						<reference key="destination" ref="606211832"/>
+						<reference key="source" ref="551574211"/>
+						<reference key="destination" ref="1049224390"/>
 					</object>
 					<int key="connectionID">155</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">statusLevelBlurb</string>
-						<reference key="source" ref="1069070708"/>
+						<reference key="source" ref="551574211"/>
 						<reference key="destination" ref="301579186"/>
 					</object>
 					<int key="connectionID">156</int>
@@ -276,7 +273,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">statusLevelText</string>
-						<reference key="source" ref="1069070708"/>
+						<reference key="source" ref="551574211"/>
 						<reference key="destination" ref="1063163045"/>
 					</object>
 					<int key="connectionID">157</int>
@@ -284,7 +281,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">startStop:</string>
-						<reference key="source" ref="1069070708"/>
+						<reference key="source" ref="551574211"/>
 						<reference key="destination" ref="249111731"/>
 					</object>
 					<int key="connectionID">158</int>
@@ -295,7 +292,47 @@
 						<reference key="source" ref="660800786"/>
 						<reference key="destination" ref="249111731"/>
 					</object>
-					<int key="connectionID">159</int>
+					<int key="connectionID">162</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">startStopButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="249111731"/>
+					</object>
+					<int key="connectionID">170</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">startStopButtonBlurb</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="34194654"/>
+					</object>
+					<int key="connectionID">171</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">statusLevel</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="1049224390"/>
+					</object>
+					<int key="connectionID">172</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">statusLevelBlurb</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="301579186"/>
+					</object>
+					<int key="connectionID">173</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">statusLevelText</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="1063163045"/>
+					</object>
+					<int key="connectionID">174</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -340,7 +377,7 @@
 							<reference ref="858385015"/>
 							<reference ref="848159353"/>
 							<reference ref="34194654"/>
-							<reference ref="606211832"/>
+							<reference ref="1049224390"/>
 						</object>
 						<reference key="parent" ref="660800786"/>
 					</object>
@@ -367,6 +404,7 @@
 							<reference ref="505628909"/>
 						</object>
 						<reference key="parent" ref="1037298196"/>
+						<string key="objectName">statusLevelText</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">136</int>
@@ -435,28 +473,23 @@
 						<reference key="parent" ref="848159353"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">148</int>
-						<reference key="object" ref="289190352"/>
+						<int key="objectID">152</int>
+						<reference key="object" ref="551574211"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">150</int>
-						<reference key="object" ref="606211832"/>
+						<reference key="object" ref="1049224390"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="304452756"/>
+							<reference ref="383169001"/>
 						</object>
 						<reference key="parent" ref="1037298196"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">151</int>
-						<reference key="object" ref="304452756"/>
-						<reference key="parent" ref="606211832"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">152</int>
-						<reference key="object" ref="1069070708"/>
-						<reference key="parent" ref="0"/>
+						<reference key="object" ref="383169001"/>
+						<reference key="parent" ref="1049224390"/>
 					</object>
 				</object>
 			</object>
@@ -485,20 +518,18 @@
 					<string>146.IBPluginDependency</string>
 					<string>150.IBPluginDependency</string>
 					<string>151.IBPluginDependency</string>
-					<string>152.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
 					<string>6.ImportedFromIB2</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{54, 381}, {611, 289}}</string>
+					<string>{{39, 436}, {611, 289}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{54, 381}, {611, 289}}</string>
+					<string>{{39, 436}, {611, 289}}</string>
 					<integer value="1"/>
 					<integer value="1"/>
 					<string>{224.664, 10}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -533,7 +564,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">159</int>
+			<int key="maxID">174</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -547,11 +578,47 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">InsomniaTPref</string>
+					<string key="superclassName">NSPreferencePane</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>startStopButton</string>
+							<string>startStopButtonBlurb</string>
+							<string>statusLevel</string>
+							<string>statusLevelBlurb</string>
+							<string>statusLevelText</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSButton</string>
+							<string>NSTextField</string>
+							<string>NSLevelIndicator</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">InsomniaTPref.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">InsomniaTPrefController</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">startStop:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>startStop:</string>
+							<string>updateStatus:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -575,26 +642,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">InsomniaTPrefController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">InsomniaTStatus</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">InsomniaTStatus.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">InsomniaTStatus</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">startStopButtonPressed:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

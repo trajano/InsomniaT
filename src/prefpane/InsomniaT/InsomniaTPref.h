@@ -11,7 +11,11 @@
 
 @interface InsomniaTPref : NSPreferencePane 
 {
-
+	IBOutlet NSLevelIndicator *statusLevel;
+	IBOutlet NSTextField *statusLevelText;
+	IBOutlet NSTextField *statusLevelBlurb;
+	IBOutlet NSButton *startStopButton;
+	IBOutlet NSTextField *startStopButtonBlurb;
 }
 
 - (void) mainViewDidLoad;

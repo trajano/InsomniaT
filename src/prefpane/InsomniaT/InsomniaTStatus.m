@@ -15,13 +15,31 @@
 
 - (id) init {
 	if (self = [super init]) {
-		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
-				forKey: @"insomniaTEnabled"];
+		io_service_t    service;
+		service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
+		if (service == IO_OBJECT_NULL) {
+			return nil;
+		}
+		
+		io_connect_t connect;
+		kern_return_t kernResult = IOServiceOpen(service, mach_task_self(), 0, &connect);
+		if (kernResult == KERN_SUCCESS) {
+			
+			uint64_t output[1];
+			uint32_t count = 1;
+			IOConnectCallScalarMethod(connect, 3, NULL, 0, output, &count);
+			IOServiceClose(connect);
+			[self setValue: [NSNumber numberWithUnsignedInt: output[0]]
+					forKey: @"insomniaTEnabled"];
+		} else {
+			return nil;
+		}
 	}
 	return self;
 }
 
 -(uint64_t) getInsomniaTStatusFromDriver{
+	NSLog(@"HERE!!!!!!");
 		// By design this is replicated because we want to make sure we
 		// always get the currently running driver rather than somethin
 		// that may have been gone from a KExt restart or reinstall.
