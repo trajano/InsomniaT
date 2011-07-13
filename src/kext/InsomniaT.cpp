@@ -40,8 +40,13 @@ void net_trajano_driver_InsomniaT::updateSystemSleep() {
 	if (isLoggingEnabled() && !isSleepEnabledBySystem()) {
 		IOLog("InsomniaT: sleep is disabled by system\n");
 	} 
-	
-	if (isSleepEnabled() && !isSleepEnabledBySystem()) {
+    
+    if (isMultipleDisplays()) {
+		if (isLoggingEnabled()) {
+			IOLog("InsomniaT: multiple displays detected, disabling sleep.\n");
+		} 
+        disableSleep();
+    } else if (isSleepEnabled() && !isSleepEnabledBySystem()) {
 		if (isLoggingEnabled()) {
 			IOLog("InsomniaT: enabling sleep.\n");
 		} 
@@ -52,6 +57,9 @@ void net_trajano_driver_InsomniaT::updateSystemSleep() {
 		}
 		disableSleep();
 	}
+}
+bool net_trajano_driver_InsomniaT::isMultipleDisplays() {
+    return false;
 }
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {

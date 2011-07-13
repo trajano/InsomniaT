@@ -12,9 +12,17 @@ private:
 	
 	/**
 	 * Checks if the system itself allows for sleep.
-	 * Used the positive form to prevent negatives in the method name for clarity.  This method was created to prevent resending the disable message to the root PM context when it is not needed.
+	 * Used the positive form to prevent negatives in the method name for
+     * clarity.  This method was created to prevent resending the disable
+     * message to the root PM context when it is not needed.
 	 */
 	virtual bool isSleepEnabledBySystem();
+
+	/**
+	 * Checks if multiple displays are connected to the system.  If so then
+     * sleep needs to be disabled.
+	 */
+	virtual bool isMultipleDisplays();
 	virtual void disableSleep();
 	virtual void enableSleep();
 	
