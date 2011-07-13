@@ -1,11 +1,9 @@
 installer:
-	sudo chown root:wheel build/Release/insomniat
-	sudo chown -R root:wheel build/Release/InsomniaT.kext
-	sudo chown -R root:wheel "build/Release/InsomniaT (10.5).kext"
-	cd src/installer && /Developer/usr/bin/packageMaker --doc ${PRODUCT_NAME}.pmdoc --out ../../build/${PRODUCT_NAME}-${CURRENT_PROJECT_VERSION}.pkg  --temp-root
-	sudo chown -R trajano "build/Release/InsomniaT (10.5).kext"
-	sudo chown -R trajano build/Release/InsomniaT.kext
-	sudo chown trajano build/Release/insomniat
+	/usr/local/bin/freeze src/iceberg/InsomniaT/InsomniaT.packproj
+	cp src/installer/scripts/uninstall.sh build/packages/uninstall
+	chmod a+rx build/packages/uninstall
+	rm -f build/insomniat-${CURRENT_PROJECT_VERSION}.dmg
+	hdiutil create build/insomniat-${CURRENT_PROJECT_VERSION}.dmg -volname "InsomniaT" -fs HFS+ -srcfolder build/packages
 
 install:
 	sudo kextunload -v /tmp/InsomniaT.kext || sudo kextunload -v /System/Library/Extensions/InsomniaT.kext || true

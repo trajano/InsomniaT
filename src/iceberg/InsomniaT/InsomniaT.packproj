@@ -424,7 +424,16 @@
 							<key>Additional Resources</key>
 							<dict>
 								<key>International</key>
-								<array/>
+								<array>
+									<dict>
+										<key>Path</key>
+										<string>InsomniaT.packproj</string>
+										<key>Path Type</key>
+										<integer>2</integer>
+										<key>Status</key>
+										<true/>
+									</dict>
+								</array>
 							</dict>
 							<key>Installation Scripts</key>
 							<dict>
@@ -2113,7 +2122,7 @@
 								<integer>0</integer>
 							</dict>
 							<key>IFPkgFlagDefaultLocation</key>
-							<string>/</string>
+							<string>/usr/local/bin</string>
 							<key>Imported Package</key>
 							<false/>
 							<key>Package Path</key>
@@ -2260,7 +2269,7 @@
 								<key>IFPkgFlagAllowBackRev</key>
 								<true/>
 								<key>IFPkgFlagAuthorizationAction</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>IFPkgFlagFollowLinks</key>
 								<false/>
 								<key>IFPkgFlagIsRequired</key>
@@ -2811,7 +2820,7 @@
 					<key>Name</key>
 					<string>Uninstall</string>
 					<key>Status</key>
-					<integer>1</integer>
+					<integer>0</integer>
 					<key>Type</key>
 					<integer>1</integer>
 				</dict>
@@ -3023,7 +3032,7 @@
 					<key>CFBundleGetInfoString</key>
 					<string>InsomniaT 3.0.1 Copyrights © 2009-2011 trajano.net</string>
 					<key>CFBundleIconFile</key>
-					<string>../../prefpane/Coffee Cup.icns</string>
+					<string></string>
 					<key>CFBundleIconFile Path Type</key>
 					<integer>2</integer>
 					<key>CFBundleIdentifier</key>
@@ -3060,7 +3069,7 @@
 		<key>10.1 Compatibility</key>
 		<false/>
 		<key>Build Path</key>
-		<string>../../../build</string>
+		<string>../../../build/packages/</string>
 		<key>Build Path Type</key>
 		<integer>2</integer>
 		<key>Comment</key>
