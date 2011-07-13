@@ -144,7 +144,6 @@
 		2C6FC37211C02F05004D0737 /* Coffee Cup.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Coffee Cup.icns"; sourceTree = "<group>"; };
 		2C6FC4E411C035A4004D0737 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 		2C6FC53311C0379F004D0737 /* InsomniaT.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C6FCD0F11C03B87004D0737 /* uninstallPreviousVersions.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstallPreviousVersions.sh; sourceTree = "<group>"; };
 		2C6FCD1611C04738004D0737 /* uninstallInsomniaT.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstallInsomniaT.sh; sourceTree = "<group>"; };
 		2C6FCDA211C054AC004D0737 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2C6FCDA411C054AC004D0737 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = InsomniaTPref.xib; sourceTree = "<group>"; };
@@ -312,7 +311,6 @@
 		2C6FCD0E11C03B5A004D0737 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
-				2C6FCD0F11C03B87004D0737 /* uninstallPreviousVersions.sh */,
 				2C6FCD1611C04738004D0737 /* uninstallInsomniaT.sh */,
 				2C3F4FE013CD423A00214796 /* loadKernelExtension.sh */,
 				2C3F508013CDF1AA00214796 /* Uninstall InsomniaT.applescript */,
