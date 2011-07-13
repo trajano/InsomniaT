@@ -1,7 +1,6 @@
 installer:
 	/usr/local/bin/freeze src/iceberg/InsomniaT/InsomniaT.packproj
-	cp src/installer/scripts/uninstall.sh build/packages/uninstall
-	chmod a+rx build/packages/uninstall
+	osacompile -o "build/packages/Uninstall InsomniaT.app" "src/installer/scripts/Uninstall InsomniaT.applescript"
 	rm -f build/insomniat-${CURRENT_PROJECT_VERSION}.dmg
 	hdiutil create build/insomniat-${CURRENT_PROJECT_VERSION}.dmg -volname "InsomniaT" -fs HFS+ -srcfolder build/packages
 
