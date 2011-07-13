@@ -2779,7 +2779,7 @@
 							<key>Options</key>
 							<dict>
 								<key>IFPkgFlagAllowBackRev</key>
-								<false/>
+								<true/>
 								<key>IFPkgFlagAuthorizationAction</key>
 								<integer>0</integer>
 								<key>IFPkgFlagFollowLinks</key>
@@ -2793,7 +2793,7 @@
 								<key>IFPkgFlagRestartAction</key>
 								<integer>0</integer>
 								<key>IFPkgFlagRootVolumeOnly</key>
-								<false/>
+								<true/>
 								<key>IFPkgFlagUpdateInstalledLanguages</key>
 								<false/>
 							</dict>
@@ -2971,7 +2971,36 @@
 					</dict>
 				</dict>
 				<key>Requirements</key>
-				<array/>
+				<array>
+					<dict>
+						<key>AlertDialog</key>
+						<dict>
+							<key>International</key>
+							<dict>
+								<key>MessageKey</key>
+								<string>Mac OS X 10.5 or higher is required.</string>
+								<key>TitleKey</key>
+								<string></string>
+							</dict>
+						</dict>
+						<key>LabelKey</key>
+						<string>10.5 required</string>
+						<key>Level</key>
+						<integer>0</integer>
+						<key>SpecArgument</key>
+						<string>sysv</string>
+						<key>SpecTag</key>
+						<integer>2</integer>
+						<key>SpecType</key>
+						<string>gestalt</string>
+						<key>Status</key>
+						<true/>
+						<key>TestObject</key>
+						<string>4176</string>
+						<key>TestOperator</key>
+						<string>&gt;=</string>
+					</dict>
+				</array>
 			</dict>
 			<key>Settings</key>
 			<dict>
@@ -3014,7 +3043,7 @@
 			</dict>
 		</dict>
 		<key>IFPkgFlagComponentDirectory</key>
-		<string>..</string>
+		<string>Contents/Resources</string>
 		<key>IFPkgFlagPackageSelection</key>
 		<integer>0</integer>
 		<key>Name</key>
@@ -3029,7 +3058,7 @@
 	<key>Settings</key>
 	<dict>
 		<key>10.1 Compatibility</key>
-		<true/>
+		<false/>
 		<key>Build Path</key>
 		<string>../../../build</string>
 		<key>Build Path Type</key>

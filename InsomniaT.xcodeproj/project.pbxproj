@@ -33,10 +33,8 @@
 		2C2012B71087137A002447D1 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C200D1F1086FDE5002447D1 /* InsomniaT.cpp */; };
 		2C2012F21087171C002447D1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C200E2F108704F8002447D1 /* IOKit.framework */; };
 		2C20170F108719E0002447D1 /* insomniat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C20170E108719E0002447D1 /* insomniat.m */; };
-		2C3F4FE113CD423A00214796 /* loadKernelExtension.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2C3F4FE013CD423A00214796 /* loadKernelExtension.sh */; };
 		2C3F4FEE13CD46F000214796 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3F4FED13CD46F000214796 /* License.rtf */; };
 		2C3F4FF013CD479400214796 /* Welcome.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3F4FEF13CD479400214796 /* Welcome.rtf */; };
-		2C3F4FF713CD4A6500214796 /* coffee-cup-192.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C3F4FF613CD4A6500214796 /* coffee-cup-192.png */; };
 		2C6FC53811C037B7004D0737 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6FC4E411C035A4004D0737 /* PreferencePanes.framework */; };
 		2C6FC53911C037BD004D0737 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C200E2F108704F8002447D1 /* IOKit.framework */; };
 		2C6FC53A11C037C3004D0737 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C201C0E1087ABF9002447D1 /* Cocoa.framework */; };
@@ -521,10 +519,8 @@
 				2C6FC54611C03841004D0737 /* Coffee Cup.icns in Resources */,
 				2C6FCDA511C054AC004D0737 /* InfoPlist.strings in Resources */,
 				2C6FCDA611C054AC004D0737 /* InsomniaTPref.xib in Resources */,
-				2C3F4FE113CD423A00214796 /* loadKernelExtension.sh in Resources */,
 				2C3F4FEE13CD46F000214796 /* License.rtf in Resources */,
 				2C3F4FF013CD479400214796 /* Welcome.rtf in Resources */,
-				2C3F4FF713CD4A6500214796 /* coffee-cup-192.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

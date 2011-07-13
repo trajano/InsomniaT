@@ -46,6 +46,7 @@ then
   pkgutil -f --unlink net.trajano.pkg.InsomniaT.kernel
   pkgutil -f --unlink net.trajano.pkg.InsomniaT.prefpane
   pkgutil -f --unlink net.trajano.pkg.InsomniaT.uninstall
+  pkgutil -f --unlink net.trajano.pkg.InsomniaT.cli
   pkgutil -f --unlink trajano.net.insomniat.InsomniaT-1.pkg
   pkgutil -f --unlink trajano.net.insomniat.InsomniaT.pkg
   pkgutil -f --unlink trajano.net.insomniat.postflight.pkg
@@ -54,6 +55,7 @@ then
   pkgutil -f --forget net.trajano.pkg.InsomniaT.kernel
   pkgutil -f --forget net.trajano.pkg.InsomniaT.prefpane
   pkgutil -f --forget net.trajano.pkg.InsomniaT.uninstall
+  pkgutil -f --forget net.trajano.pkg.InsomniaT.cli
   pkgutil -f --forget trajano.net.insomniat.InsomniaT-1.pkg
   pkgutil -f --forget trajano.net.insomniat.InsomniaT.pkg
   pkgutil -f --forget trajano.net.insomniat.postflight.pkg
