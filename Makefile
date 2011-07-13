@@ -9,6 +9,7 @@ install:
 	sudo chown -R root:wheel build/Release/InsomniaT.kext
 	sudo cp -R build/Release/InsomniaT.kext /tmp
 	sudo kextload -v /tmp/InsomniaT.kext
+	sudo chown -R trajano build/Release/InsomniaT.kext
 
 test:
 	sudo kextunload -v /tmp/InsomniaT.kext || true
@@ -16,7 +17,7 @@ test:
 	sudo kextutil -v -t /tmp/InsomniaT.kext
 
 uninstall:
-	sudo kextunload -v /tmp/InsomniaT.kext || true
+	sudo kextunload -v /tmp/InsomniaT.kext || sudo kextunload -v /System/Library/Extensions/InsomniaT.kext || true
 
 dist:
 	cd build && zip -9r InsomniaT.zip Release

@@ -1,4 +1,5 @@
 #include <IOKit/IOLib.h>
+#include <IOKit/IOKitKeys.h>
 #include <IOKit/pwr_mgt/IOPM.h>
 #include <IOKit/pwr_mgt/RootDomain.h>
 #include "InsomniaT.h"
@@ -59,7 +60,17 @@ void net_trajano_driver_InsomniaT::updateSystemSleep() {
 	}
 }
 bool net_trajano_driver_InsomniaT::isMultipleDisplays() {
-    return false;
+    OSDictionary* dict = OSDictionary::withCapacity(1);
+    dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("IODisplayConnect"));
+    OSIterator* ioDisplayConnectIterator = getMatchingServices(dict);
+    unsigned int displayCount = 0;
+    OSObject* obj;
+    while ((obj = ioDisplayConnectIterator->getNextObject()) != NULL && displayCount < 2) {
+        ++displayCount;
+    }
+    ioDisplayConnectIterator->release();
+    dict->release();
+    return displayCount > 1;
 }
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
@@ -112,7 +123,7 @@ bool net_trajano_driver_InsomniaT::isLoggingEnabled() {
 
 bool net_trajano_driver_InsomniaT::isSleepEnabledBySystem() {
 	IOPMrootDomain *root = getPMRootDomain();
-	return 	root->getProperty(kAppleClamshellCausesSleepKey) == kOSBooleanTrue;
+	return root->getProperty(kAppleClamshellCausesSleepKey) == kOSBooleanTrue;
 }
 void net_trajano_driver_InsomniaT::enableSleep() {
 	IOPMrootDomain *root = getPMRootDomain();
