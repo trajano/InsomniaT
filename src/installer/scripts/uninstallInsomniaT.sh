@@ -27,9 +27,10 @@ then
     rm -rf /Application/Utilities/InsomniaT.app
   fi
 
-  if [ -e /Library/PreferencePanes/InsomniaTPref.prefPane ]
+  if [ -e /Library/PreferencePanes/InsomniaT.prefPane ]
   then
-    rm -rf /Library/PreferencePanes/InsomniaTPref.prefPane
+    killall "System Preferences"
+    rm -rf /Library/PreferencePanes/InsomniaT.prefPane
   fi
 
   if [ -e /usr/local/bin/insomniat ]
@@ -41,6 +42,24 @@ then
   then
     rm -rf /usr/local/bin/uninstallInsomniaT.sh
   fi
+  
+  pkgutil -f --unlink net.trajano.pkg.InsomniaT.kernel
+  pkgutil -f --unlink net.trajano.pkg.InsomniaT.prefpane
+  pkgutil -f --unlink net.trajano.pkg.InsomniaT.uninstall
+  pkgutil -f --unlink trajano.net.insomniat.InsomniaT-1.pkg
+  pkgutil -f --unlink trajano.net.insomniat.InsomniaT.pkg
+  pkgutil -f --unlink trajano.net.insomniat.postflight.pkg
+  pkgutil -f --unlink trajano.net.insomniat.preflight.pkg
+
+  pkgutil -f --forget net.trajano.pkg.InsomniaT.kernel
+  pkgutil -f --forget net.trajano.pkg.InsomniaT.prefpane
+  pkgutil -f --forget net.trajano.pkg.InsomniaT.uninstall
+  pkgutil -f --forget trajano.net.insomniat.InsomniaT-1.pkg
+  pkgutil -f --forget trajano.net.insomniat.InsomniaT.pkg
+  pkgutil -f --forget trajano.net.insomniat.postflight.pkg
+  pkgutil -f --forget trajano.net.insomniat.preflight.pkg
+  
+  exit 0
 
 else
   echo "You need to run this program as root, use sudo $0"

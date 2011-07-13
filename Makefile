@@ -2,10 +2,10 @@ installer:
 	sudo chown root:wheel build/Release/insomniat
 	sudo chown -R root:wheel build/Release/InsomniaT.kext
 	sudo chown -R root:wheel "build/Release/InsomniaT (10.5).kext"
+	cd src/installer && /Developer/usr/bin/packageMaker --doc ${PRODUCT_NAME}.pmdoc --out ../../build/${PRODUCT_NAME}-${CURRENT_PROJECT_VERSION}.pkg  --temp-root
 	sudo chown -R trajano "build/Release/InsomniaT (10.5).kext"
 	sudo chown -R trajano build/Release/InsomniaT.kext
 	sudo chown trajano build/Release/insomniat
-	cd src/installer && /Developer/usr/bin/packageMaker --doc ${PRODUCT_NAME}.pmdoc --out ../../build/${PRODUCT_NAME}-${CURRENT_PRODUCT_VERSION}.pkg
 
 install:
 	sudo kextunload -v /tmp/InsomniaT.kext || sudo kextunload -v /System/Library/Extensions/InsomniaT.kext || true

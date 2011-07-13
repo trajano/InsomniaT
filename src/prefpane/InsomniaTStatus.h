@@ -9,6 +9,11 @@
 #import <Cocoa/Cocoa.h>
 
 @interface InsomniaTStatus : NSObject {
+    /**
+     * This is zero if disabled
+     * This is one if enabled
+     * This is two if there's a problem
+     */
 	NSNumber* insomniaTEnabled;
 }
 

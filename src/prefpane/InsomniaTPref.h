@@ -16,6 +16,8 @@
 	IBOutlet NSTextField *statusLevelBlurb;
 	IBOutlet NSButton *startStopButton;
 	IBOutlet NSTextField *startStopButtonBlurb;
+	IBOutlet NSButton *uninstallButton;
+	IBOutlet NSTextField *uninstallButtonBlurb;
 }
 
 - (void) mainViewDidLoad;

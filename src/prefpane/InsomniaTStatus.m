@@ -18,7 +18,8 @@
 		io_service_t    service;
 		service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 		if (service == IO_OBJECT_NULL) {
-			return nil;
+			[self setValue: [NSNumber numberWithUnsignedInt: 2]
+					forKey: @"insomniaTEnabled"];
 		}
 		
 		io_connect_t connect;
@@ -32,21 +33,22 @@
 			[self setValue: [NSNumber numberWithUnsignedInt: output[0]]
 					forKey: @"insomniaTEnabled"];
 		} else {
-			return nil;
+			[self setValue: [NSNumber numberWithUnsignedInt: 2]
+					forKey: @"insomniaTEnabled"];
 		}
 	}
 	return self;
 }
 
 -(uint64_t) getInsomniaTStatusFromDriver{
-	NSLog(@"HERE!!!!!!");
+	NSLog(@"Retrieving status from driver");
 		// By design this is replicated because we want to make sure we
 		// always get the currently running driver rather than somethin
 		// that may have been gone from a KExt restart or reinstall.
 	io_service_t    service;
 	service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
-        return -1;
+        return 2;
     }
 	
 	io_connect_t connect;
@@ -59,14 +61,15 @@
 		IOServiceClose(connect);
 		return output[0];
 	} else {
-		return -1;
+		return 2;
 	}
 }
 
 - (void) enableInsomniaT {
-	io_service_t    service;
-	service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
+	const io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
+		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
+				forKey: @"insomniaTEnabled"];
         return;
     }
 	
@@ -78,16 +81,15 @@
 		uint32_t count = 0;
 		IOConnectCallScalarMethod(connect, 1, NULL, 0, output, &count);
 		IOServiceClose(connect);
-		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
-				forKey: @"insomniaTEnabled"];
-	} else {
-		return;
 	}
+    [self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
+            forKey: @"insomniaTEnabled"];
 }
 - (void) disableInsomniaT {
-	io_service_t    service;
-	service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
+	const io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
+		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
+				forKey: @"insomniaTEnabled"];
         return;
     }
 	
@@ -99,11 +101,9 @@
 		uint32_t count = 0;
 		IOConnectCallScalarMethod(connect, 2, NULL, 0, output, &count);
 		IOServiceClose(connect);
-		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
-				forKey: @"insomniaTEnabled"];
-	} else {
-		return;
 	}
+    [self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
+            forKey: @"insomniaTEnabled"];
 }
 
 - (void)setNilValueForKey:(NSString *)theKey {

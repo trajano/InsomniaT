@@ -79,6 +79,6 @@ IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod( uint32_t select
 		return kIOReturnSuccess;
 	} 
 	
-	return super::externalMethod(selector,arguments,dispatch,target,reference);
-	
+    IOLog("InsomniaT: unknown method selector %d -- ignoring\n", selector);
+    return kIOReturnBadArgument;	
 }

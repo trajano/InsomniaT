@@ -15,6 +15,8 @@
 	IBOutlet NSTextField *statusLevelBlurb;
 	IBOutlet NSButton *startStopButton;
 	IBOutlet NSTextField *startStopButtonBlurb;
+	IBOutlet NSButton *uninstallButton;
+	IBOutlet NSTextField *uninstallButtonBlurb;
 	InsomniaTStatus *insomniaTstatus;
 }
 /*
@@ -27,4 +29,5 @@
  */
 - (IBAction) updateStatus:(id) sender;
 - (IBAction) startStop:(id)sender;
+- (IBAction) uninstall:(id)sender;
 @end
