@@ -42,12 +42,7 @@ void net_trajano_driver_InsomniaT::updateSystemSleep() {
 		IOLog("InsomniaT: sleep is disabled by system\n");
 	} 
     
-    if (isMultipleDisplays()) {
-		if (isLoggingEnabled()) {
-			IOLog("InsomniaT: multiple displays detected, disabling sleep.\n");
-		} 
-        disableSleep();
-    } else if (isSleepEnabled() && !isSleepEnabledBySystem()) {
+    if (isSleepEnabled() && !isSleepEnabledBySystem()) {
 		if (isLoggingEnabled()) {
 			IOLog("InsomniaT: enabling sleep.\n");
 		} 
@@ -75,16 +70,16 @@ bool net_trajano_driver_InsomniaT::isMultipleDisplays() {
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
 	IOPMrootDomain *root = getPMRootDomain();
-
+    
 	IOWorkLoop *workloop = getWorkLoop();
 	if (!workloop) {
 		return false;
 	}
 	
 	fAppleClamshellCausesSleep = root->getProperty(kAppleClamshellCausesSleepKey);
-	fNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
+    fNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
 	disableSleep();
-
+    
     bool res = super::start(provider);
 	if (res) {
 		registerService();
@@ -93,9 +88,15 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 }
 
 void net_trajano_driver_InsomniaT::disableSleep() {
+    if (isMultipleDisplays()) {
+		if (isLoggingEnabled()) {
+			IOLog("InsomniaT: multiple displays detected doing nothing.\n");
+		} 
+        return;
+    }
 	IOPMrootDomain *root = getPMRootDomain();
 	root->setProperty(kAppleClamshellCausesSleepKey,kOSBooleanFalse);
-		// Calling this method will set the ignoringClamShell to true for the PM root domain.
+    // Calling this method will set the ignoringClamShell to true for the PM root domain.
 	root->receivePowerNotification(kIOPMDisableClamshell);
 	if (isLoggingEnabled()) {
 		IOLog("InsomniaT: disabling sleep complete\n");
@@ -126,10 +127,15 @@ bool net_trajano_driver_InsomniaT::isSleepEnabledBySystem() {
 	return root->getProperty(kAppleClamshellCausesSleepKey) == kOSBooleanTrue;
 }
 void net_trajano_driver_InsomniaT::enableSleep() {
+    if (isMultipleDisplays()) {
+		if (isLoggingEnabled()) {
+			IOLog("InsomniaT: multiple displays detected doing nothing.\n");
+		} 
+        return;
+    }
 	IOPMrootDomain *root = getPMRootDomain();
-	
 	root->setProperty(kAppleClamshellCausesSleepKey,fAppleClamshellCausesSleep);
-		// Calling this method will set the ignoringClamShell to false for the PM root domain.
+    // Calling this method will set the ignoringClamShell to false for the PM root domain.
 	root->receivePowerNotification(kIOPMEnableClamshell);
 	if (isLoggingEnabled()) {
 		IOLog("InsomniaT: enabling sleep complete\n");
