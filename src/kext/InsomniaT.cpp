@@ -58,6 +58,9 @@ bool net_trajano_driver_InsomniaT::isMultipleDisplays() {
     OSDictionary* dict = OSDictionary::withCapacity(1);
     dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("IODisplayConnect"));
     OSIterator* ioDisplayConnectIterator = getMatchingServices(dict);
+    if (ioDisplayConnectIterator == NULL) {
+        return false;
+    }
     unsigned int displayCount = 0;
     OSObject* obj;
     while ((obj = ioDisplayConnectIterator->getNextObject()) != NULL && displayCount < 2) {
