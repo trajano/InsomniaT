@@ -19,10 +19,70 @@ IOReturn handleSleepWakeInterest( void * target, void * refCon,
 	if (messageType == kIOPMMessageClamshellStateChange) {
 		if (obj->isLoggingEnabled()) {
 			IOLog("InsomniaT: message type is kIOPMMessageClamshellStateChange.\n");
-		} 
+		}
 		obj->updateSystemSleep();
 	}
 	return 0;
+}
+
+IOService* net_trajano_driver_InsomniaT::getBuiltInISight() {
+    if (builtInISight != NULL) {
+        return builtInISight;
+    }
+    IOLog("lookup Built-in iSight\n");
+    OSDictionary* dict = OSDictionary::withCapacity(2);
+    dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("IOUSBDevice"));
+    dict->setObject(kIONameMatchKey, OSString::withCStringNoCopy("Built-in iSight"));
+    OSIterator* ioDisplayConnectIterator = getMatchingServices(dict);
+    if (ioDisplayConnectIterator == NULL) {
+        dict->release();
+        return NULL;
+    }
+    unsigned int deviceCount = 0;
+    OSObject* obj;
+    while ((obj = ioDisplayConnectIterator->getNextObject()) != NULL && deviceCount < 2) {
+        builtInISight = OSDynamicCast(IOService, obj);
+        ++deviceCount;
+    }
+    ioDisplayConnectIterator->release();
+    IOLog("iSight count = %d\n", deviceCount);
+    if (deviceCount > 1) {
+        dict->release();
+        builtInISight = NULL;
+        return NULL;
+    }
+    IOLog("iSight found = %d\n", builtInISight);
+    dict->release();
+    return builtInISight;
+}
+
+IOService* net_trajano_driver_InsomniaT::getAppleBacklightDisplay() {
+    if (appleBacklightDisplay != NULL) {
+        return appleBacklightDisplay;
+    }
+    IOLog("lookup backlight display\n");
+    OSDictionary* dict = OSDictionary::withCapacity(1);
+    dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("AppleBacklightDisplay"));
+    OSIterator* ioDisplayConnectIterator = getMatchingServices(dict);
+    if (ioDisplayConnectIterator == NULL) {
+        dict->release();
+        return NULL;
+    }
+    unsigned int displayCount = 0;
+    OSObject* obj;
+    while ((obj = ioDisplayConnectIterator->getNextObject()) != NULL && displayCount < 2) {
+        appleBacklightDisplay = OSDynamicCast(IOService, obj);
+        ++displayCount;
+    }
+    ioDisplayConnectIterator->release();
+    IOLog("display count = %d\n", displayCount);
+    if (displayCount > 1) {
+        dict->release();
+        appleBacklightDisplay = NULL;
+        return NULL;
+    }
+    dict->release();
+    return appleBacklightDisplay;
 }
 
 void net_trajano_driver_InsomniaT::updateSystemSleep() {
@@ -42,6 +102,28 @@ void net_trajano_driver_InsomniaT::updateSystemSleep() {
 		IOLog("InsomniaT: sleep is disabled by system\n");
 	} 
     
+    /*
+     This logic does not work at the moment
+     
+    if (getBuiltInISight() != NULL) {
+        IOPMrootDomain *root = getPMRootDomain();
+        if (root->getProperty(kAppleClamshellStateKey) == kOSBooleanTrue) {
+            // Lid is closed
+            IOLog("InsomniaT: lid is closed, disabling camera to prevent screen activation\n");
+            // The USB device itself has no power state, it has to be in the controller.
+            ((IOService*)(getBuiltInISight()->getParentEntry(gIOServicePlane)))->changePowerStateTo(0x0);
+            // getAppleBacklightDisplay()->changePowerStateTo(0x0);
+        } else if (root->getProperty(kAppleClamshellStateKey) == kOSBooleanFalse) {
+            // Lid is open
+            IOLog("InsomniaT: lid is open, enabling camera\n");
+            ((IOService*)(getBuiltInISight()->getParentEntry(gIOServicePlane)))->changePowerStateTo(0x3);
+            // getAppleBacklightDisplay()->changePowerStateTo(0x3);
+        } 
+    } else {
+        IOLog("InsomniaT: missing Built-in ISight\n");
+    }
+    */
+
     if (isSleepEnabled() && !isSleepEnabledBySystem()) {
 		if (isLoggingEnabled()) {
 			IOLog("InsomniaT: enabling sleep.\n");
@@ -59,6 +141,7 @@ bool net_trajano_driver_InsomniaT::isMultipleDisplays() {
     dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("IODisplayConnect"));
     OSIterator* ioDisplayConnectIterator = getMatchingServices(dict);
     if (ioDisplayConnectIterator == NULL) {
+        dict->release();
         return false;
     }
     unsigned int displayCount = 0;
@@ -82,6 +165,8 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 	fAppleClamshellCausesSleep = root->getProperty(kAppleClamshellCausesSleepKey);
     fNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
 	disableSleep();
+    appleBacklightDisplay = NULL;
+    builtInISight = NULL;
     
     bool res = super::start(provider);
 	if (res) {
@@ -129,6 +214,7 @@ bool net_trajano_driver_InsomniaT::isSleepEnabledBySystem() {
 	IOPMrootDomain *root = getPMRootDomain();
 	return root->getProperty(kAppleClamshellCausesSleepKey) == kOSBooleanTrue;
 }
+
 void net_trajano_driver_InsomniaT::enableSleep() {
     if (isMultipleDisplays()) {
 		if (isLoggingEnabled()) {
@@ -181,6 +267,8 @@ void net_trajano_driver_InsomniaT::stop(IOService *provider)
 		IOLog("InsomniaT: service is stopping.\n");
 	} 
 	fNotifier->remove();
+    appleBacklightDisplay = NULL;
+    builtInISight = NULL;
 	enableSleep();
 	super::stop(provider);
 }

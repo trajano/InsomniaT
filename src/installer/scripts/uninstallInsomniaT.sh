@@ -12,12 +12,22 @@ then
   echo "Uninstalling InsomniaT..."
   if [ -e /System/Library/Extensions/InsomniaT.kext ]
   then
+    # try to unload twice in case it does not work the first time
+    kextunload -c net.trajano.driver.InsomniaT
+    kextunload /System/Library/Extensions/InsomniaT.kext
+    rm -rf /System/Library/Extensions/InsomniaT.kext
+    kextunload -c net.trajano.driver.InsomniaT
     kextunload /System/Library/Extensions/InsomniaT.kext
     rm -rf /System/Library/Extensions/InsomniaT.kext
   fi
 
   if [ -e "/System/Library/Extensions/InsomniaT (10.5).kext" ]
   then
+    # try to unload twice in case it does not work the first time
+    kextunload -c net.trajano.driver.InsomniaT
+    kextunload "/System/Library/Extensions/InsomniaT (10.5).kext"
+    rm -rf "/System/Library/Extensions/InsomniaT (10.5).kext"
+    kextunload -c net.trajano.driver.InsomniaT
     kextunload "/System/Library/Extensions/InsomniaT (10.5).kext"
     rm -rf "/System/Library/Extensions/InsomniaT (10.5).kext"
   fi
