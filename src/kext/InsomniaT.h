@@ -11,17 +11,12 @@ class net_trajano_driver_InsomniaT : public IOService
 private:
 	OSObject* fAppleClamshellCausesSleep;
 	IONotifier* fNotifier;
-    /**
-     * The AppleBacklightDisplay.  There should be only one or NULL.  Once it
-     * has been set, it should be kept.
-     */
-	IOService* appleBacklightDisplay;
 
     /**
-     * The Built-in ISight device.  There should be only one or NULL.  Once it
-     * has been set, it should be kept.
+     * The light sensor.  There should be only one or NULL.  Once it has been
+     * set, it should be kept.
      */
-    IOService* builtInISight;
+    IOService* appleLMUController;
 	/**
 	 * Checks if the system itself allows for sleep.
 	 * Used the positive form to prevent negatives in the method name for
@@ -37,14 +32,10 @@ private:
 	virtual bool isMultipleDisplays();
     
     /**
-     * This gets the AppleBacklightDisplay.  There should be only one.
+     * This gets the Apple LMU Controller which are the light sensors.  There
+     * should be only one.
      */
-	virtual IOService* getAppleBacklightDisplay();
-
-    /**
-     * This gets the Built-in ISight.  There should be only one.
-     */
-	virtual IOService* getBuiltInISight();
+	virtual IOService* getAppleLMUController();
 	virtual void disableSleep();
 	virtual void enableSleep();
 	
