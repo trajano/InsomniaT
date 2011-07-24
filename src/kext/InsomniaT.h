@@ -1,3 +1,5 @@
+#ifndef INSOMNIAT_H
+#define INSOMNIAT_H
 #include <IOKit/IOService.h>
 
 class net_trajano_driver_InsomniaT : public IOService
@@ -70,3 +72,4 @@ public:
 	static const char* gKeySleepEnabled;
 	static const char* gKeyLoggingEnabled;
 };
+#endif

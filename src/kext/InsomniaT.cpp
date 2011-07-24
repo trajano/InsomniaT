@@ -3,6 +3,7 @@
 #include <IOKit/pwr_mgt/IOPM.h>
 #include <IOKit/pwr_mgt/RootDomain.h>
 #include "InsomniaT.h"
+#include "InsomniaTUserClient.h"
 
 #define super IOService
 
@@ -30,9 +31,9 @@ IOService* net_trajano_driver_InsomniaT::getBuiltInISight() {
         return builtInISight;
     }
     IOLog("lookup Built-in iSight\n");
-    OSDictionary* dict = OSDictionary::withCapacity(2);
-    dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("IOUSBDevice"));
-    dict->setObject(kIONameMatchKey, OSString::withCStringNoCopy("Built-in iSight"));
+    OSDictionary* dict = OSDictionary::withCapacity(1);
+    dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("AppleLMUController"));
+//    dict->setObject(kIONameMatchKey, OSString::withCStringNoCopy("Built-in iSight"));
     OSIterator* ioDisplayConnectIterator = getMatchingServices(dict);
     if (ioDisplayConnectIterator == NULL) {
         dict->release();
@@ -51,7 +52,7 @@ IOService* net_trajano_driver_InsomniaT::getBuiltInISight() {
         builtInISight = NULL;
         return NULL;
     }
-    IOLog("iSight found = %d\n", builtInISight);
+    IOLog("iSight found");
     dict->release();
     return builtInISight;
 }
@@ -102,27 +103,33 @@ void net_trajano_driver_InsomniaT::updateSystemSleep() {
 		IOLog("InsomniaT: sleep is disabled by system\n");
 	} 
     
-    /*
-     This logic does not work at the moment
-     
+    
     if (getBuiltInISight() != NULL) {
         IOPMrootDomain *root = getPMRootDomain();
         if (root->getProperty(kAppleClamshellStateKey) == kOSBooleanTrue) {
             // Lid is closed
             IOLog("InsomniaT: lid is closed, disabling camera to prevent screen activation\n");
             // The USB device itself has no power state, it has to be in the controller.
-            ((IOService*)(getBuiltInISight()->getParentEntry(gIOServicePlane)))->changePowerStateTo(0x0);
+            //            ((IOService*)(getBuiltInISight()->getParentEntry(gIOServicePlane)))->changePowerStateTo(0x0);
             // getAppleBacklightDisplay()->changePowerStateTo(0x0);
+            getBuiltInISight()->changePowerStateTo(0x0);
         } else if (root->getProperty(kAppleClamshellStateKey) == kOSBooleanFalse) {
             // Lid is open
             IOLog("InsomniaT: lid is open, enabling camera\n");
-            ((IOService*)(getBuiltInISight()->getParentEntry(gIOServicePlane)))->changePowerStateTo(0x3);
+//            ((IOService*)(getBuiltInISight()->getParentEntry(gIOServicePlane)))->changePowerStateTo(0x1);
             // getAppleBacklightDisplay()->changePowerStateTo(0x3);
+            getBuiltInISight()->changePowerStateTo(0x1);
         } 
     } else {
         IOLog("InsomniaT: missing Built-in ISight\n");
     }
-    */
+    
+    // If lid is open disable check on the brightness
+    net_trajano_driver_InsomniaTUserClient* client = (net_trajano_driver_InsomniaTUserClient*)getClient();
+    if (client != NULL) {
+        // In theory this will call the user land client 
+        // to disable the automatic brightness adjustment
+    }
 
     if (isSleepEnabled() && !isSleepEnabledBySystem()) {
 		if (isLoggingEnabled()) {

@@ -18,8 +18,11 @@
 	IBOutlet NSTextField *startStopButtonBlurb;
 	IBOutlet NSButton *uninstallButton;
 	IBOutlet NSTextField *uninstallButtonBlurb;
+    io_service_t    service;
+    io_connect_t connect;
 }
 
-- (void) mainViewDidLoad;
+- (void) willSelect;
+- (void) didUnselect;
 
 @end

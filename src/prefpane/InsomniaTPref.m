@@ -11,9 +11,7 @@
 
 @implementation InsomniaTPref
 
-- (void) mainViewDidLoad
-{
-	io_service_t    service;
+- (void) willSelect {
 	service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
         [statusLevel setIntValue: 2];
@@ -26,7 +24,6 @@
 		return;
 	}
 	
-	io_connect_t connect;
 	kern_return_t kernResult = IOServiceOpen(service, mach_task_self(), 0, &connect);
 	if (kernResult == KERN_SUCCESS) {
 		
@@ -70,6 +67,9 @@
 		return;
 	}
 	
+}
+
+- (void) didUnselect {
 }
 
 @end
