@@ -50,19 +50,29 @@
         //	bool insomniaTEnabled = [change objectForKey: NSKeyValueChangeNewKey];
 		[self updateStatus: nil];
 		
-    }
-	
-    // be sure to call the super implementation	
-    // if the superclass implements it
-	
-    [super observeValueForKeyPath:keyPath
-						 ofObject:object
-						   change:change
-						  context:context];
-	
+    } else {
+        
+        // be sure to call the super implementation	
+        // if the superclass implements it
+        
+        [super observeValueForKeyPath:keyPath
+                             ofObject:object
+                               change:change
+                              context:context];
+	}
 	
 }
 - (IBAction) updateStatus:(id) sender {
+    
+    SInt32 sysv;
+    Gestalt(gestaltSystemVersion, &sysv);
+
+    if (sysv >= 0x1070) {
+        [automaticBrightnessBlurb setTitleWithMnemonic: @"Please note that if \"Automatically adjust brightness\" is enabled in the Displays preference pane then the backlight will turn on temporarily for a few seconds before switching off again."];
+    } else {
+        [automaticBrightnessBlurb setTitleWithMnemonic: @"Please note that if \"Automatically adjust brightness as ambient light changes\" is enabled in the Displays preference pane then the backlight will turn on temporarily for a few seconds before switching off again."];
+    }
+    
 	if ([[insomniaTstatus insomniaTEnabled] unsignedIntValue] == 0) {
 		[statusLevel setIntValue: 1];
 		[statusLevelText setTitleWithMnemonic: @"InsomniaT: On"];
@@ -84,7 +94,6 @@
 		[startStopButton setTitle: @"Start"];
 		[startStopButtonBlurb setTitleWithMnemonic: @"Unable to start as InsomniaT kernel extension is not installed."];
 		[startStopButton setEnabled: false];
-		[uninstallButtonBlurb setTitleWithMnemonic: @"InsomniaT is already uninstalled, please remove the preference pane"];
     }
 }
 - (IBAction)startStop:(id)sender {
@@ -99,65 +108,5 @@
 		[startStopButton setEnabled: false];
 		[insomniaTstatus enableInsomniaT];
 	}
-}
-- (IBAction)uninstall:(id)sender {
-    AuthorizationRef myAuthorizationRef;
-    OSStatus osStatus = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment,kAuthorizationFlagDefaults,&myAuthorizationRef);
-    if (osStatus != errAuthorizationSuccess) {
-        return;
-    }
-    
-    AuthorizationItem myItems = {kAuthorizationRightExecute, 0,   
-        NULL, 0};
-    
-    AuthorizationRights myRights = {1, &myItems};                 
-    
-    
-    AuthorizationFlags myFlags = kAuthorizationFlagDefaults |                        
-    kAuthorizationFlagInteractionAllowed |    
-    kAuthorizationFlagPreAuthorize |    
-    kAuthorizationFlagExtendRights;
-    
-    OSStatus copyStatus = AuthorizationCopyRights (myAuthorizationRef, &myRights, NULL, myFlags, NULL );
-    if (copyStatus != errAuthorizationSuccess) {
-        return;
-    }
-    
-	if ([[insomniaTstatus insomniaTEnabled] unsignedIntValue] == 1) {
-		[startStopButton setTitle: @"Stopping..."];
-		[startStopButtonBlurb setTitleWithMnemonic: @"Please wait, trying to stop InsomniaT ..."];
-		[startStopButton setEnabled: false];
-		[insomniaTstatus disableInsomniaT];
-	} 
-    if (access("/System/Library/Extensions/InsomniaT.kext", R_OK)) {
-        char *args[] = { "/System/Library/Extensions/InsomniaT.kext", NULL };
-        const OSStatus status = AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/sbin/kextunload", myFlags, args, NULL);
-        if (status != errAuthorizationSuccess) {
-            NSBeep();
-        }
-    }
-    if (access("/System/Library/Extensions/InsomniaT (10.5).kext", R_OK)) {
-        char *args[] = { "/System/Library/Extensions/InsomniaT (10.5).kext", NULL };
-        const OSStatus status = AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/sbin/kextunload", myFlags, args, NULL);
-        if (status != errAuthorizationSuccess) {
-            NSBeep();
-        }
-    }
-    if (access("/System/Library/Extensions/InsomniaT.kext", R_OK)) {
-        char *args[] = { "-rf", "/System/Library/Extensions/InsomniaT.kext", NULL };
-        AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/bin/rm", myFlags, args, NULL);
-    }
-    if (access("/System/Library/Extensions/InsomniaT (10.5).kext", R_OK)) {
-        char *args[] = { "-rf", "/System/Library/Extensions/InsomniaT (10.5).kext", NULL };
-        AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/bin/rm", myFlags, args, NULL);
-    }
-    if (access("/usr/local/bin", R_OK)) {
-        char *args[] = { "-rf", "/usr/local/bin/insomniat", NULL };
-        AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/bin/rm", myFlags, args, NULL);
-    }
-    AuthorizationFree(myAuthorizationRef, kAuthorizationFlagDestroyRights);
-
-    // Do a disable to trigger a change in the status.
-    [insomniaTstatus disableInsomniaT];
 }
 @end

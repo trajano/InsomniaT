@@ -3009,6 +3009,62 @@
 						<key>TestOperator</key>
 						<string>&gt;=</string>
 					</dict>
+					<dict>
+						<key>AlertDialog</key>
+						<dict>
+							<key>International</key>
+							<dict>
+								<key>MessageKey</key>
+								<string>InsomniaT (or a previous version) is already installed.  Please run the uninstall script before installing.</string>
+								<key>TitleKey</key>
+								<string>InsomniaT already installed</string>
+							</dict>
+						</dict>
+						<key>LabelKey</key>
+						<string>InsomniaT already installed</string>
+						<key>Level</key>
+						<integer>0</integer>
+						<key>SpecArgument</key>
+						<string>/System/Library/Extensions/InsomniaT.kext</string>
+						<key>SpecTag</key>
+						<integer>0</integer>
+						<key>SpecType</key>
+						<string>bundle</string>
+						<key>Status</key>
+						<true/>
+						<key>TestObject</key>
+						<string></string>
+						<key>TestOperator</key>
+						<string>=</string>
+					</dict>
+					<dict>
+						<key>AlertDialog</key>
+						<dict>
+							<key>International</key>
+							<dict>
+								<key>MessageKey</key>
+								<string></string>
+								<key>TitleKey</key>
+								<string>InsomniaT already installed</string>
+							</dict>
+						</dict>
+						<key>LabelKey</key>
+						<string>InsomniaT already installed (10.5)</string>
+						<key>Level</key>
+						<integer>0</integer>
+						<key>SpecArgument</key>
+						<string>/System/Library/Extensions/InsomniaT (10.5).kext</string>
+						<key>SpecTag</key>
+						<integer>0</integer>
+						<key>SpecType</key>
+						<string>bundle</string>
+						<key>Status</key>
+						<true/>
+						<key>TestObject</key>
+						<string></string>
+						<key>TestOperator</key>
+						<string>=</string>
+					</dict>
 				</array>
 			</dict>
 			<key>Settings</key>
@@ -3024,13 +3080,13 @@
 						<key>IFPkgDescriptionTitle</key>
 						<string>InsomniaT</string>
 						<key>IFPkgDescriptionVersion</key>
-						<string>3.0.1</string>
+						<string>3.0.2</string>
 					</dict>
 				</dict>
 				<key>Display Information</key>
 				<dict>
 					<key>CFBundleGetInfoString</key>
-					<string>InsomniaT 3.0.1 Copyrights © 2009-2011 trajano.net</string>
+					<string>InsomniaT 3.0.2 Copyrights © 2009-2011 trajano.net</string>
 					<key>CFBundleIconFile</key>
 					<string></string>
 					<key>CFBundleIconFile Path Type</key>

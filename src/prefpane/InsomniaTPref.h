@@ -7,21 +7,12 @@
 //
 
 #import <PreferencePanes/PreferencePanes.h>
-
+#import "InsomniaTPrefController.h"
 
 @interface InsomniaTPref : NSPreferencePane 
 {
-	IBOutlet NSLevelIndicator *statusLevel;
-	IBOutlet NSTextField *statusLevelText;
-	IBOutlet NSTextField *statusLevelBlurb;
-	IBOutlet NSButton *startStopButton;
-	IBOutlet NSTextField *startStopButtonBlurb;
-	IBOutlet NSButton *uninstallButton;
-	IBOutlet NSTextField *uninstallButtonBlurb;
-    io_service_t    service;
-    io_connect_t connect;
+    IBOutlet InsomniaTPrefController *controller;
 }
-
 - (void) willSelect;
 - (void) didUnselect;
 

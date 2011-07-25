@@ -147,6 +147,7 @@
 		2C6FCD1611C04738004D0737 /* uninstallInsomniaT.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstallInsomniaT.sh; sourceTree = "<group>"; };
 		2C6FCDA211C054AC004D0737 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2C6FCDA411C054AC004D0737 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = InsomniaTPref.xib; sourceTree = "<group>"; };
+		2CA53D1513DDA75800FD2F33 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		2CC5441C1087B6E200992CF8 /* InsomniaTTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaTTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE3748E13CD0E740018B7E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -241,6 +242,7 @@
 				2C6FC4E411C035A4004D0737 /* PreferencePanes.framework */,
 				2C201C0E1087ABF9002447D1 /* Cocoa.framework */,
 				2C200E2F108704F8002447D1 /* IOKit.framework */,
+				2CA53D1513DDA75800FD2F33 /* CoreServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -353,7 +355,7 @@
 			buildConfigurationList = 2C201B69108733FB002447D1 /* Build configuration list for PBXLegacyTarget "Installer" */;
 			buildPhases = (
 			);
-			buildToolPath = /usr/bin/make;
+			buildToolPath = make;
 			dependencies = (
 				2CC544BA1088145500992CF8 /* PBXTargetDependency */,
 			);
