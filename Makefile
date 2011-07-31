@@ -15,6 +15,14 @@ test:
 	sudo kextunload -v /tmp/InsomniaT.kext || true
 	sudo cp -R build/Release/InsomniaT.kext /tmp
 	sudo kextutil -v -t /tmp/InsomniaT.kext
+	build/Release/insomniat -n
+	sleep 60
+	sudo kextunload -v /tmp/InsomniaT.kext || true
+
+test2:
+	sudo kextunload -v /tmp/InsomniaT.kext || true
+	sudo cp -R build/Release/InsomniaT.kext /tmp
+	sudo kextutil -v -t /tmp/InsomniaT.kext
 
 uninstall:
 	sudo kextunload -v /tmp/InsomniaT.kext || sudo kextunload -v /System/Library/Extensions/InsomniaT.kext || true

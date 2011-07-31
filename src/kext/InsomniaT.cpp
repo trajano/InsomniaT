@@ -3,140 +3,211 @@
 #include <IOKit/pwr_mgt/IOPM.h>
 #include <IOKit/pwr_mgt/RootDomain.h>
 #include "InsomniaT.h"
-#include "InsomniaTUserClient.h"
 
 #define super IOService
 
-OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
+#ifndef DEBUG
+#define IOLog(x, ...)
+#endif
 
-IOReturn handleSleepWakeInterest( void * target, void * refCon,
-								 UInt32 messageType, IOService * provider,
-								 void * messageArgument, vm_size_t argSize )
-{
-	net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT*)target;
-	if (obj->isLoggingEnabled()) {
-		IOLog("InsomniaT: handleSleepWakeInterest invoked with message type %x.\n", (unsigned int)messageType);
-	} 
-	if (messageType == kIOPMMessageClamshellStateChange) {
-		if (obj->isLoggingEnabled()) {
-			IOLog("InsomniaT: message type is kIOPMMessageClamshellStateChange.\n");
-		}
-		obj->updateSystemSleep();
-	}
-	return 0;
-}
+// This should should be in IOPM.h but does not seem to be there.
+#ifndef kIOPMMessageSleepWakeUUIDChange
+#define kIOPMMessageSleepWakeUUIDChange iokit_family_msg(sub_iokit_powermanagement, 0x140)
+#define kIOPMMessageSleepWakeUUIDSet      ((void *)1)
+#define kIOPMMessageSleepWakeUUIDCleared  ((void *)0)
+#endif
+#ifndef kIOPMMessageDriverAssertionsChanged
+#define kIOPMMessageDriverAssertionsChanged iokit_family_msg(sub_iokit_powermanagement, 0x150)
+#endif
+#ifndef kIOPMPowerStateMax
+#define kIOPMPowerStateMax          0xFFFFFFFF
+#endif
 
-IOService* net_trajano_driver_InsomniaT::getAppleLMUController() {
-    if (appleLMUController != NULL) {
-        return appleLMUController;
-    }
-    if (isLoggingEnabled()) {
-        IOLog("lookup AppleLMUController\n");
-    }
+/**
+ * Returns a single instance of an IOService for a given class name and a base provider.
+ */
+static IOService* getIOService(const char* className, const IOService* provider) {
     OSDictionary* dict = OSDictionary::withCapacity(1);
-    dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("AppleLMUController"));
-    OSIterator* ioDisplayConnectIterator = getMatchingServices(dict);
-    if (ioDisplayConnectIterator == NULL) {
-        dict->release();
+    dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy(className));
+    
+    OSIterator* i = provider->getMatchingServices(dict);
+    if (i == NULL) {
         return NULL;
     }
     unsigned int deviceCount = 0;
     OSObject* obj;
-    while ((obj = ioDisplayConnectIterator->getNextObject()) != NULL && deviceCount < 2) {
-        appleLMUController = OSDynamicCast(IOService, obj);
+    IOService* service;
+    
+    while ((obj = i->getNextObject()) != NULL && deviceCount < 2) {
+        service = OSDynamicCast(IOService, obj);
         ++deviceCount;
     }
-    ioDisplayConnectIterator->release();
-    if (isLoggingEnabled()) {
-        IOLog("AppleLMUController count = %d\n", deviceCount);
-    }
+    i->release();
     if (deviceCount > 1) {
-        dict->release();
-        appleLMUController = NULL;
+        IOLog("InsomniaT: %s count = %d, returning NULL\n", className, deviceCount);
         return NULL;
     }
-    if (isLoggingEnabled()) {
-        IOLog("AppleLMUController found");
-    }
-    dict->release();
-    return appleLMUController;
+    IOLog("InsomniaT: %s found %p\n", className, service);
+    return service;
 }
 
-void net_trajano_driver_InsomniaT::updateSystemSleep() {
-	if (isLoggingEnabled()) {
-		IOLog("InsomniaT: sleep status is being updated.\n");
-	} 
-	if (isLoggingEnabled() && isSleepEnabled()) {
-		IOLog("InsomniaT: sleep is enabled\n");
-	} 
-	if (isLoggingEnabled() && !isSleepEnabled()) {
-		IOLog("InsomniaT: sleep is disabled\n");
-	} 
-	if (isLoggingEnabled() && isSleepEnabledBySystem()) {
-		IOLog("InsomniaT: sleep is enabled by system\n");
-	} 
-	if (isLoggingEnabled() && !isSleepEnabledBySystem()) {
-		IOLog("InsomniaT: sleep is disabled by system\n");
-	} 
+IOReturn handleIOServiceSleepWakeInterest(void *target, void *refCon,
+                                          UInt32 messageType, IOService *provider,
+                                          void *messageArgument, vm_size_t argSize )
+{
+    IOService *obj = (IOService *)target;
+    IOLog("InsomniaT: handleIOServiceSleepWakeInterest on %s invoked with %lx\n", obj->getName(), (unsigned long)messageType);
     
-    
-    IOPMrootDomain *root = getPMRootDomain();
-    if (root->getProperty(kAppleClamshellStateKey) == kOSBooleanTrue) {
-        // Lid is closed
-        if (isLoggingEnabled()) {
-            IOLog("InsomniaT: lid is closed, disabling ambient light sensor prevent screen activation\n");
+    if (messageType == kIOPMMessageClamshellStateChange) {
+        IOLog("InsomniaT: handleIOServiceSleepWakeInterest invoked with kIOPMMessageClamshellStateChange\n");
+        const long message = (long)messageArgument;
+        const bool clamshellClosed = (message & kClamshellStateBit);
+        IOLog("InsomniaT: clamshellClosed = %d\n", clamshellClosed);
+        if (clamshellClosed && obj->getPowerState() != 0x0) {
+            IOLog("InsomniaT: clamshell closed and %s is on, turning %s off\n", obj->getName(), obj->getName());
+            obj->changePowerStateTo(0x0);
+        } else if (!clamshellClosed && obj->getPowerState() == 0x0) {
+            IOLog("InsomniaT: clamshell open and %s is off, turning %s on\n", obj->getName(), obj->getName());
+            obj->changePowerStateTo(kIOPMPowerStateMax);
         }
-        appleLMUController->changePowerStateTo(0x0);
-    } else if (root->getProperty(kAppleClamshellStateKey) == kOSBooleanFalse) {
-        // Lid is open
-        if (isLoggingEnabled()) {
-            IOLog("InsomniaT: lid is open, enabling ambient light sensor\n");
+    } else if (messageType == kIOMessageSystemHasPoweredOn) {
+        IOLog("InsomniaT: handleIOServiceSleepWakeInterest invoked with kIOMessageSystemHasPoweredOn, %p\n", messageArgument);
+        const bool clamshellClosed = provider->getProperty(kAppleClamshellStateKey) == kOSBooleanTrue;
+        if (clamshellClosed) {
+            IOLog("InsomniaT: clamshell closed, turning %s off\n", obj->getName());
+            obj->changePowerStateTo(0x0);
         }
-        appleLMUController->changePowerStateTo(0x1);
-    } 
-    
-    if (isSleepEnabled() && !isSleepEnabledBySystem()) {
-		if (isLoggingEnabled()) {
-			IOLog("InsomniaT: enabling sleep.\n");
-		} 
-		enableSleep();
-	} else if (!isSleepEnabled() && isSleepEnabledBySystem()) {
-		if (isLoggingEnabled()) {
-			IOLog("InsomniaT: disabling sleep.\n");
-		}
-		disableSleep();
-	}
+    } else {
+        IOLog("InsomniaT: target = %p\n", target);
+        IOLog("InsomniaT: refCon = %p\n", refCon);
+        IOLog("InsomniaT: messageArgument = %p\n", messageArgument);
+        IOLog("InsomniaT: argSize = %d\n", (int)argSize);
+        if (provider) {
+            IOLog("InsomniaT: provider = %s\n", provider->getName());
+        } else {
+            IOLog("InsomniaT: provider = NULL\n");
+        }
+    }
+    return kIOReturnSuccess;
 }
-bool net_trajano_driver_InsomniaT::isMultipleDisplays() {
-    OSDictionary* dict = OSDictionary::withCapacity(1);
-    dict->setObject(kIOProviderClassKey, OSString::withCStringNoCopy("IODisplayConnect"));
-    OSIterator* ioDisplayConnectIterator = getMatchingServices(dict);
-    if (ioDisplayConnectIterator == NULL) {
-        dict->release();
+
+IOReturn handleSleepWakeInterest(void *target, void *refCon,
+								 UInt32 messageType, IOService *provider,
+								 void *messageArgument, vm_size_t argSize )
+{
+    IOLog("InsomniaT: handleSleepWakeInterest messageType = %lx\n", (unsigned long)messageType);
+    net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT *)target;
+    
+    if (messageType == kIOPMMessageClamshellStateChange) {
+        IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOPMMessageClamshellStateChange\n");
+        long message = (long)messageArgument;
+        bool clamshellShouldSleep = (message & kClamshellSleepBit);
+        
+        IOPMrootDomain *root = (IOPMrootDomain *)provider;
+        if (!obj->sleepOnClamshellClose && clamshellShouldSleep) {
+            IOLog("InsomniaT: want sleep is disabled and clamshellCausesSleep is enabled\n");
+            root->receivePowerNotification(kIOPMDisableClamshell);
+            provider->setProperty(kAppleClamshellCausesSleepKey, kOSBooleanFalse);
+        } else if (obj->sleepOnClamshellClose && !clamshellShouldSleep) {
+            IOLog("InsomniaT: want sleep is enabled and clamshellCausesSleep is disabled\n");
+            root->receivePowerNotification(kIOPMEnableClamshell);
+            provider->setProperty(kAppleClamshellCausesSleepKey, kOSBooleanTrue);
+        } else {
+            IOLog("InsomniaT: sleepOnClamshellClose = %d and clamshellShouldSleep = %d, doing nothing\n", obj->sleepOnClamshellClose, clamshellShouldSleep);
+        }
+    } else if (messageType == kIOPMMessageSleepWakeUUIDChange) {
+        IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOPMMessageSleepWakeUUIDChange, %p\n", messageArgument);
+        if (messageArgument == kIOPMMessageSleepWakeUUIDSet) {
+            IOLog("InsomniaT: kIOPMMessageSleepWakeUUIDSet\n");
+        } else if (messageArgument == kIOPMMessageSleepWakeUUIDCleared) {
+            IOLog("InsomniaT: kIOPMMessageSleepWakeUUIDCleared\n");
+        }
+    } else if (messageType == kIOPMMessageDriverAssertionsChanged) {
+        IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOPMMessageDriverAssertionsChanged, %p\n", messageArgument);
+    } else if (messageType == kIOMessageSystemWillPowerOn) {
+        IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOMessageSystemWillPowerOn, %p\n", messageArgument);
+    } else if (messageType == kIOMessageSystemHasPoweredOn) {
+        IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOMessageSystemHasPoweredOn, %p\n", messageArgument);
+    } else if (messageType == kIOMessageSystemWillPowerOff) {
+        IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOMessageSystemWillPowerOff, %p\n", messageArgument);
+    } else if (messageType == kIOMessageSystemWillSleep) {
+        IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOMessageSystemWillSleep\n");
+        IOPowerStateChangeNotification *notification = (IOPowerStateChangeNotification *)messageArgument;
+        if (obj->sleepOnClamshellClose) {
+            IOLog("InsomniaT: acknowledgeSleepWakeNotification, notification->powerRef = %p\n", notification->powerRef);
+            acknowledgeSleepWakeNotification(notification->powerRef);
+        } else {
+            IOLog("InsomniaT: vetoSleepWakeNotification, notification->powerRef = %p\n", notification->powerRef);
+            vetoSleepWakeNotification(notification->powerRef);
+        }
+    } else {
+        
+        IOLog("InsomniaT: target = %p\n", target);
+        IOLog("InsomniaT: refCon = %p\n", refCon);
+        IOLog("InsomniaT: messageArgument = %p\n", messageArgument);
+        IOLog("InsomniaT: argSize = %d\n", (int)argSize);
+        if (provider) {
+            IOLog("InsomniaT: provider = %s\n", provider->getName());
+        } else {
+            IOLog("InsomniaT: provider = NULL\n");
+        }
+    }
+    
+	return kIOReturnSuccess;
+}
+
+OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
+
+bool net_trajano_driver_InsomniaT::init(OSDictionary* dictionary)
+{
+    IOLog("InsomniaT: init\n");
+    if (!super::init(dictionary)) {
         return false;
     }
-    unsigned int displayCount = 0;
-    OSObject* obj;
-    while ((obj = ioDisplayConnectIterator->getNextObject()) != NULL && displayCount < 2) {
-        ++displayCount;
-    }
-    ioDisplayConnectIterator->release();
-    dict->release();
-    return displayCount > 1;
+    sleepOnClamshellClose = true;
+    return true;
 }
+
 bool net_trajano_driver_InsomniaT::start(IOService *provider)
 {
-	IOPMrootDomain *root = getPMRootDomain();
+    IOLog("InsomniaT: start\n");
     
-	IOWorkLoop *workloop = getWorkLoop();
-	if (!workloop) {
-		return false;
-	}
-	
-	fAppleClamshellCausesSleep = root->getProperty(kAppleClamshellCausesSleepKey);
-    fNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
-	disableSleep();
-    appleLMUController = getAppleLMUController();
+    IOWorkLoop* workLoop = getWorkLoop();
+    if (workLoop == NULL) {
+        IOLog("InsomniaT: no workloop on start()\n");
+        return false;
+    }
+    IOLog("InsomniaT: workloop = %p\n", workLoop);
+    
+    clamshellNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
+    IOLog("InsomniaT: clamshellNotifier = %p\n", clamshellNotifier);
+    if (clamshellNotifier == NULL) {
+        return false;
+    }
+
+    IOPMrootDomain *root = getPMRootDomain();
+
+    IOService *appleBacklightDisplay = getIOService("AppleBacklightDisplay", root);
+    if (appleBacklightDisplay == NULL) {
+        IOLog("InsomniaT: AppleBacklightDisplay not found\n");
+        return false;
+    }
+    appleBacklightDisplayNotifier = registerSleepWakeInterest(handleIOServiceSleepWakeInterest, appleBacklightDisplay);
+    IOLog("InsomniaT: appleBacklightDisplayNotifier = %p\n", appleBacklightDisplayNotifier);
+    if (appleBacklightDisplayNotifier == NULL) {
+        return false;
+    }
+
+    IOService *appleLMUController = getIOService("AppleLMUController", root);
+    if (appleLMUController == NULL) {
+        IOLog("InsomniaT: AppleLMUController not found\n");
+        return false;
+    }
+    appleLMUControllerNotifier = registerSleepWakeInterest(handleIOServiceSleepWakeInterest, appleLMUController);
+    IOLog("InsomniaT: appleLMUControllerNotifier = %p\n", appleLMUControllerNotifier);
+    if (appleLMUControllerNotifier == NULL) {
+        return false;
+    }
     
     bool res = super::start(provider);
 	if (res) {
@@ -145,99 +216,45 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 	return res;
 }
 
-void net_trajano_driver_InsomniaT::disableSleep() {
-    if (isMultipleDisplays()) {
-		if (isLoggingEnabled()) {
-			IOLog("InsomniaT: multiple displays detected doing nothing.\n");
-		} 
-        return;
-    }
-	IOPMrootDomain *root = getPMRootDomain();
-	root->setProperty(kAppleClamshellCausesSleepKey,kOSBooleanFalse);
-    // Calling this method will set the ignoringClamShell to true for the PM root domain.
-	root->receivePowerNotification(kIOPMDisableClamshell);
-	if (isLoggingEnabled()) {
-		IOLog("InsomniaT: disabling sleep complete\n");
-	}
+bool net_trajano_driver_InsomniaT::open(IOService *forClient, IOOptionBits options, void *arg) {
+    IOLog("InsomniaT: open %p\n", forClient);
+    return super::open(forClient, options, arg);
 }
 
-/**
- * SleepEnabled key.
- */
-const char* net_trajano_driver_InsomniaT::gKeySleepEnabled = "SleepEnabled";
-
-/**
- * LoggingEnabled key.
- */
-const char* net_trajano_driver_InsomniaT::gKeyLoggingEnabled = "LoggingEnabled";
-
-bool net_trajano_driver_InsomniaT::isSleepEnabled() {
-	return ((OSBoolean*)getProperty(gKeySleepEnabled))->getValue();
+void net_trajano_driver_InsomniaT::close(IOService *forClient, IOOptionBits options) {
+    IOLog("InsomniaT: close %p\n", forClient);
+    super::close(forClient, options);
 }
 
-bool net_trajano_driver_InsomniaT::isLoggingEnabled() {
-	return ((OSBoolean*)getProperty(gKeyLoggingEnabled))->getValue();
-}
-
-
-bool net_trajano_driver_InsomniaT::isSleepEnabledBySystem() {
-	IOPMrootDomain *root = getPMRootDomain();
-	return root->getProperty(kAppleClamshellCausesSleepKey) == kOSBooleanTrue;
-}
-
-void net_trajano_driver_InsomniaT::enableSleep() {
-    if (isMultipleDisplays()) {
-		if (isLoggingEnabled()) {
-			IOLog("InsomniaT: multiple displays detected doing nothing.\n");
-		} 
-        return;
-    }
-	IOPMrootDomain *root = getPMRootDomain();
-	root->setProperty(kAppleClamshellCausesSleepKey,fAppleClamshellCausesSleep);
-    // Calling this method will set the ignoringClamShell to false for the PM root domain.
-	root->receivePowerNotification(kIOPMEnableClamshell);
-	if (isLoggingEnabled()) {
-		IOLog("InsomniaT: enabling sleep complete\n");
-	}
-}
-
-IOReturn net_trajano_driver_InsomniaT::setSleepEnabled(bool sleepEnabled) {
-	setProperty(gKeySleepEnabled, sleepEnabled);
-	if (sleepEnabled) {
-		if (isLoggingEnabled()) {
-			IOLog("InsomniaT: sleep enabled requested, enabling sleep.\n");
-		} 
-		enableSleep();
-	} else {
-		if (isLoggingEnabled()) {
-			IOLog("InsomniaT: sleep disabled requested, disabling sleep.\n");
-		} 
-		disableSleep();
-	}
-	return true;
-}
-
-IOReturn net_trajano_driver_InsomniaT::setLoggingEnabled(bool loggingEnabled) {
-	setProperty(gKeyLoggingEnabled, loggingEnabled);
-	if (isLoggingEnabled()) {
-		IOLog("InsomniaT: logging is enabled\n");
-	} else {
-		IOLog("InsomniaT: logging is disabled\n");
-	}
-	return true;
-}
-
-/**
- * This is called when the kext is being unloaded.  It will remove the notifier handler
- * and enable sleep.
- */
 void net_trajano_driver_InsomniaT::stop(IOService *provider)
 {
-	if (isLoggingEnabled()) {
-		IOLog("InsomniaT: service is stopping.\n");
-	} 
-	fNotifier->remove();
-	enableSleep();
-    appleLMUController = NULL;
+    IOLog("InsomniaT: stop\n");
+    appleBacklightDisplayNotifier->remove();
+    appleBacklightDisplayNotifier = NULL;
+    appleLMUControllerNotifier->remove();
+    appleLMUControllerNotifier = NULL;
+    clamshellNotifier->remove();
+    clamshellNotifier = NULL;
+    sleepOnClamshellClose = true;
+    IOPMrootDomain *root = getPMRootDomain();
+    getIOService("AppleLMUController",root)->changePowerStateTo(kIOPMPowerStateMax);
+    root->receivePowerNotification(kIOPMEnableClamshell);
 	super::stop(provider);
+}
+
+void net_trajano_driver_InsomniaT::enableSleepOnClamshellClose() {
+    IOLog("InsomniaT: enableSleepOnClamshellClose\n");
+    sleepOnClamshellClose = true;
+    getPMRootDomain()->receivePowerNotification(kIOPMEnableClamshell);
+}
+
+void net_trajano_driver_InsomniaT::disableSleepOnClamshellClose() {
+    IOLog("InsomniaT: disableSleepOnClamshellClose\n");
+    sleepOnClamshellClose = false;
+    getPMRootDomain()->receivePowerNotification(kIOPMDisableClamshell);
+}
+
+bool net_trajano_driver_InsomniaT::isClamshellCloseCausesSleep() const {
+    IOLog("InsomniaT: isClamshellCloseCausesSleep clamshellNotifier = %p, %d\n", clamshellNotifier, sleepOnClamshellClose);
+    return sleepOnClamshellClose;
 }

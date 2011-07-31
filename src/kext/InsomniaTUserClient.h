@@ -1,25 +1,30 @@
-/*
- *  InsomniaTUserClient.h
- *  InsomniaT
- *
- *  Created by Archimedes Trajano on 2009-09-24.
- *  Copyright 2009 trajano.net. All rights reserved.
- *
- */
-
+#ifndef IOUserClient_H
+#define IOUserClient_H
 #include <IOKit/IOUserClient.h>
 
 #include "InsomniaT.h"
 
+/**
+ * This is the IOUserClient that communicates with the InsomniaT service.
+ */
 class net_trajano_driver_InsomniaTUserClient : public IOUserClient
 {
 	OSDeclareDefaultStructors(net_trajano_driver_InsomniaTUserClient)
-	
+
 private:
 	net_trajano_driver_InsomniaT* fProvider;
 public:
     virtual bool start(IOService* provider);
-	
+
+    /**
+     * Invoked when the IOUserClient has stopped.
+     */
+    virtual void stop(IOService *provider);	
+    
+    virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer);
+    virtual IOReturn clientClose();
+    virtual IOReturn registerNotificationPort(
+                                              mach_port_t port, UInt32 type, io_user_reference_t refCon);
 	/**
 	 * If selector is 1, it invokes the setSleepEnabled(true)
 	 * If selector is 2, it invokes the setSleepEnabled(false)
@@ -32,3 +37,4 @@ public:
 									IOExternalMethodDispatch * dispatch = 0, OSObject * target = 0, void * reference = 0 );
 };
 
+#endif
