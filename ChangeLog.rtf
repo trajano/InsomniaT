@@ -16,8 +16,10 @@
 {\list\listtemplateid13\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid13}
 {\list\listtemplateid14\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid14}
 {\list\listtemplateid15\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid15}
-{\list\listtemplateid16\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid16}}
-{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}{\listoverride\listid8\listoverridecount0\ls8}{\listoverride\listid9\listoverridecount0\ls9}{\listoverride\listid10\listoverridecount0\ls10}{\listoverride\listid11\listoverridecount0\ls11}{\listoverride\listid12\listoverridecount0\ls12}{\listoverride\listid13\listoverridecount0\ls13}{\listoverride\listid14\listoverridecount0\ls14}{\listoverride\listid15\listoverridecount0\ls15}{\listoverride\listid16\listoverridecount0\ls16}}
+{\list\listtemplateid16\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid16}
+{\list\listtemplateid17\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1601\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid17}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}{\listoverride\listid8\listoverridecount0\ls8}{\listoverride\listid9\listoverridecount0\ls9}{\listoverride\listid10\listoverridecount0\ls10}{\listoverride\listid11\listoverridecount0\ls11}{\listoverride\listid12\listoverridecount0\ls12}{\listoverride\listid13\listoverridecount0\ls13}{\listoverride\listid14\listoverridecount0\ls14}{\listoverride\listid15\listoverridecount0\ls15}{\listoverride\listid16\listoverridecount0\ls16}{\listoverride\listid17\listoverridecount0\ls17}}
+\viewkind0
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\b\fs24 \cf0 Change Log\
@@ -25,69 +27,73 @@
 
 \b0\fs20 \cf0 \
 
-\fs24 3.0.2\
+\fs24 4.0.0\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls1\ilvl0\cf0 {\listtext	\'95	}Development, build and test environment is now on Mac OSX Lion.\
+\ls1\ilvl0\cf0 {\listtext	\'95	}Development, build and test environment is now on Mac OSX Lion with Xcode 4.  Xcode 4 also drops support for 10.5 so the 10.5 kernel extension support has also been removed.  However, InsomniaT still supports Snow Leopard (10.6) at a minimum.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 3.0.2\
+\pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
+\ls2\ilvl0\cf0 {\listtext	\'95	}Development, build and test environment is now on Mac OSX Lion.\
 {\listtext	\'95	}Detects Lion when displaying the ambient light message and sets it appropriately.\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls2\ilvl0\cf0 {\listtext	\'95	}Rewrite of the kernel driver to use a logic that would prevent the memory leak/infinite loop in IOUserClient.cpp\
+\ls3\ilvl0\cf0 {\listtext	\'95	}Rewrite of the kernel driver to use a logic that would prevent the memory leak/infinite loop in IOUserClient.cpp\
 {\listtext	\'95	}Detects if InsomniaT is already installed and requests uninstallation before installation.  (This cannot be done automatically, running the uninstaller from the installer sometimes does not remove the bundle).\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls3\ilvl0\cf0 {\listtext	\'95	}Logging is always on, cannot be turned off anymore and will generate a lot of log messages on kernel.log, this is intentional as it would help in diagnosing problems on other systems.\
+\ls4\ilvl0\cf0 {\listtext	\'95	}Logging is always on, cannot be turned off anymore and will generate a lot of log messages on kernel.log, this is intentional as it would help in diagnosing problems on other systems.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
 3.0.1\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls4\ilvl0\cf0 {\listtext	\'95	}Changed logic so an unknown message selector will not bubble up the request.\
+\ls5\ilvl0\cf0 {\listtext	\'95	}Changed logic so an unknown message selector will not bubble up the request.\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls5\ilvl0\cf0 {\listtext	\'95	}Added detection of whether the kext is installed.\
+\ls6\ilvl0\cf0 {\listtext	\'95	}Added detection of whether the kext is installed.\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls6\ilvl0\cf0 {\listtext	\'95	}Added multiple monitor detection, if detected sleep will be disabled {\field{\*\fldinst{HYPERLINK "https://bugs.launchpad.net/insomniat/+bug/804321"}}{\fldrslt https://bugs.launchpad.net/insomniat/+bug/804321}}.\
+\ls7\ilvl0\cf0 {\listtext	\'95	}Added multiple monitor detection, if detected sleep will be disabled {\field{\*\fldinst{HYPERLINK "https://bugs.launchpad.net/insomniat/+bug/804321"}}{\fldrslt https://bugs.launchpad.net/insomniat/+bug/804321}}.\
 {\listtext	\'95	}Switched to Iceberg as the package maker. \
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls7\ilvl0\cf0 {\listtext	\'95	}Turned off light sensor when the lid is closed.\
+\ls8\ilvl0\cf0 {\listtext	\'95	}Turned off light sensor when the lid is closed.\
 {\listtext	\'95	}Packaged as DMG file with uninstallation application.\
 {\listtext	\'95	}CLI is no longer installed by default\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls8\ilvl0\cf0 {\listtext	\'95	}Package receipts from older versions are removed if found.\
+\ls9\ilvl0\cf0 {\listtext	\'95	}Package receipts from older versions are removed if found.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
 3.0.0\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls9\ilvl0\cf0 {\listtext	\'95	}Added Preference pane to control.\
+\ls10\ilvl0\cf0 {\listtext	\'95	}Added Preference pane to control.\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls10\ilvl0\cf0 {\listtext	\'95	}Removed Cocoa app.\
+\ls11\ilvl0\cf0 {\listtext	\'95	}Removed Cocoa app.\
 {\listtext	\'95	}Provided an uninstallation script.  Please note that it is not installed by default, choose Customize if you need the uninstall script to be installed.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
 2.0.2\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls11\ilvl0\cf0 {\listtext	\'95	}Added an application icon thanks to hazellynnetan AT gmail DOT com\
+\ls12\ilvl0\cf0 {\listtext	\'95	}Added an application icon thanks to hazellynnetan AT gmail DOT com\
 {\listtext	\'95	}Added logging support\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
 2.0.1\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls12\ilvl0\cf0 {\listtext	\'95	}Added support for Mac OS 10.5.\
+\ls13\ilvl0\cf0 {\listtext	\'95	}Added support for Mac OS 10.5.\
 {\listtext	\'95	}Switched to Artistic License 2.0\
 {\listtext	\'95	}Installer will unload and load the kernel extension automatically as part of the installation.  There is no need to reboot anymore.\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls13\ilvl0\cf0 {\listtext	\'95	}Added a simple GUI that goes to the /Applications/Utilities folder by default.\
+\ls14\ilvl0\cf0 {\listtext	\'95	}Added a simple GUI that goes to the /Applications/Utilities folder by default.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
 2.0\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls14\ilvl0\cf0 {\listtext	\'95	}Re-architected so the kernel module can remain in memory and messages can be passed onto it to enable or disable the sleep on clamshell close behaviour.\
+\ls15\ilvl0\cf0 {\listtext	\'95	}Re-architected so the kernel module can remain in memory and messages can be passed onto it to enable or disable the sleep on clamshell close behaviour.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
 1.0.1\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls15\ilvl0\cf0 {\listtext	\'95	}Removed logging on this one so it does not pollute /var/log/system.log\
+\ls16\ilvl0\cf0 {\listtext	\'95	}Removed logging on this one so it does not pollute /var/log/system.log\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
 1.0\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
-\ls16\ilvl0\cf0 {\listtext	\'95	}Works like the original Insomnia kernel extension used by InsomniaX.\
+\ls17\ilvl0\cf0 {\listtext	\'95	}Works like the original Insomnia kernel extension used by InsomniaX.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \
 Copyright (c) 2009-2011, trajano.net\
