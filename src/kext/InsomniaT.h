@@ -11,25 +11,16 @@ class net_trajano_driver_InsomniaT : public IOService {
     
     /**
      * This handles the event when there is a sleep wake event including the
-     * notification where the clamshell is open and closed.  This is meant
-     * to specifically handle events where the the device should be turned
-     * off when the clamshell is closed.
-     *
-     * It turns off the IOService by setting the power state to 0x0.  It 
-     * turns it on by setting the power state to 0xFFFFFFFF.
-     *
-     * @param target this is an IOService.
-     * @param provider this should be IOPMrootDomain.
-     */
-	friend IOReturn handleIOServiceSleepWakeInterest(void *target, void *refCon,
-                                                     UInt32 messageType, IOService *provider,
-                                                     void *messageArgument, vm_size_t argSize );
-    /**
-     * This handles the event when there is a sleep wake event including the
      * notification where the clamshell is open and closed.
      *
-     * If the lid is closed, it will locate and disable the light sensor.
-     * If the lid is open, it will locate and enable the light sensor.
+     * This only handles kIOPMMessageClamshellStateChange.  Any other
+     * messageType will just log the event for debugging purposes.
+     *
+     * If the lid is closed, it will locate and disable the light sensor and the
+     * display.
+     *
+     * If the lid is open, it will locate and enable the light sensor and the
+     * display.
      *
      * If sleepOnClamshellClose, the system clamshell sleep state is false,
      * and only the AppleBacklightDisplay is connected, then this will enable
@@ -38,8 +29,16 @@ class net_trajano_driver_InsomniaT : public IOService {
      * If not sleepOnClamshellClose and the system clamshell sleep state is true,
      * this will disable sleep.
      *
+     * This function was made a friend in order for it to get the value of
+     * sleepOnClamshellClose.
+     *
      * @param target this is the InsomniaT service.
+     * @param refCon reference constant that is passed when the notification was created.  Should be NULL.
+     * @param messageType message type.
      * @param provider this should be IOPMrootDomain.
+     * @param messageArgument extra information for the message.
+     * @param argSize size of the message argument
+     * @return kIOReturnSuccess if everything went well.
      */
 	friend IOReturn handleSleepWakeInterest(void *target, void *refCon,
 											UInt32 messageType, IOService *provider,
@@ -53,23 +52,10 @@ private:
     IONotifier *clamshellNotifier;
     
     /**
-     * This points to the notifier that will be triggered when an event happens
-     * on the Apple Backlight display.  Primarily this is to handle the case when the 
-     * backlight display turns on when the lid is closed.
-     */
-    IONotifier *appleBacklightDisplayNotifier;
-    
-    /**
-     * This points to the notifier that will be triggered when an event happens
-     * on the Apple LMU controller.  Primarily this is to handle the case when the 
-     * backlight display turns on when the lid is closed.
-     */
-    IONotifier *appleLMUControllerNotifier;
-    
-    /**
-     * Sleep on clamshell close.
+     * Sleep on clamshell close flag.
      */
     bool sleepOnClamshellClose;
+    
 public:
     /**
      * Invoked when the IOService has initialized.
@@ -88,8 +74,7 @@ public:
      * the AppleBacklightDisplay or AppleLMUController services do not exist
      * within the timeout period, this will return false.
      *
-     * This will register the sleep wake handlers and determine the power state
-     * for the AppleLMUController and the AppleBacklightDisplay.  If any handler
+     * This will register the sleep wake handler.  If the handler
      * was not registered successfully, this will return false.
      *
      * @return true if the service wast started successfuly, false otherwise.
@@ -110,9 +95,8 @@ public:
      * Invoked when the IOService has stopped.  Only occurs once per kext
      * load.
      *
-     * This will deregister the sleep wake handlers and reset the
-     * AppleLMUController power state back to the value that was obtained
-     * on start().
+     * This will deregister the sleep wake handlers and turn on the
+     * AppleLMUController.
      */
     virtual void stop(IOService *provider);	
     
