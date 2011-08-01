@@ -30,8 +30,14 @@
 			uint32_t count = 1;
 			IOConnectCallScalarMethod(connect, 3, NULL, 0, output, &count);
 			IOServiceClose(connect);
-			[self setValue: [NSNumber numberWithUnsignedInt: output[0]]
-					forKey: @"insomniaTEnabled"];
+
+            if (output[0] == 1) {
+                [self setValue: [NSNumber numberWithUnsignedInt: 1]
+                        forKey: @"insomniaTEnabled"];
+            } else {
+                [self setValue: [NSNumber numberWithUnsignedInt: 0]
+                        forKey: @"insomniaTEnabled"];
+            }
 		} else {
 			[self setValue: [NSNumber numberWithUnsignedInt: 2]
 					forKey: @"insomniaTEnabled"];
@@ -61,11 +67,10 @@
 		IOServiceClose(connect);
         
         if (output[0] == 1) {
-            return 0;
-        } else {
             return 1;
+        } else {
+            return 0;
         }
-		return output[0] ;
 	} else {
 		return 2;
 	}
@@ -74,7 +79,7 @@
 - (void) enableInsomniaT {
 	const io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
-		[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
+		[self setValue: [NSNumber numberWithUnsignedInt: 2]
 				forKey: @"insomniaTEnabled"];
         return;
     }

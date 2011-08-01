@@ -3617,6 +3617,62 @@
 						<key>TestOperator</key>
 						<string>=</string>
 					</dict>
+					<dict>
+						<key>AlertDialog</key>
+						<dict>
+							<key>International</key>
+							<dict>
+								<key>MessageKey</key>
+								<string></string>
+								<key>TitleKey</key>
+								<string></string>
+							</dict>
+						</dict>
+						<key>LabelKey</key>
+						<string>InsomniaT files present</string>
+						<key>Level</key>
+						<integer>0</integer>
+						<key>SpecArgument</key>
+						<string>/System/Library/Extensions/InsomniaT.kext</string>
+						<key>SpecTag</key>
+						<integer>1</integer>
+						<key>SpecType</key>
+						<string>file</string>
+						<key>Status</key>
+						<true/>
+						<key>TestObject</key>
+						<string></string>
+						<key>TestOperator</key>
+						<string>=</string>
+					</dict>
+					<dict>
+						<key>AlertDialog</key>
+						<dict>
+							<key>International</key>
+							<dict>
+								<key>MessageKey</key>
+								<string></string>
+								<key>TitleKey</key>
+								<string></string>
+							</dict>
+						</dict>
+						<key>LabelKey</key>
+						<string>InsomniaT files already present (10.5)</string>
+						<key>Level</key>
+						<integer>0</integer>
+						<key>SpecArgument</key>
+						<string>/System/Library/Extensions/InsomniaT (10.5).kext</string>
+						<key>SpecTag</key>
+						<integer>1</integer>
+						<key>SpecType</key>
+						<string>file</string>
+						<key>Status</key>
+						<true/>
+						<key>TestObject</key>
+						<string></string>
+						<key>TestOperator</key>
+						<string>=</string>
+					</dict>
 				</array>
 			</dict>
 			<key>Settings</key>

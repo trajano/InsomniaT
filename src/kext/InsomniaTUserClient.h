@@ -9,10 +9,14 @@
  */
 class net_trajano_driver_InsomniaTUserClient : public IOUserClient
 {
-	OSDeclareDefaultStructors(net_trajano_driver_InsomniaTUserClient)
+	OSDeclareDefaultStructors(net_trajano_driver_InsomniaTUserClient);
 
 private:
+    /**
+     * IOService provider.
+     */
 	net_trajano_driver_InsomniaT* fProvider;
+    
 public:
     virtual bool start(IOService* provider);
 

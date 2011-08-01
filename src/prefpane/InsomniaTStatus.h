@@ -8,11 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+/**
+ * InsomniaT status model.  This interfaces with the InsomniaT kernel extension.
+ */
 @interface InsomniaTStatus : NSObject {
     /**
-     * This is zero if disabled
-     * This is one if enabled
-     * This is two if there's a problem
+     * This is zero if disabled. 
+     * This is one if enabled.
+     * This is two if there's a problem.
      */
 	NSNumber* insomniaTEnabled;
 }

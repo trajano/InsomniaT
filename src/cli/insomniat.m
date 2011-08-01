@@ -15,9 +15,7 @@
 
 @end
 
-int main( int argc, char * const argv[] ) {
-    io_service_t    service;
-	
+int main(int const argc, char * const argv[] ) {	
 	extern char *optarg;
 	extern int optind;
 	
@@ -84,14 +82,14 @@ int main( int argc, char * const argv[] ) {
 		//argc -= optind;
 		//argv += optind;
 	
-    service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
+    const io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
 	if (service == IO_OBJECT_NULL) {
         fprintf(stderr, "service was not found\n");
         return -1;
     }
 	
 	io_connect_t connect;
-	kern_return_t kernResult = IOServiceOpen(service, mach_task_self(), 0, &connect);
+	const kern_return_t kernResult = IOServiceOpen(service, mach_task_self(), 0, &connect);
 	if (kernResult == KERN_SUCCESS) {		
 		uint64_t output[1];
 		uint32_t count = 1;

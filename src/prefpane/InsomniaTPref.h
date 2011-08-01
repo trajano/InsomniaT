@@ -9,10 +9,17 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import "InsomniaTPrefController.h"
 
+/**
+ * InsomniaT preference pane.
+ */
 @interface InsomniaTPref : NSPreferencePane 
 {
+    /**
+     * Controller.
+     */
     IBOutlet InsomniaTPrefController *controller;
 }
+
 - (void) willSelect;
 - (void) didUnselect;
 
