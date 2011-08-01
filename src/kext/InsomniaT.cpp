@@ -205,9 +205,9 @@ static inline void powerOn(const char * const className, IOService * const provi
     }
 }
 
-IOReturn handleSleepWakeInterest(void *target, void *refCon,
-								 UInt32 messageType, IOService *provider,
-								 void *messageArgument, vm_size_t argSize )
+IOReturn handleSleepWakeInterest(void * const target, void * const refCon,
+								 UInt32 messageType, IOService * const provider,
+								 void * const messageArgument, vm_size_t const argSize )
 {
     net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT *)target;
     
@@ -255,7 +255,7 @@ IOReturn handleSleepWakeInterest(void *target, void *refCon,
  */
 OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
 
-bool net_trajano_driver_InsomniaT::init(OSDictionary* dictionary)
+bool net_trajano_driver_InsomniaT::init(OSDictionary * const dictionary)
 {
     IOLog("InsomniaT: init\n");
     if (!super::init(dictionary)) {
@@ -265,7 +265,7 @@ bool net_trajano_driver_InsomniaT::init(OSDictionary* dictionary)
     return true;
 }
 
-bool net_trajano_driver_InsomniaT::start(IOService *provider)
+bool net_trajano_driver_InsomniaT::start(IOService * const provider)
 {
     IOLog("InsomniaT: start\n");
     
@@ -295,17 +295,17 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
 	return res;
 }
 
-bool net_trajano_driver_InsomniaT::open(IOService *forClient, IOOptionBits options, void *arg) {
+bool net_trajano_driver_InsomniaT::open(IOService * const forClient, IOOptionBits const options, void * const arg) {
     IOLog("InsomniaT: open %p\n", forClient);
     return super::open(forClient, options, arg);
 }
 
-void net_trajano_driver_InsomniaT::close(IOService *forClient, IOOptionBits options) {
+void net_trajano_driver_InsomniaT::close(IOService * const forClient, IOOptionBits const options) {
     IOLog("InsomniaT: close %p\n", forClient);
     super::close(forClient, options);
 }
 
-void net_trajano_driver_InsomniaT::stop(IOService *provider) {
+void net_trajano_driver_InsomniaT::stop(IOService * const provider) {
     IOLog("InsomniaT: stop\n");
     clamshellNotifier->remove();
     clamshellNotifier = NULL;
@@ -319,7 +319,6 @@ void net_trajano_driver_InsomniaT::stop(IOService *provider) {
 void net_trajano_driver_InsomniaT::enableSleepOnClamshellClose() {
     IOLog("InsomniaT: enableSleepOnClamshellClose\n");
     sleepOnClamshellClose = true;
-    //systemPowerEventOccured(NULL, NULL);
     getPMRootDomain()->receivePowerNotification(kIOPMEnableClamshell);
 }
 
