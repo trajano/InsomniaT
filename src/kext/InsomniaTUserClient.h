@@ -23,8 +23,6 @@ public:
     
     virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer);
     virtual IOReturn clientClose();
-    virtual IOReturn registerNotificationPort(
-                                              mach_port_t port, UInt32 type, io_user_reference_t refCon);
 	/**
 	 * If selector is 1, it invokes the setSleepEnabled(true)
 	 * If selector is 2, it invokes the setSleepEnabled(false)

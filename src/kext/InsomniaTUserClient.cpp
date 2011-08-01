@@ -20,7 +20,7 @@
 OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaTUserClient, IOUserClient)
 
 // start is called after initWithTask as a result of the user process calling IOServiceOpen.
-bool net_trajano_driver_InsomniaTUserClient::start(IOService* provider)
+bool net_trajano_driver_InsomniaTUserClient::start(IOService * const provider)
 {
     IOLog("InsomniaTClient: start\n");
     // Verify that this user client is being started with a provider that it knows
@@ -37,8 +37,8 @@ bool net_trajano_driver_InsomniaTUserClient::start(IOService* provider)
     return success;
 }
 
-IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod( uint32_t selector, IOExternalMethodArguments * arguments,
-																IOExternalMethodDispatch * dispatch , OSObject * target , void * reference ) {
+IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod(uint32_t selector, IOExternalMethodArguments * const arguments,
+																IOExternalMethodDispatch * const dispatch , OSObject * const target , void * const reference ) {
     IOLog("InsomniaTClient: externalMethod selector = %d\n", selector);
     IOLog("InsomniaTClient: provider = %p\n", fProvider);
     IOLog("InsomniaTClient: target = %p\n", target);
@@ -64,13 +64,13 @@ IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod( uint32_t select
     return kIOReturnSuccess;
 }
 
-bool net_trajano_driver_InsomniaTUserClient::didTerminate(IOService* provider, IOOptionBits options, bool* defer)
+bool net_trajano_driver_InsomniaTUserClient::didTerminate(IOService * const provider, IOOptionBits const options, bool * const defer)
 {
     IOLog("InsomniaTClient: didTerminate\n");    
     return super::didTerminate(provider, options, defer);
 }
 
-void net_trajano_driver_InsomniaTUserClient::stop(IOService* provider)
+void net_trajano_driver_InsomniaTUserClient::stop(IOService * const provider)
 {    
     IOLog("InsomniaTClient: stop %p\n", provider);
     
@@ -90,11 +90,5 @@ IOReturn net_trajano_driver_InsomniaTUserClient::clientClose()
         terminate();
     }
     
-    return kIOReturnSuccess;
-}
-
-IOReturn net_trajano_driver_InsomniaTUserClient::registerNotificationPort(
-                                                                          mach_port_t port, UInt32 type, io_user_reference_t refCon) {
-    IOLog("InsomniaTClient: registerNotificationPort, %p, %p, %p\n", port, type, refCon);
     return kIOReturnSuccess;
 }
