@@ -46,7 +46,6 @@
 		2CA8F0BA13DDE1340097DE37 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C201C0E1087ABF9002447D1 /* Cocoa.framework */; };
 		2CA8F0CF13DDE1B20097DE37 /* Coffee Cup.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2CA8F0CE13DDE1B20097DE37 /* Coffee Cup.icns */; };
 		2CA8F27913DDE3050097DE37 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CA8F27813DDE3050097DE37 /* Info.plist */; };
-		2CE3748F13CD0E740018B7E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE3748E13CD0E740018B7E1 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,7 +164,6 @@
 		2CA8F27513DDE2CB0097DE37 /* untitled.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; name = untitled.xcclassmodel; path = src/helper/untitled.xcclassmodel; sourceTree = "<group>"; };
 		2CA8F27813DDE3050097DE37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CC5441C1087B6E200992CF8 /* InsomniaTTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaTTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CE3748E13CD0E740018B7E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +196,6 @@
 				2C6FC53811C037B7004D0737 /* PreferencePanes.framework in Frameworks */,
 				2C6FC53911C037BD004D0737 /* IOKit.framework in Frameworks */,
 				2C6FC53A11C037C3004D0737 /* Cocoa.framework in Frameworks */,
-				2CE3748F13CD0E740018B7E1 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +227,6 @@
 				2C24479B106C30C50088C89C /* Makefile */,
 				2C2004581086FD32002447D1 /* Frameworks */,
 				2C200D3C1086FE7A002447D1 /* Products */,
-				2CE3748E13CD0E740018B7E1 /* Security.framework */,
 				2CA8F0B613DDE10D0097DE37 /* InsomniaT Helper-Info.plist */,
 			);
 			name = InsomniaT;
@@ -516,6 +512,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0410;
 				ORGANIZATIONNAME = trajano.net;
 			};
 			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "InsomniaT" */;
@@ -741,8 +738,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -756,8 +752,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -776,7 +771,6 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = all;
 				ZERO_LINK = NO;
 			};
@@ -791,7 +785,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = src/kext/Info.plist;
@@ -803,9 +796,8 @@
 				MODULE_NAME = net.trajano.driver.InsomniaT;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = kext;
 			};
@@ -819,7 +811,6 @@
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/${SDKROOT}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = src/kext/Info.plist;
 				INSTALL_GROUP = wheel;
@@ -830,9 +821,8 @@
 				MODULE_NAME = net.trajano.driver.InsomniaT;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = kext;
 				ZERO_LINK = NO;
@@ -849,7 +839,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = src/kext/Info.plist;
@@ -861,9 +850,8 @@
 				MODULE_NAME = net.trajano.driver.InsomniaT;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = "InsomniaT (10.5)";
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				VALID_ARCHS = "ppc970 ppc7400 ppc64 ppc i386";
 				WRAPPER_EXTENSION = kext;
 			};
@@ -878,7 +866,6 @@
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/${SDKROOT}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = src/kext/Info.plist;
 				INSTALL_GROUP = wheel;
@@ -889,9 +876,8 @@
 				MODULE_NAME = net.trajano.driver.InsomniaT;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = "InsomniaT (10.5)";
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				VALID_ARCHS = "ppc970 ppc7400 ppc64 ppc i386";
 				WRAPPER_EXTENSION = kext;
 				ZERO_LINK = NO;
@@ -914,7 +900,6 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PRODUCT_VERSION = 3.0.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = InsomniaT;
 				ZERO_LINK = NO;
 			};
@@ -928,7 +913,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -942,7 +926,6 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = InsomniaTTest;
 				WRAPPER_EXTENSION = octest;
 			};
@@ -955,7 +938,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -968,7 +950,6 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = InsomniaTTest;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
@@ -982,7 +963,6 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -990,9 +970,8 @@
 				INFOPLIST_FILE = src/prefpane/Info.plist;
 				INSTALL_PATH = /Library/PreferencePanes;
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Debug;
@@ -1004,16 +983,14 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = src/prefpane/Info.plist;
 				INSTALL_PATH = /Library/PreferencePanes;
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = prefPane;
 				ZERO_LINK = NO;
 			};
@@ -1026,7 +1003,6 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1038,7 +1014,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = insomniat;
 			};
 			name = Debug;
@@ -1050,7 +1025,6 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -1061,7 +1035,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = insomniat;
 				ZERO_LINK = NO;
 			};
@@ -1073,7 +1046,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1086,7 +1058,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "InsomniaT Helper";
 			};
 			name = Debug;
@@ -1097,7 +1068,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -1109,7 +1079,6 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "InsomniaT Helper";
 				ZERO_LINK = NO;
 			};
