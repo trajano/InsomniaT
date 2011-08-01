@@ -59,7 +59,13 @@
 		uint32_t count = 1;
 		IOConnectCallScalarMethod(connect, 3, NULL, 0, output, &count);
 		IOServiceClose(connect);
-		return output[0];
+        
+        if (output[0] == 1) {
+            return 0;
+        } else {
+            return 1;
+        }
+		return output[0] ;
 	} else {
 		return 2;
 	}

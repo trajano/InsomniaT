@@ -9,11 +9,18 @@
  */
 #define super IOService
 
+//#define NOPOWER
 #define DEBUG
 #ifndef DEBUG
 #define IOLog(x, ...)
 #endif
 
+#ifndef kIOPMMessageSystemPowerEventOccurred
+/**
+ * This should should be in IOPM.h but does not seem to be there.
+ */
+#define kIOPMMessageSystemPowerEventOccurred  iokit_family_msg(sub_iokit_powermanagement, 0x130)
+#endif
 #ifndef kIOPMMessageSleepWakeUUIDChange
 /**
  * This should should be in IOPM.h but does not seem to be there.
@@ -47,11 +54,11 @@
  * return NULL.
  * 
  * @param className class name.
- * @param provider provider to use as the starting point for the search.
+ * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
  * @return the IOService that matches the criteria.
  */
 static inline IOService* getIOService(const char* className, const IOService* provider) {
-    OSIterator* i = provider->getMatchingServices(IOService::nameMatching(className));
+    OSIterator* i = provider->getMatchingServices(IOService::serviceMatching(className));
     if (i == NULL) {
         return NULL;
     }
@@ -73,6 +80,41 @@ static inline IOService* getIOService(const char* className, const IOService* pr
 }
 
 /**
+ * This returns the number of IOServices for a given class name and a base provider.
+ * @param className class name.
+ * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
+ * @return the number IOService that matches the criteria.
+ */
+static inline unsigned int getNumberOfIOService(const char* className, const IOService* provider) {    
+    OSIterator* i = provider->getMatchingServices(IOService::serviceMatching(className));
+    if (i == NULL) {
+        return NULL;
+    }
+    unsigned int deviceCount = 0;
+    OSObject* obj;
+    while ((obj = i->getNextObject()) != NULL) {
+        ++deviceCount;
+        IOLog("InsomniaT: %s count = %d\n", className, deviceCount);
+    }
+    i->release();
+    return deviceCount;
+}
+
+/**
+ * This returns true if the AppleBacklightDisplay is connected and no other
+ * displays are connected.  This is determined by checking that there is
+ * an AppleBacklightDisplay service and there is only one IODisplayConnect
+ * service.
+ *
+ * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
+ * @return the number IOService that matches the criteria.
+ */
+static inline bool isOnlyAppleBacklightDisplayConnected(const IOService *provider) {
+    return getIOService("AppleBacklightDisplay", provider) != NULL && 
+        getNumberOfIOService("IODisplayConnect", provider) == 1;
+}
+
+/**
  * This logs other sleep wake interests if it is not specifically handled.
  * Primarily used for logging.
  * 
@@ -83,9 +125,9 @@ static inline IOReturn handleOtherSleepWakeInterest(void *target, void *refCon,
                                                     UInt32 messageType, IOService *provider,
                                                     void *messageArgument, vm_size_t argSize )
 {
-    IOService *obj = OSDynamicCast(IOService, (OSObject *)target);
+    IOService *obj = (IOService *)target;
     if (obj == NULL) {
-        IOLog("InsomniaT: target object was not an IOService or NULL\n");
+        IOLog("InsomniaT: target object was NULL\n");
         return kIOReturnError;
     }
     
@@ -95,6 +137,8 @@ static inline IOReturn handleOtherSleepWakeInterest(void *target, void *refCon,
         } else if (messageArgument == kIOPMMessageSleepWakeUUIDCleared) {
             IOLog("InsomniaT: handleSleepWakeInterest %s, invoked with kIOPMMessageSleepWakeUUIDChange, kIOPMMessageSleepWakeUUIDCleared\n", obj->getName());
         }
+    } else if (messageType == kIOPMMessageSystemPowerEventOccurred) {
+        IOLog("InsomniaT: handleSleepWakeInterest %s, invoked with kIOPMMessageSystemPowerEventOccurred, %p\n", obj->getName(), messageArgument);
     } else if (messageType == kIOMessageServicePropertyChange) {
         IOLog("InsomniaT: handleSleepWakeInterest %s, invoked with kIOMessageServicePropertyChange, %p\n", obj->getName(), messageArgument);
     } else if (messageType == kIOMessageServiceWasClosed) {
@@ -121,6 +165,7 @@ static inline IOReturn handleOtherSleepWakeInterest(void *target, void *refCon,
     }
     return kIOReturnSuccess;
 }
+
 IOReturn handleIOServiceSleepWakeInterest(void *target, void *refCon,
                                           UInt32 messageType, IOService *provider,
                                           void *messageArgument, vm_size_t argSize )
@@ -152,6 +197,40 @@ IOReturn handleIOServiceSleepWakeInterest(void *target, void *refCon,
     return kIOReturnSuccess;
 }
 
+/**
+ * Turns a IOService referenced by a className in a provider off.  It only does
+ * this if the IOService is unique base on the class name.
+ *
+ * @param className class name
+ * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
+ */
+static inline void powerOff(const char *className, IOService *provider) {
+    IOService *obj = getIOService(className, provider);
+    if (obj == NULL) {
+        return;
+    }
+    if (obj->getPowerState() != 0x0) {
+        obj->changePowerStateTo(0x0);
+    }
+}
+
+/**
+ * Turns a IOService referenced by a className in a provider on.  It only does
+ * this if the IOService is unique base on the class name.
+ *
+ * @param className class name
+ * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
+ */
+static inline void powerOn(const char *className, IOService *provider) {
+    IOService *obj = getIOService(className, provider);
+    if (obj == NULL) {
+        return;
+    }
+    if (obj->getPowerState() == 0x0) {
+        obj->changePowerStateTo(kIOPMPowerStateMax);
+    }
+}
+
 IOReturn handleSleepWakeInterest(void *target, void *refCon,
 								 UInt32 messageType, IOService *provider,
 								 void *messageArgument, vm_size_t argSize )
@@ -160,21 +239,36 @@ IOReturn handleSleepWakeInterest(void *target, void *refCon,
     
     if (messageType == kIOPMMessageClamshellStateChange) {
         IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOPMMessageClamshellStateChange\n");
-        long message = (long)messageArgument;
-        bool clamshellShouldSleep = (message & kClamshellSleepBit);
-        
         IOPMrootDomain *root = (IOPMrootDomain *)provider;
+        long message = (long)messageArgument;
+        const bool clamshellClosed = (message & kClamshellStateBit);
+        const bool clamshellShouldSleep = (message & kClamshellSleepBit);
+        const bool onlyAppleBacklightDisplayConnected = isOnlyAppleBacklightDisplayConnected(root);
+ 
+        if (clamshellClosed) {
+            powerOff("AppleBacklightDisplay", provider);
+            powerOff("AppleLMUController", provider);
+        } else {
+            powerOn("AppleBacklightDisplay", provider);
+            powerOn("AppleLMUController", provider);
+        }
         if (!obj->sleepOnClamshellClose && clamshellShouldSleep) {
-            IOLog("InsomniaT: want sleep is disabled and clamshellCausesSleep is enabled\n");
+            IOLog("InsomniaT: want sleep is disabled and clamshellCausesSleep is enabled, disabling clamshell\n");
+#ifndef NOPOWER
             root->receivePowerNotification(kIOPMDisableClamshell);
+            powerOff("AppleBacklightDisplay", provider);
+#endif
             provider->setProperty(kAppleClamshellCausesSleepKey, kOSBooleanFalse);
-        } else if (obj->sleepOnClamshellClose && !clamshellShouldSleep) {
-            IOLog("InsomniaT: want sleep is enabled and clamshellCausesSleep is disabled\n");
+        } else if (obj->sleepOnClamshellClose && !clamshellShouldSleep && onlyAppleBacklightDisplayConnected) {
+            IOLog("InsomniaT: want sleep is enabled, clamshellCausesSleep is disabled and only single monitor, enabling clamshell\n");
+#ifndef NOPOWER
             root->receivePowerNotification(kIOPMEnableClamshell);
+#endif
             provider->setProperty(kAppleClamshellCausesSleepKey, kOSBooleanTrue);
         } else {
-            IOLog("InsomniaT: sleepOnClamshellClose = %d and clamshellShouldSleep = %d, doing nothing\n", obj->sleepOnClamshellClose, clamshellShouldSleep);
-        }        
+            IOLog("InsomniaT: sleepOnClamshellClose = %d, clamshellShouldSleep = %d, and onlyAppleBacklightDisplayConnected = %d, doing nothing\n",
+                  obj->sleepOnClamshellClose, clamshellShouldSleep, onlyAppleBacklightDisplayConnected);
+        }
     } else if (messageType == kIOMessageSystemWillSleep) {
         IOLog("InsomniaT: handleSleepWakeInterest invoked with kIOMessageSystemWillSleep\n");
         IOPowerStateChangeNotification *notification = (IOPowerStateChangeNotification *)messageArgument;
@@ -224,7 +318,8 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
         return false;
     }
     
-    mach_timespec_t t;
+/*
+ mach_timespec_t t;
     t.tv_sec = 20;
     t.tv_nsec = 0;
     
@@ -233,22 +328,24 @@ bool net_trajano_driver_InsomniaT::start(IOService *provider)
         IOLog("InsomniaT: AppleBacklightDisplay not found\n");
         return false;
     }
-    appleBacklightDisplayNotifier = registerSleepWakeInterest(handleIOServiceSleepWakeInterest, appleBacklightDisplay);
-    IOLog("InsomniaT: appleBacklightDisplayNotifier = %p\n", appleBacklightDisplayNotifier);
-    if (appleBacklightDisplayNotifier == NULL) {
-        return false;
-    }
     
     IOService *appleLMUController = waitForService(nameMatching("AppleLMUController"), &t);
     if (appleLMUController == NULL) {
         IOLog("InsomniaT: AppleLMUController not found\n");
         return false;
     }
+
     appleLMUControllerNotifier = registerSleepWakeInterest(handleIOServiceSleepWakeInterest, appleLMUController);
     IOLog("InsomniaT: appleLMUControllerNotifier = %p\n", appleLMUControllerNotifier);
     if (appleLMUControllerNotifier == NULL) {
         return false;
     }
+    appleBacklightDisplayNotifier = registerSleepWakeInterest(handleIOServiceSleepWakeInterest, appleBacklightDisplay);
+    IOLog("InsomniaT: appleBacklightDisplayNotifier = %p\n", appleBacklightDisplayNotifier);
+    if (appleBacklightDisplayNotifier == NULL) {
+        return false;
+    }
+*/
     
     clamshellNotifier = registerSleepWakeInterest(handleSleepWakeInterest, this);
     IOLog("InsomniaT: clamshellNotifier = %p\n", clamshellNotifier);
@@ -273,13 +370,14 @@ void net_trajano_driver_InsomniaT::close(IOService *forClient, IOOptionBits opti
     super::close(forClient, options);
 }
 
-void net_trajano_driver_InsomniaT::stop(IOService *provider)
-{
+void net_trajano_driver_InsomniaT::stop(IOService *provider) {
     IOLog("InsomniaT: stop\n");
+    /*
     appleBacklightDisplayNotifier->remove();
     appleBacklightDisplayNotifier = NULL;
     appleLMUControllerNotifier->remove();
     appleLMUControllerNotifier = NULL;
+     */
     clamshellNotifier->remove();
     clamshellNotifier = NULL;
     sleepOnClamshellClose = true;

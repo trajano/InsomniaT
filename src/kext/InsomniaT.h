@@ -31,8 +31,9 @@ class net_trajano_driver_InsomniaT : public IOService {
      * If the lid is closed, it will locate and disable the light sensor.
      * If the lid is open, it will locate and enable the light sensor.
      *
-     * If sleepOnClamshellClose and the system clamshell sleep state is false,
-     * this will enable sleep.
+     * If sleepOnClamshellClose, the system clamshell sleep state is false,
+     * and only the AppleBacklightDisplay is connected, then this will enable
+     * sleep.
      *
      * If not sleepOnClamshellClose and the system clamshell sleep state is true,
      * this will disable sleep.
@@ -82,8 +83,16 @@ public:
      * Invoked when the IOService has started.  Only occurs once per kext
      * load.
      * 
+     * It waits for 20 seconds for the AppleBacklightDisplay and the
+     * AppleLMUController to exist before registering any notifiers.  If either
+     * the AppleBacklightDisplay or AppleLMUController services do not exist
+     * within the timeout period, this will return false.
+     *
      * This will register the sleep wake handlers and determine the power state
-     * for the AppleLMUController and the AppleBacklightDisplay.
+     * for the AppleLMUController and the AppleBacklightDisplay.  If any handler
+     * was not registered successfully, this will return false.
+     *
+     * @return true if the service wast started successfuly, false otherwise.
      */
     virtual bool start(IOService *provider);
     
@@ -126,8 +135,12 @@ public:
     /**
      * This checks whether clamshell close causes sleep to be triggered.
      *
-     * It determines this by checking whether clamshellNotifier is set to NULL
-     * or not.
+     * It determines this by checking whether sleepOnClamshellClose is true
+     * or not.  It only checks sleepOnClamshellClose, not whether there
+     * are multiple displays or whether the system deterimines that clamshell
+     * state would be ignored or not.
+     *
+     * @return true if the sleepOnClamshellClose is tr, false otheruewise.
      */
     virtual bool isClamshellCloseCausesSleep() const;
 };
