@@ -1770,6 +1770,15 @@
 						<key>Path Type</key>
 						<integer>2</integer>
 					</dict>
+					<key>Japanese</key>
+					<dict>
+						<key>Mode</key>
+						<integer>1</integer>
+						<key>Path</key>
+						<string>../../Welcome_JP.rtf</string>
+						<key>Path Type</key>
+						<integer>2</integer>
+					</dict>
 				</dict>
 			</dict>
 			<key>Plugins</key>

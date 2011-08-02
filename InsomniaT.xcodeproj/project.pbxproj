@@ -140,6 +140,7 @@
 		2CA8F27513DDE2CB0097DE37 /* untitled.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; name = untitled.xcclassmodel; path = src/helper/untitled.xcclassmodel; sourceTree = "<group>"; };
 		2CA8F27813DDE3050097DE37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CC5441C1087B6E200992CF8 /* InsomniaTTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaTTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CEC6BFB13E8A5F7000E3EB5 /* Welcome_JP.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Welcome_JP.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +269,7 @@
 				2C201B5610872E29002447D1 /* ChangeLog.rtf */,
 				2C3F4FED13CD46F000214796 /* License.rtf */,
 				2C3F4FEF13CD479400214796 /* Welcome.rtf */,
+				2CEC6BFB13E8A5F7000E3EB5 /* Welcome_JP.rtf */,
 			);
 			name = Documents;
 			sourceTree = "<group>";
