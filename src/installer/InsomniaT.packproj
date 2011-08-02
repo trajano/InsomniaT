@@ -196,7 +196,7 @@
 														<key>GID</key>
 														<integer>80</integer>
 														<key>Path</key>
-														<string>../../../build/Release/InsomniaT.prefPane</string>
+														<string>../../build/Release/InsomniaT.prefPane</string>
 														<key>Path Type</key>
 														<integer>2</integer>
 														<key>Privileges</key>
@@ -841,7 +841,7 @@
 																<key>GID</key>
 																<integer>0</integer>
 																<key>Path</key>
-																<string>../../../build/Release/InsomniaT.kext</string>
+																<string>../../build/Release/InsomniaT.kext</string>
 																<key>Path Type</key>
 																<integer>2</integer>
 																<key>Privileges</key>
@@ -976,7 +976,7 @@
 								<key>IFInstallationScriptsPostflight</key>
 								<dict>
 									<key>Path</key>
-									<string>../installer/scripts/loadKernelExtension.sh</string>
+									<string>scripts/loadKernelExtension.sh</string>
 									<key>Path Type</key>
 									<integer>2</integer>
 									<key>Status</key>
@@ -999,7 +999,7 @@
 								<key>IFInstallationScriptsPreflight</key>
 								<dict>
 									<key>Path</key>
-									<string>../installer/scripts/uninstallInsomniaT.sh</string>
+									<string>scripts/uninstallInsomniaT.sh</string>
 									<key>Path Type</key>
 									<integer>2</integer>
 									<key>Status</key>
@@ -1066,6 +1066,17 @@
 									<string>Kernel Module</string>
 									<key>IFPkgDescriptionVersion</key>
 									<string>4.0.0</string>
+								</dict>
+								<key>Japanese</key>
+								<dict>
+									<key>IFPkgDescriptionDeleteWarning</key>
+									<string></string>
+									<key>IFPkgDescriptionDescription</key>
+									<string></string>
+									<key>IFPkgDescriptionTitle</key>
+									<string>カーネルモジュール</string>
+									<key>IFPkgDescriptionVersion</key>
+									<string>1.0</string>
 								</dict>
 							</dict>
 							<key>Display Information</key>
@@ -1460,7 +1471,7 @@
 																<key>GID</key>
 																<integer>80</integer>
 																<key>Path</key>
-																<string>../../../build/Release/insomniat</string>
+																<string>../../build/Release/insomniat</string>
 																<key>Path Type</key>
 																<integer>2</integer>
 																<key>Privileges</key>
@@ -2017,6 +2028,17 @@
 						<string></string>
 						<key>IFPkgDescriptionDescription</key>
 						<string>Disables sleep on MacBook, MacBook Air and MacBook Pro when the lid is closed.</string>
+						<key>IFPkgDescriptionTitle</key>
+						<string>InsomniaT</string>
+						<key>IFPkgDescriptionVersion</key>
+						<string>4.0.0</string>
+					</dict>
+					<key>Japanese</key>
+					<dict>
+						<key>IFPkgDescriptionDeleteWarning</key>
+						<string></string>
+						<key>IFPkgDescriptionDescription</key>
+						<string>蓋が閉じているときのMacBook、MacBook AirやMacBook Proの上で寝る無効にします。</string>
 						<key>IFPkgDescriptionTitle</key>
 						<string>InsomniaT</string>
 						<key>IFPkgDescriptionVersion</key>
