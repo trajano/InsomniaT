@@ -13,7 +13,7 @@
 
 
 - (void) willSelect {
-    [controller updateStatus: self];
+[controller updateStatus: self];
 }
 
 - (void) didUnselect {

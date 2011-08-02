@@ -12,8 +12,8 @@
 /**
  * InsomniaT preference pane.
  */
-@interface InsomniaTPref : NSPreferencePane 
-{
+@interface InsomniaTPref :
+NSPreferencePane {
     /**
      * Controller.
      */

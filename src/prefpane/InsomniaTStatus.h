@@ -11,13 +11,14 @@
 /**
  * InsomniaT status model.  This interfaces with the InsomniaT kernel extension.
  */
-@interface InsomniaTStatus : NSObject {
+@interface InsomniaTStatus :
+NSObject {
     /**
-     * This is zero if disabled. 
+     * This is zero if disabled.
      * This is one if enabled.
      * This is two if there's a problem.
      */
-	NSNumber* insomniaTEnabled;
+    NSNumber* insomniaTEnabled;
 }
 
 /**
@@ -38,5 +39,6 @@
  */
 - (void) disableInsomniaT;
 
-- (void)setNilValueForKey:(NSString *)theKey;
+- (void)setNilValueForKey:
+(NSString *)theKey;
 @end

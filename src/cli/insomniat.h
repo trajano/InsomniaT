@@ -9,7 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface TestClient : NSObject {
+@interface TestClient :
+NSObject {
 
 }
 

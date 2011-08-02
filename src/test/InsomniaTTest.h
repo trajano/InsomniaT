@@ -9,7 +9,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 
-@interface InsomniaTTest : SenTestCase {
+@interface InsomniaTTest :
+SenTestCase {
 
 }
 

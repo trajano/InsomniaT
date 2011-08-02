@@ -27,10 +27,10 @@ bool net_trajano_driver_InsomniaTUserClient::start(IOService * const provider)
     // how to communicate with.
     fProvider = OSDynamicCast(net_trajano_driver_InsomniaT, provider);
     bool success = (fProvider != NULL && fProvider->open(this));
-    
+
     if (success) {
         // It's important not to call super::start if some previous condition
-        // (like an invalid provider) would cause this function to return false. 
+        // (like an invalid provider) would cause this function to return false.
         // I/O Kit won't call stop on an object if its start function returned false.
         success = super::start(provider);
     }
@@ -38,46 +38,46 @@ bool net_trajano_driver_InsomniaTUserClient::start(IOService * const provider)
 }
 
 IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod(uint32_t selector, IOExternalMethodArguments * const arguments,
-																IOExternalMethodDispatch * const dispatch , OSObject * const target , void * const reference ) {
+        IOExternalMethodDispatch * const dispatch , OSObject * const target , void * const reference )
+{
     IOLog("InsomniaTClient: externalMethod selector = %d\n", selector);
     IOLog("InsomniaTClient: provider = %p\n", fProvider);
     IOLog("InsomniaTClient: target = %p\n", target);
     IOLog("InsomniaTClient: reference = %p\n", reference);
-	if (selector == 1 ) {
-		fProvider->enableSleepOnClamshellClose();
-		return kIOReturnSuccess;
-	} 
-	
-	if (selector == 2 ) {
-		fProvider->disableSleepOnClamshellClose();
-		return kIOReturnSuccess;
-	}
-	
-	if (selector == 3 && arguments->scalarOutputCount == 1 && arguments->scalarOutput != NULL) {
-		if (fProvider->isClamshellCloseCausesSleep()) {
-			arguments->scalarOutput[0] = 1;
-		} else {
-			arguments->scalarOutput[0] = 0;
-		}
-		return kIOReturnSuccess;
-	} 
+    if (selector == 1 ) {
+        fProvider->enableSleepOnClamshellClose();
+        return kIOReturnSuccess;
+    }
+
+    if (selector == 2 ) {
+        fProvider->disableSleepOnClamshellClose();
+        return kIOReturnSuccess;
+    }
+
+    if (selector == 3 && arguments->scalarOutputCount == 1 && arguments->scalarOutput != NULL) {
+        if (fProvider->isClamshellCloseCausesSleep()) {
+            arguments->scalarOutput[0] = 1;
+        } else {
+            arguments->scalarOutput[0] = 0;
+        }
+        return kIOReturnSuccess;
+    }
     return kIOReturnSuccess;
 }
 
 bool net_trajano_driver_InsomniaTUserClient::didTerminate(IOService * const provider, IOOptionBits const options, bool * const defer)
 {
-    IOLog("InsomniaTClient: didTerminate\n");    
+    IOLog("InsomniaTClient: didTerminate\n");
     return super::didTerminate(provider, options, defer);
 }
 
 void net_trajano_driver_InsomniaTUserClient::stop(IOService * const provider)
-{    
+{
     IOLog("InsomniaTClient: stop %p\n", provider);
-    
+
     if (provider->isOpen(this)) {
         provider->close(this);
-    }
-    else {
+    } else {
         IOLog("InsomniaT: client did not open provider.\n");
     }
     super::stop(provider);
@@ -89,6 +89,6 @@ IOReturn net_trajano_driver_InsomniaTUserClient::clientClose()
     if( !isInactive()) {
         terminate();
     }
-    
+
     return kIOReturnSuccess;
 }

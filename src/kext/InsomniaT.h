@@ -6,9 +6,10 @@
  * This is the IOService that is used to prevent a MacBook from sleeping when
  * the lid is closed.
  */
-class net_trajano_driver_InsomniaT : public IOService {
+class net_trajano_driver_InsomniaT : public IOService
+{
     OSDeclareDefaultStructors(net_trajano_driver_InsomniaT);
-    
+
     /**
      * This handles the event when there is a sleep wake event including the
      * notification where the clamshell is open and closed.
@@ -40,9 +41,9 @@ class net_trajano_driver_InsomniaT : public IOService {
      * @param argSize size of the message argument
      * @return kIOReturnSuccess if everything went well.
      */
-	friend IOReturn handleSleepWakeInterest(void *target, void *refCon,
-											UInt32 messageType, IOService *provider,
-											void *messageArgument, vm_size_t argSize );
+    friend IOReturn handleSleepWakeInterest(void *target, void *refCon,
+                                            UInt32 messageType, IOService *provider,
+                                            void *messageArgument, vm_size_t argSize );
 private:
     /**
      * This points to the notifier that will be triggered when a clamshell
@@ -50,25 +51,25 @@ private:
      * but defined when sleep on clamshell is disabled.
      */
     IONotifier *clamshellNotifier;
-    
+
     /**
      * Sleep on clamshell close flag.
      */
     bool sleepOnClamshellClose;
-    
+
 public:
     /**
      * Invoked when the IOService has initialized.
-     * 
+     *
      * This will set the class variables to its initial state.  Specifically
      * sleepOnClamshellClose = true.
      */
     virtual bool init(OSDictionary* dictionary = 0);
-    
+
     /**
      * Invoked when the IOService has started.  Only occurs once per kext
      * load.
-     * 
+     *
      * It waits for 20 seconds for the AppleBacklightDisplay and the
      * AppleLMUController to exist before registering any notifiers.  If either
      * the AppleBacklightDisplay or AppleLMUController services do not exist
@@ -80,17 +81,17 @@ public:
      * @return true if the service wast started successfuly, false otherwise.
      */
     virtual bool start(IOService *provider);
-    
+
     /**
      * Invoked when a client connects to the service.
      */
     virtual bool open(IOService *forClient, IOOptionBits options = 0, void *arg = 0);
-    
+
     /**
      * Invoked when a client releases from the service.
      */
     virtual void close(IOService *forClient, IOOptionBits options = 0);
-    
+
     /**
      * Invoked when the IOService has stopped.  Only occurs once per kext
      * load.
@@ -98,15 +99,15 @@ public:
      * This will deregister the sleep wake handlers and turn on the
      * AppleLMUController.
      */
-    virtual void stop(IOService *provider);	
-    
+    virtual void stop(IOService *provider);
+
     /**
      * This will enable sleep on clamshell close.
      *
      * It will remove the clamshellNotifier and set it to NULL if it is defined.
      */
     virtual void enableSleepOnClamshellClose();
-    
+
     /**
      * This will disable sleep on clamshell close.
      *
@@ -115,7 +116,7 @@ public:
      * handleSleepWakeInterest function and assign it to clamshellNotifier.
      */
     virtual void disableSleepOnClamshellClose();
-    
+
     /**
      * This checks whether clamshell close causes sleep to be triggered.
      *
