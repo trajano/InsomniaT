@@ -18,8 +18,7 @@
         io_service_t    service;
         service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
         if (service == IO_OBJECT_NULL) {
-[self setValue: [NSNumber numberWithUnsignedInt: 2]
-forKey: @"insomniaTEnabled"];
+            insomniaTEnabled = [NSNumber numberWithUnsignedInt: 2];
         }
 
         io_connect_t connect;
@@ -32,15 +31,12 @@ forKey: @"insomniaTEnabled"];
             IOServiceClose(connect);
 
             if (output[0] == 1) {
-[self setValue: [NSNumber numberWithUnsignedInt: 1]
- forKey: @"insomniaTEnabled"];
+                insomniaTEnabled = [NSNumber numberWithUnsignedInt: 1];
             } else {
-[self setValue: [NSNumber numberWithUnsignedInt: 0]
- forKey: @"insomniaTEnabled"];
+                insomniaTEnabled = [NSNumber numberWithUnsignedInt: 0];
             }
         } else {
-[self setValue: [NSNumber numberWithUnsignedInt: 2]
- forKey: @"insomniaTEnabled"];
+            insomniaTEnabled = [NSNumber numberWithUnsignedInt: 2];
         }
     }
     return self;
@@ -79,8 +75,7 @@ forKey: @"insomniaTEnabled"];
 - (void) enableInsomniaT {
     const io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
     if (service == IO_OBJECT_NULL) {
-[self setValue: [NSNumber numberWithUnsignedInt: 2]
-forKey: @"insomniaTEnabled"];
+        insomniaTEnabled = [NSNumber numberWithUnsignedInt: 2];
         return;
     }
 
@@ -93,14 +88,13 @@ forKey: @"insomniaTEnabled"];
         IOConnectCallScalarMethod(connect, 1, NULL, 0, output, &count);
         IOServiceClose(connect);
     }
-[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
-forKey: @"insomniaTEnabled"];
+insomniaTEnabled = [NSNumber numberWithUnsignedInt: self.getInsomniaTStatusFromDriver];
 }
+
 - (void) disableInsomniaT {
     const io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault,IOServiceMatching("net_trajano_driver_InsomniaT"));
     if (service == IO_OBJECT_NULL) {
-[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
-forKey: @"insomniaTEnabled"];
+        insomniaTEnabled = [NSNumber numberWithUnsignedInt: 2];
         return;
     }
 
@@ -113,15 +107,13 @@ forKey: @"insomniaTEnabled"];
         IOConnectCallScalarMethod(connect, 2, NULL, 0, output, &count);
         IOServiceClose(connect);
     }
-[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
-forKey: @"insomniaTEnabled"];
+insomniaTEnabled = [NSNumber numberWithUnsignedInt: self.getInsomniaTStatusFromDriver];
 }
 
 - (void)setNilValueForKey:
 (NSString *)theKey {
 if ([theKey isEqualToString:@"insomniaTEnabled"]) {
-[self setValue: [NSNumber numberWithUnsignedInt:[self getInsomniaTStatusFromDriver]]
-forKey: @"insomniaTEnabled"];
+insomniaTEnabled = [NSNumber numberWithUnsignedInt: self.getInsomniaTStatusFromDriver];
     } else {
 [super setNilValueForKey:theKey];
     }
