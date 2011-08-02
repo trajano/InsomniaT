@@ -14,7 +14,6 @@
 			);
 			dependencies = (
 				2C200D631086FF4B002447D1 /* PBXTargetDependency */,
-				2C2012C210871447002447D1 /* PBXTargetDependency */,
 				2C20041B1086F84B002447D1 /* PBXTargetDependency */,
 				2C2012B110871321002447D1 /* PBXTargetDependency */,
 				2C6FC55C11C03880004D0737 /* PBXTargetDependency */,
@@ -30,8 +29,6 @@
 		2C200D6B10870044002447D1 /* InsomniaTUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C200D211086FDE5002447D1 /* InsomniaTUserClient.cpp */; };
 		2C200E24108703B9002447D1 /* InsomniaTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C200E21108703B9002447D1 /* InsomniaTTest.m */; };
 		2C2012341087074A002447D1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C200E2F108704F8002447D1 /* IOKit.framework */; };
-		2C2012B61087137A002447D1 /* InsomniaTUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C200D211086FDE5002447D1 /* InsomniaTUserClient.cpp */; };
-		2C2012B71087137A002447D1 /* InsomniaT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C200D1F1086FDE5002447D1 /* InsomniaT.cpp */; };
 		2C2012F21087171C002447D1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C200E2F108704F8002447D1 /* IOKit.framework */; };
 		2C20170F108719E0002447D1 /* insomniat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C20170E108719E0002447D1 /* insomniat.m */; };
 		2C6FC53811C037B7004D0737 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6FC4E411C035A4004D0737 /* PreferencePanes.framework */; };
@@ -68,13 +65,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2C7F45C6106B612700AEC829;
 			remoteInfo = insomniat;
-		};
-		2C2012C110871447002447D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C2012B41087137A002447D1;
-			remoteInfo = "InsomniaT 10.5";
 		};
 		2C6FC55B11C03880004D0737 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -131,7 +121,6 @@
 		2C200E23108703B9002447D1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C200E2F108704F8002447D1 /* IOKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2C2012E710871669002447D1 /* InsomniaT.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.kext; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C2012E810871685002447D1 /* InsomniaT (10.5).kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "InsomniaT (10.5).kext"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2016EB10871751002447D1 /* insomniat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = insomniat; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C20170D108719E0002447D1 /* insomniat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = insomniat.h; sourceTree = "<group>"; };
 		2C20170E108719E0002447D1 /* insomniat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = insomniat.m; sourceTree = "<group>"; };
@@ -167,13 +156,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		2C200D391086FE7A002447D1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C2012B81087137A002447D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -280,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				2C2012E710871669002447D1 /* InsomniaT.kext */,
-				2C2012E810871685002447D1 /* InsomniaT (10.5).kext */,
 				2C2016EB10871751002447D1 /* insomniat */,
 				2CC5441C1087B6E200992CF8 /* InsomniaTTest.octest */,
 				2C6FC53311C0379F004D0737 /* InsomniaT.prefPane */,
@@ -417,24 +398,6 @@
 			productReference = 2C2012E710871669002447D1 /* InsomniaT.kext */;
 			productType = "com.apple.product-type.kernel-extension.iokit";
 		};
-		2C2012B41087137A002447D1 /* InsomniaT Kernel Extension 10.5 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C2012BA1087137A002447D1 /* Build configuration list for PBXNativeTarget "InsomniaT Kernel Extension 10.5" */;
-			buildPhases = (
-				2C2012B51087137A002447D1 /* Sources */,
-				2C2012B81087137A002447D1 /* Frameworks */,
-				2C2012B91087137A002447D1 /* Resources */,
-			);
-			buildRules = (
-			);
-			comments = "This is the main kernel extension.  It needs to be compiled against 10.5 to be able to execute in 10.5 as a 32-bit only";
-			dependencies = (
-			);
-			name = "InsomniaT Kernel Extension 10.5";
-			productName = InsomniaT;
-			productReference = 2C2012E810871685002447D1 /* InsomniaT (10.5).kext */;
-			productType = "com.apple.product-type.kernel-extension.iokit";
-		};
 		2C24428F106BDB4F0088C89C /* InsomniaTTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C244295106BDB500088C89C /* Build configuration list for PBXNativeTarget "InsomniaTTest" */;
@@ -533,7 +496,6 @@
 				2C2004131086F82E002447D1 /* all */,
 				2C7F45C6106B612700AEC829 /* insomniat */,
 				2C200D3A1086FE7A002447D1 /* InsomniaT Kernel Extension */,
-				2C2012B41087137A002447D1 /* InsomniaT Kernel Extension 10.5 */,
 				2C24428F106BDB4F0088C89C /* InsomniaTTest */,
 				2C6FC53211C0379F004D0737 /* InsomniaTPref */,
 				2C201B66108733DC002447D1 /* Installer */,
@@ -544,13 +506,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		2C20129710871181002447D1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C2012B91087137A002447D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -610,15 +565,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C2012B51087137A002447D1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C2012B61087137A002447D1 /* InsomniaTUserClient.cpp in Sources */,
-				2C2012B71087137A002447D1 /* InsomniaT.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2C24428C106BDB4F0088C89C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -669,11 +615,6 @@
 			isa = PBXTargetDependency;
 			target = 2C7F45C6106B612700AEC829 /* insomniat */;
 			targetProxy = 2C2012B010871321002447D1 /* PBXContainerItemProxy */;
-		};
-		2C2012C210871447002447D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C2012B41087137A002447D1 /* InsomniaT Kernel Extension 10.5 */;
-			targetProxy = 2C2012C110871447002447D1 /* PBXContainerItemProxy */;
 		};
 		2C6FC55C11C03880004D0737 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -822,61 +763,6 @@
 				PRODUCT_NAME = InsomniaT;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
-				WRAPPER_EXTENSION = kext;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		2C2012BB1087137A002447D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/${SDKROOT}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = src/kext/Info.plist;
-				INSTALL_GROUP = wheel;
-				INSTALL_OWNER = root;
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACH_O_TYPE = mh_execute;
-				MODULE_NAME = net.trajano.driver.InsomniaT;
-				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "InsomniaT (10.5)";
-				SDKROOT = macosx;
-				VALID_ARCHS = "ppc970 ppc7400 ppc64 ppc i386";
-				WRAPPER_EXTENSION = kext;
-			};
-			name = Debug;
-		};
-		2C2012BC1087137A002447D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/${SDKROOT}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				INFOPLIST_FILE = src/kext/Info.plist;
-				INSTALL_GROUP = wheel;
-				INSTALL_OWNER = root;
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				LINK_WITH_STANDARD_LIBRARIES = YES;
-				MACH_O_TYPE = mh_execute;
-				MODULE_NAME = net.trajano.driver.InsomniaT;
-				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "InsomniaT (10.5)";
-				SDKROOT = macosx;
-				VALID_ARCHS = "ppc970 ppc7400 ppc64 ppc i386";
 				WRAPPER_EXTENSION = kext;
 				ZERO_LINK = NO;
 			};
@@ -1108,15 +994,6 @@
 			buildConfigurations = (
 				2C200D3E1086FE7B002447D1 /* Debug */,
 				2C200D3F1086FE7B002447D1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2C2012BA1087137A002447D1 /* Build configuration list for PBXNativeTarget "InsomniaT Kernel Extension 10.5" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C2012BB1087137A002447D1 /* Debug */,
-				2C2012BC1087137A002447D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
