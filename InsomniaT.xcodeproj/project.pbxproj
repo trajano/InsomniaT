@@ -41,7 +41,6 @@
 		2C6FC54411C03841004D0737 /* InsomniaTStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC36C11C02F05004D0737 /* InsomniaTStatus.m */; };
 		2C6FC54511C03841004D0737 /* InsomniaTPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC36E11C02F05004D0737 /* InsomniaTPrefController.m */; };
 		2C6FC54611C03841004D0737 /* Coffee Cup.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FC37211C02F05004D0737 /* Coffee Cup.icns */; };
-		2C6FCDA511C054AC004D0737 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FCDA111C054AC004D0737 /* InfoPlist.strings */; };
 		2C6FCDA611C054AC004D0737 /* InsomniaTPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FCDA311C054AC004D0737 /* InsomniaTPref.xib */; };
 		2CA8F0BA13DDE1340097DE37 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C201C0E1087ABF9002447D1 /* Cocoa.framework */; };
 		2CA8F0CF13DDE1B20097DE37 /* Coffee Cup.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2CA8F0CE13DDE1B20097DE37 /* Coffee Cup.icns */; };
@@ -138,6 +137,7 @@
 		2C20170E108719E0002447D1 /* insomniat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = insomniat.m; sourceTree = "<group>"; };
 		2C201B5610872E29002447D1 /* ChangeLog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ChangeLog.rtf; sourceTree = "<group>"; };
 		2C201C0E1087ABF9002447D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		2C239D2313E79AA800D636B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2C24479B106C30C50088C89C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		2C3F4FE013CD423A00214796 /* loadKernelExtension.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = loadKernelExtension.sh; sourceTree = "<group>"; };
 		2C3F4FED13CD46F000214796 /* License.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
@@ -155,7 +155,6 @@
 		2C6FC4E411C035A4004D0737 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 		2C6FC53311C0379F004D0737 /* InsomniaT.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsomniaT.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6FCD1611C04738004D0737 /* uninstallInsomniaT.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstallInsomniaT.sh; sourceTree = "<group>"; };
-		2C6FCDA211C054AC004D0737 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2C6FCDA411C054AC004D0737 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = InsomniaTPref.xib; sourceTree = "<group>"; };
 		2CA53D1513DDA75800FD2F33 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		2CA8F0B413DDE10D0097DE37 /* InsomniaT Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InsomniaT Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,8 +346,8 @@
 		2C6FCDA011C054AC004D0737 /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				2C6FCDA111C054AC004D0737 /* InfoPlist.strings */,
 				2C6FCDA311C054AC004D0737 /* InsomniaTPref.xib */,
+				2C239D2213E79AA800D636B1 /* InfoPlist.strings */,
 			);
 			path = en.lproj;
 			sourceTree = "<group>";
@@ -570,7 +569,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6FC54611C03841004D0737 /* Coffee Cup.icns in Resources */,
-				2C6FCDA511C054AC004D0737 /* InfoPlist.strings in Resources */,
 				2C6FCDA611C054AC004D0737 /* InsomniaTPref.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,10 +706,10 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2C6FCDA111C054AC004D0737 /* InfoPlist.strings */ = {
+		2C239D2213E79AA800D636B1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2C6FCDA211C054AC004D0737 /* en */,
+				2C239D2313E79AA800D636B1 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

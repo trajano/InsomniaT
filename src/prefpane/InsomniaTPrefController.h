@@ -17,16 +17,19 @@
 	IBOutlet NSTextField *startStopButtonBlurb;
     IBOutlet NSTextField *automaticBrightnessBlurb;
 
+    /**
+     * Connects to the status object.
+     */
 	InsomniaTStatus *insomniaTstatus;
 }
 - (id) init;
-/*
-- (void) dealloc;
- */
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context;
 - (IBAction) updateStatus:(id) sender;
+/**
+ * Invoked when the startStop button is clicked.
+ */
 - (IBAction) startStop:(id)sender;
 @end
