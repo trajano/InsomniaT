@@ -496,15 +496,15 @@
 									<key>IFPkgDescriptionTitle</key>
 									<string>Preference Pane</string>
 									<key>IFPkgDescriptionVersion</key>
-									<string>3.0.1</string>
+									<string>4.0.0</string>
 								</dict>
 							</dict>
 							<key>Display Information</key>
 							<dict>
 								<key>CFBundleGetInfoString</key>
-								<string>InsomniaT 3.0.1 Copyrights © 2009-2011 trajano.net</string>
+								<string>InsomniaT 4.0.0 Copyrights © 2009-2011 trajano.net</string>
 								<key>CFBundleIconFile</key>
-								<string>../../prefpane/Coffee Cup.icns</string>
+								<string>../prefpane/Coffee Cup.icns</string>
 								<key>CFBundleIconFile Path Type</key>
 								<integer>2</integer>
 								<key>CFBundleIdentifier</key>
@@ -512,7 +512,7 @@
 								<key>CFBundleName</key>
 								<string>InsomniaT Preference Pane</string>
 								<key>CFBundleShortVersionString</key>
-								<string>3.0.1</string>
+								<string>4.0.0</string>
 							</dict>
 							<key>Options</key>
 							<dict>
@@ -538,7 +538,7 @@
 							<key>Version</key>
 							<dict>
 								<key>IFMajorVersion</key>
-								<integer>3</integer>
+								<integer>4</integer>
 								<key>IFMinorVersion</key>
 								<integer>0</integer>
 							</dict>
@@ -976,7 +976,7 @@
 								<key>IFInstallationScriptsPostflight</key>
 								<dict>
 									<key>Path</key>
-									<string>../../installer/scripts/loadKernelExtension.sh</string>
+									<string>../installer/scripts/loadKernelExtension.sh</string>
 									<key>Path Type</key>
 									<integer>2</integer>
 									<key>Status</key>
@@ -999,7 +999,7 @@
 								<key>IFInstallationScriptsPreflight</key>
 								<dict>
 									<key>Path</key>
-									<string>../../installer/scripts/uninstallInsomniaT.sh</string>
+									<string>../installer/scripts/uninstallInsomniaT.sh</string>
 									<key>Path Type</key>
 									<integer>2</integer>
 									<key>Status</key>
@@ -1065,15 +1065,15 @@
 									<key>IFPkgDescriptionTitle</key>
 									<string>Kernel Module</string>
 									<key>IFPkgDescriptionVersion</key>
-									<string>3.0.1</string>
+									<string>4.0.0</string>
 								</dict>
 							</dict>
 							<key>Display Information</key>
 							<dict>
 								<key>CFBundleGetInfoString</key>
-								<string>InsomniaT 3.0.1 Copyrights © 2009-2011 trajano.net</string>
+								<string>InsomniaT 4.0.0 Copyrights © 2009-2011 trajano.net</string>
 								<key>CFBundleIconFile</key>
-								<string>../../prefpane/Coffee Cup.icns</string>
+								<string>../prefpane/Coffee Cup.icns</string>
 								<key>CFBundleIconFile Path Type</key>
 								<integer>2</integer>
 								<key>CFBundleIdentifier</key>
@@ -1081,7 +1081,7 @@
 								<key>CFBundleName</key>
 								<string>InsomniaT Kernel Module</string>
 								<key>CFBundleShortVersionString</key>
-								<string>3.0.1</string>
+								<string>4.0.0</string>
 							</dict>
 							<key>Options</key>
 							<dict>
@@ -1651,7 +1651,7 @@
 									<key>IFPkgDescriptionTitle</key>
 									<string>Command Line Interface</string>
 									<key>IFPkgDescriptionVersion</key>
-									<string>3.0.1</string>
+									<string>4.0.0</string>
 								</dict>
 							</dict>
 							<key>Display Information</key>
@@ -1659,7 +1659,7 @@
 								<key>CFBundleGetInfoString</key>
 								<string>InsomniaT 3.0.1 Copyrights © 2009-2011 trajano.net</string>
 								<key>CFBundleIconFile</key>
-								<string>../../prefpane/Coffee Cup.icns</string>
+								<string>../prefpane/Coffee Cup.icns</string>
 								<key>CFBundleIconFile Path Type</key>
 								<integer>2</integer>
 								<key>CFBundleIdentifier</key>
@@ -1667,7 +1667,7 @@
 								<key>CFBundleName</key>
 								<string>InsomniaT Command Line Interface</string>
 								<key>CFBundleShortVersionString</key>
-								<string>3.0.1</string>
+								<string>4.0.0</string>
 							</dict>
 							<key>Options</key>
 							<dict>
@@ -1693,7 +1693,7 @@
 							<key>Version</key>
 							<dict>
 								<key>IFMajorVersion</key>
-								<integer>3</integer>
+								<integer>4</integer>
 								<key>IFMinorVersion</key>
 								<integer>0</integer>
 							</dict>
@@ -1720,7 +1720,7 @@
 					<key>Mode</key>
 					<integer>1</integer>
 					<key>Path</key>
-					<string>../../prefpane/coffee-cup-192.pdf</string>
+					<string>../prefpane/coffee-cup-192.pdf</string>
 					<key>Path Type</key>
 					<integer>2</integer>
 				</dict>
@@ -1731,7 +1731,7 @@
 						<key>Mode</key>
 						<integer>1</integer>
 						<key>Path</key>
-						<string>../../../License.rtf</string>
+						<string>../../License.rtf</string>
 						<key>Path Type</key>
 						<integer>2</integer>
 					</dict>
@@ -1743,7 +1743,7 @@
 						<key>Mode</key>
 						<integer>1</integer>
 						<key>Path</key>
-						<string>../../../ChangeLog.rtf</string>
+						<string>../../ChangeLog.rtf</string>
 						<key>Path Type</key>
 						<integer>2</integer>
 					</dict>
@@ -1755,7 +1755,7 @@
 						<key>Mode</key>
 						<integer>1</integer>
 						<key>Path</key>
-						<string>../../../Welcome.rtf</string>
+						<string>../../Welcome.rtf</string>
 						<key>Path Type</key>
 						<integer>2</integer>
 					</dict>
@@ -1842,7 +1842,7 @@
 					<key>IFInstallationScriptsPreflight</key>
 					<dict>
 						<key>Path</key>
-						<string>../../installer/scripts/uninstallInsomniaT.sh</string>
+						<string>scripts/uninstallInsomniaT.sh</string>
 						<key>Path Type</key>
 						<integer>2</integer>
 						<key>Status</key>
@@ -2026,7 +2026,7 @@
 				<key>Display Information</key>
 				<dict>
 					<key>CFBundleGetInfoString</key>
-					<string>InsomniaT 3.0.2 Copyrights © 2009-2011 trajano.net</string>
+					<string>InsomniaT 4.0.0 Copyrights © 2009-2011 trajano.net</string>
 					<key>CFBundleIconFile</key>
 					<string></string>
 					<key>CFBundleIconFile Path Type</key>
@@ -2036,14 +2036,14 @@
 					<key>CFBundleName</key>
 					<string>InsomniaT</string>
 					<key>CFBundleShortVersionString</key>
-					<string>3.0.1</string>
+					<string>4.0.0</string>
 				</dict>
 				<key>Version</key>
 				<dict>
 					<key>IFMajorVersion</key>
-					<integer>3</integer>
+					<integer>4</integer>
 					<key>IFMinorVersion</key>
-					<integer>1</integer>
+					<integer>0</integer>
 				</dict>
 			</dict>
 		</dict>
@@ -2065,7 +2065,7 @@
 		<key>10.1 Compatibility</key>
 		<false/>
 		<key>Build Path</key>
-		<string>../../../build/packages/</string>
+		<string>../../build/packages/</string>
 		<key>Build Path Type</key>
 		<integer>2</integer>
 		<key>Comment</key>
