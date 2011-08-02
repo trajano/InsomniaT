@@ -736,7 +736,7 @@
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = kext;
 			};
@@ -761,7 +761,7 @@
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = kext;
 				ZERO_LINK = NO;
@@ -855,7 +855,7 @@
 				INSTALL_PATH = /Library/PreferencePanes;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Debug;
@@ -874,7 +874,7 @@
 				INSTALL_PATH = /Library/PreferencePanes;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = InsomniaT;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = prefPane;
 				ZERO_LINK = NO;
 			};
