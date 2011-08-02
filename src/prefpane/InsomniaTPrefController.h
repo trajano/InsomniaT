@@ -12,6 +12,9 @@
 @interface InsomniaTPrefController : NSObject {
 	IBOutlet NSLevelIndicator *statusLevel;
 	IBOutlet NSTextField *statusLevelText;
+    /**
+     * Blurb that appears next to the status level indicator.
+     */
 	IBOutlet NSTextField *statusLevelBlurb;
 	IBOutlet NSButton *startStopButton;
 	IBOutlet NSTextField *startStopButtonBlurb;
