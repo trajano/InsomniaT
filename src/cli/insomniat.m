@@ -15,8 +15,7 @@
 
 @end
 
-int main(int const argc, char * const argv[] )
-{
+int main(int const argc, char * const argv[] ) {
     extern char *optarg;
     extern int optind;
 

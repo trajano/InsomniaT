@@ -6,8 +6,7 @@
  * This is the IOService that is used to prevent a MacBook from sleeping when
  * the lid is closed.
  */
-class net_trajano_driver_InsomniaT : public IOService
-{
+class net_trajano_driver_InsomniaT : public IOService {
     OSDeclareDefaultStructors(net_trajano_driver_InsomniaT);
 
     /**

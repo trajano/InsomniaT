@@ -7,8 +7,7 @@
 /**
  * This is the IOUserClient that communicates with the InsomniaT service.
  */
-class net_trajano_driver_InsomniaTUserClient : public IOUserClient
-{
+class net_trajano_driver_InsomniaTUserClient : public IOUserClient {
     OSDeclareDefaultStructors(net_trajano_driver_InsomniaTUserClient);
 
 private:

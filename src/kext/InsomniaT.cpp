@@ -57,8 +57,7 @@
  * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
  * @return the IOService that matches the criteria.
  */
-static inline IOService* getIOService(const char * const className, const IOService * const provider)
-{
+static inline IOService* getIOService(const char * const className, const IOService * const provider) {
     OSIterator* i = provider->getMatchingServices(IOService::serviceMatching(className));
     if (i == NULL) {
         return NULL;
@@ -86,8 +85,7 @@ static inline IOService* getIOService(const char * const className, const IOServ
  * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
  * @return the number IOService that matches the criteria.
  */
-static inline unsigned int getNumberOfIOService(const char * const className, const IOService * const provider)
-{
+static inline unsigned int getNumberOfIOService(const char * const className, const IOService * const provider) {
     OSIterator* i = provider->getMatchingServices(IOService::serviceMatching(className));
     if (i == NULL) {
         return NULL;
@@ -111,8 +109,7 @@ static inline unsigned int getNumberOfIOService(const char * const className, co
  * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
  * @return the number IOService that matches the criteria.
  */
-static inline bool isOnlyAppleBacklightDisplayConnected(const IOService * const provider)
-{
+static inline bool isOnlyAppleBacklightDisplayConnected(const IOService * const provider) {
     return getIOService("AppleBacklightDisplay", provider) != NULL &&
            getNumberOfIOService("IODisplayConnect", provider) == 1;
 }
@@ -131,8 +128,7 @@ static inline bool isOnlyAppleBacklightDisplayConnected(const IOService * const 
  */
 static inline IOReturn handleOtherSleepWakeInterest(void * const target, void * const refCon,
         UInt32 const messageType, IOService * const provider,
-        void * const messageArgument, vm_size_t const argSize )
-{
+        void * const messageArgument, vm_size_t const argSize ) {
     IOService *obj = (IOService *)target;
     if (obj == NULL) {
         IOLog("InsomniaT: target object was NULL\n");
@@ -181,8 +177,7 @@ static inline IOReturn handleOtherSleepWakeInterest(void * const target, void * 
  * @param className class name
  * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
  */
-static inline void powerOff(const char * const className, IOService * const provider)
-{
+static inline void powerOff(const char * const className, IOService * const provider) {
     IOService *obj = getIOService(className, provider);
     if (obj == NULL) {
         return;
@@ -199,8 +194,7 @@ static inline void powerOff(const char * const className, IOService * const prov
  * @param className class name
  * @param provider provider to use as the starting point for the search.  Usually this is the PMrootDomain.
  */
-static inline void powerOn(const char * const className, IOService * const provider)
-{
+static inline void powerOn(const char * const className, IOService * const provider) {
     IOService *obj = getIOService(className, provider);
     if (obj == NULL) {
         return;
@@ -212,8 +206,7 @@ static inline void powerOn(const char * const className, IOService * const provi
 
 IOReturn handleSleepWakeInterest(void * const target, void * const refCon,
                                  UInt32 messageType, IOService * const provider,
-                                 void * const messageArgument, vm_size_t const argSize )
-{
+                                 void * const messageArgument, vm_size_t const argSize ) {
     net_trajano_driver_InsomniaT *obj = (net_trajano_driver_InsomniaT *)target;
 
     if (messageType == kIOPMMessageClamshellStateChange) {
@@ -260,8 +253,7 @@ IOReturn handleSleepWakeInterest(void * const target, void * const refCon,
  */
 OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaT, IOService)
 
-bool net_trajano_driver_InsomniaT::init(OSDictionary * const dictionary)
-{
+bool net_trajano_driver_InsomniaT::init(OSDictionary * const dictionary) {
     IOLog("InsomniaT: init\n");
     if (!super::init(dictionary)) {
         return false;
@@ -270,8 +262,7 @@ bool net_trajano_driver_InsomniaT::init(OSDictionary * const dictionary)
     return true;
 }
 
-bool net_trajano_driver_InsomniaT::start(IOService * const provider)
-{
+bool net_trajano_driver_InsomniaT::start(IOService * const provider) {
     IOLog("InsomniaT: start\n");
 
     IOWorkLoop* workLoop = getWorkLoop();
@@ -300,20 +291,17 @@ bool net_trajano_driver_InsomniaT::start(IOService * const provider)
     return res;
 }
 
-bool net_trajano_driver_InsomniaT::open(IOService * const forClient, IOOptionBits const options, void * const arg)
-{
+bool net_trajano_driver_InsomniaT::open(IOService * const forClient, IOOptionBits const options, void * const arg) {
     IOLog("InsomniaT: open %p\n", forClient);
     return super::open(forClient, options, arg);
 }
 
-void net_trajano_driver_InsomniaT::close(IOService * const forClient, IOOptionBits const options)
-{
+void net_trajano_driver_InsomniaT::close(IOService * const forClient, IOOptionBits const options) {
     IOLog("InsomniaT: close %p\n", forClient);
     super::close(forClient, options);
 }
 
-void net_trajano_driver_InsomniaT::stop(IOService * const provider)
-{
+void net_trajano_driver_InsomniaT::stop(IOService * const provider) {
     IOLog("InsomniaT: stop\n");
     clamshellNotifier->remove();
     clamshellNotifier = NULL;
@@ -324,22 +312,19 @@ void net_trajano_driver_InsomniaT::stop(IOService * const provider)
     super::stop(provider);
 }
 
-void net_trajano_driver_InsomniaT::enableSleepOnClamshellClose()
-{
+void net_trajano_driver_InsomniaT::enableSleepOnClamshellClose() {
     IOLog("InsomniaT: enableSleepOnClamshellClose\n");
     sleepOnClamshellClose = true;
     getPMRootDomain()->receivePowerNotification(kIOPMEnableClamshell);
 }
 
-void net_trajano_driver_InsomniaT::disableSleepOnClamshellClose()
-{
+void net_trajano_driver_InsomniaT::disableSleepOnClamshellClose() {
     IOLog("InsomniaT: disableSleepOnClamshellClose\n");
     sleepOnClamshellClose = false;
     getPMRootDomain()->receivePowerNotification(kIOPMDisableClamshell);
 }
 
-bool net_trajano_driver_InsomniaT::isClamshellCloseCausesSleep() const
-{
+bool net_trajano_driver_InsomniaT::isClamshellCloseCausesSleep() const {
     IOLog("InsomniaT: isClamshellCloseCausesSleep clamshellNotifier = %p, %d\n", clamshellNotifier, sleepOnClamshellClose);
     return sleepOnClamshellClose;
 }

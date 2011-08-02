@@ -20,8 +20,7 @@
 OSDefineMetaClassAndStructors(net_trajano_driver_InsomniaTUserClient, IOUserClient)
 
 // start is called after initWithTask as a result of the user process calling IOServiceOpen.
-bool net_trajano_driver_InsomniaTUserClient::start(IOService * const provider)
-{
+bool net_trajano_driver_InsomniaTUserClient::start(IOService * const provider) {
     IOLog("InsomniaTClient: start\n");
     // Verify that this user client is being started with a provider that it knows
     // how to communicate with.
@@ -38,8 +37,7 @@ bool net_trajano_driver_InsomniaTUserClient::start(IOService * const provider)
 }
 
 IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod(uint32_t selector, IOExternalMethodArguments * const arguments,
-        IOExternalMethodDispatch * const dispatch , OSObject * const target , void * const reference )
-{
+        IOExternalMethodDispatch * const dispatch , OSObject * const target , void * const reference ) {
     IOLog("InsomniaTClient: externalMethod selector = %d\n", selector);
     IOLog("InsomniaTClient: provider = %p\n", fProvider);
     IOLog("InsomniaTClient: target = %p\n", target);
@@ -65,14 +63,12 @@ IOReturn net_trajano_driver_InsomniaTUserClient::externalMethod(uint32_t selecto
     return kIOReturnSuccess;
 }
 
-bool net_trajano_driver_InsomniaTUserClient::didTerminate(IOService * const provider, IOOptionBits const options, bool * const defer)
-{
+bool net_trajano_driver_InsomniaTUserClient::didTerminate(IOService * const provider, IOOptionBits const options, bool * const defer) {
     IOLog("InsomniaTClient: didTerminate\n");
     return super::didTerminate(provider, options, defer);
 }
 
-void net_trajano_driver_InsomniaTUserClient::stop(IOService * const provider)
-{
+void net_trajano_driver_InsomniaTUserClient::stop(IOService * const provider) {
     IOLog("InsomniaTClient: stop %p\n", provider);
 
     if (provider->isOpen(this)) {
@@ -83,8 +79,7 @@ void net_trajano_driver_InsomniaTUserClient::stop(IOService * const provider)
     super::stop(provider);
 }
 
-IOReturn net_trajano_driver_InsomniaTUserClient::clientClose()
-{
+IOReturn net_trajano_driver_InsomniaTUserClient::clientClose() {
     IOLog("InsomniaTClient: clientClose\n");
     if( !isInactive()) {
         terminate();
