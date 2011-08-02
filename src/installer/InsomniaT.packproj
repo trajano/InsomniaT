@@ -1072,7 +1072,7 @@
 									<key>IFPkgDescriptionDeleteWarning</key>
 									<string></string>
 									<key>IFPkgDescriptionDescription</key>
-									<string></string>
+									<string>これはIOKitとのインタフェースは、クラムシェルのイベントを無効にするカーネルモジュールです。</string>
 									<key>IFPkgDescriptionTitle</key>
 									<string>カーネルモジュール</string>
 									<key>IFPkgDescriptionVersion</key>
@@ -1913,6 +1913,13 @@
 								<string>InsomniaT (or a previous version) is already installed.  Please run the uninstall script before installing.</string>
 								<key>TitleKey</key>
 								<string>InsomniaT already installed</string>
+							</dict>
+							<key>Japanese</key>
+							<dict>
+								<key>MessageKey</key>
+								<string></string>
+								<key>TitleKey</key>
+								<string></string>
 							</dict>
 						</dict>
 						<key>LabelKey</key>
