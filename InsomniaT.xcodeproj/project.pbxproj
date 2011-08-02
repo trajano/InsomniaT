@@ -17,7 +17,6 @@
 				2C20041B1086F84B002447D1 /* PBXTargetDependency */,
 				2C2012B110871321002447D1 /* PBXTargetDependency */,
 				2C6FC55C11C03880004D0737 /* PBXTargetDependency */,
-				2CA8F0D113DDE1C20097DE37 /* PBXTargetDependency */,
 			);
 			name = all;
 			productName = all;
@@ -39,9 +38,6 @@
 		2C6FC54511C03841004D0737 /* InsomniaTPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC36E11C02F05004D0737 /* InsomniaTPrefController.m */; };
 		2C6FC54611C03841004D0737 /* Coffee Cup.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FC37211C02F05004D0737 /* Coffee Cup.icns */; };
 		2C6FCDA611C054AC004D0737 /* InsomniaTPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FCDA311C054AC004D0737 /* InsomniaTPref.xib */; };
-		2CA8F0BA13DDE1340097DE37 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C201C0E1087ABF9002447D1 /* Cocoa.framework */; };
-		2CA8F0CF13DDE1B20097DE37 /* Coffee Cup.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2CA8F0CE13DDE1B20097DE37 /* Coffee Cup.icns */; };
-		2CA8F27913DDE3050097DE37 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CA8F27813DDE3050097DE37 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,13 +75,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2C6FC53211C0379F004D0737;
 			remoteInfo = InsomniaTPref;
-		};
-		2CA8F0D013DDE1C20097DE37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2CA8F0B313DDE10D0097DE37;
-			remoteInfo = "InsomniaT Helper";
 		};
 		2CC544B91088145500992CF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -146,7 +135,6 @@
 		2C6FCD1611C04738004D0737 /* uninstallInsomniaT.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstallInsomniaT.sh; sourceTree = "<group>"; };
 		2C6FCDA411C054AC004D0737 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = InsomniaTPref.xib; sourceTree = "<group>"; };
 		2CA53D1513DDA75800FD2F33 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
-		2CA8F0B413DDE10D0097DE37 /* InsomniaT Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InsomniaT Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA8F0B613DDE10D0097DE37 /* InsomniaT Helper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InsomniaT Helper-Info.plist"; sourceTree = "<group>"; };
 		2CA8F0CE13DDE1B20097DE37 /* Coffee Cup.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Coffee Cup.icns"; sourceTree = "<group>"; };
 		2CA8F27513DDE2CB0097DE37 /* untitled.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; name = untitled.xcclassmodel; path = src/helper/untitled.xcclassmodel; sourceTree = "<group>"; };
@@ -185,14 +173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C2012F21087171C002447D1 /* IOKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2CA8F0B213DDE10D0097DE37 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2CA8F0BA13DDE1340097DE37 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +245,6 @@
 				2C2016EB10871751002447D1 /* insomniat */,
 				2CC5441C1087B6E200992CF8 /* InsomniaTTest.octest */,
 				2C6FC53311C0379F004D0737 /* InsomniaT.prefPane */,
-				2CA8F0B413DDE10D0097DE37 /* InsomniaT Helper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -451,23 +430,6 @@
 			productReference = 2C2016EB10871751002447D1 /* insomniat */;
 			productType = "com.apple.product-type.tool";
 		};
-		2CA8F0B313DDE10D0097DE37 /* InsomniaT Helper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2CA8F0B913DDE10E0097DE37 /* Build configuration list for PBXNativeTarget "InsomniaT Helper" */;
-			buildPhases = (
-				2CA8F0B013DDE10D0097DE37 /* Resources */,
-				2CA8F0B113DDE10D0097DE37 /* Sources */,
-				2CA8F0B213DDE10D0097DE37 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "InsomniaT Helper";
-			productName = "InsomniaT Helper";
-			productReference = 2CA8F0B413DDE10D0097DE37 /* InsomniaT Helper.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -499,7 +461,6 @@
 				2C24428F106BDB4F0088C89C /* InsomniaTTest */,
 				2C6FC53211C0379F004D0737 /* InsomniaTPref */,
 				2C201B66108733DC002447D1 /* Installer */,
-				2CA8F0B313DDE10D0097DE37 /* InsomniaT Helper */,
 			);
 		};
 /* End PBXProject section */
@@ -525,15 +486,6 @@
 			files = (
 				2C6FC54611C03841004D0737 /* Coffee Cup.icns in Resources */,
 				2C6FCDA611C054AC004D0737 /* InsomniaTPref.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2CA8F0B013DDE10D0097DE37 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2CA8F0CF13DDE1B20097DE37 /* Coffee Cup.icns in Resources */,
-				2CA8F27913DDE3050097DE37 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,13 +543,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CA8F0B113DDE10D0097DE37 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -625,11 +570,6 @@
 			isa = PBXTargetDependency;
 			target = 2C6FC53211C0379F004D0737 /* InsomniaTPref */;
 			targetProxy = 2C6FC55F11C038E9004D0737 /* PBXContainerItemProxy */;
-		};
-		2CA8F0D113DDE1C20097DE37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2CA8F0B313DDE10D0097DE37 /* InsomniaT Helper */;
-			targetProxy = 2CA8F0D013DDE1C20097DE37 /* PBXContainerItemProxy */;
 		};
 		2CC544BA1088145500992CF8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -670,7 +610,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 4.0.0;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -678,6 +618,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx10.6;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -685,13 +626,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 4.0.0;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx10.6;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -924,50 +866,6 @@
 			};
 			name = Release;
 		};
-		2CA8F0B713DDE10D0097DE37 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "InsomniaT Helper-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = "InsomniaT Helper";
-			};
-			name = Debug;
-		};
-		2CA8F0B813DDE10D0097DE37 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "InsomniaT Helper-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = "InsomniaT Helper";
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1030,15 +928,6 @@
 			buildConfigurations = (
 				2C7F45C9106B612800AEC829 /* Debug */,
 				2C7F45CA106B612800AEC829 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2CA8F0B913DDE10E0097DE37 /* Build configuration list for PBXNativeTarget "InsomniaT Helper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2CA8F0B713DDE10D0097DE37 /* Debug */,
-				2CA8F0B813DDE10D0097DE37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
